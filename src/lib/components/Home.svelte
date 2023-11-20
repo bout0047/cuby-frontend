@@ -9,7 +9,7 @@
 <main>
     <div id="cubyconnect" class="cubyconnect">
         <a href="cubyconnect">
-            <h1>Hello {name}! <i class="fa-solid fa-cube"></i></h1>
+            <h1>Hello ! <i class="fa-solid fa-cube"></i></h1>
         </a>
         <h2>Connect to cuby here!</h2>
     </div>
