@@ -3,8 +3,8 @@
 </script>
 
 <div class="flex flex-col h-screen justify-between">
-  <header><p class="bg-red-50 p-2">&#128013 Veterinarian complete</p></header>
   <main>
+    &#128013
     <slot />
     <!-- here the page content of +page.svelte is loaded-->
   </main>
