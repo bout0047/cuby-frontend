@@ -12,33 +12,41 @@
 
 <SettingsMenu />
 <main>
-	<div id="cubyconnect" class="cubyconnect">
-		<!-- <a href="cubyconnect"><h1>Hello {name}! <i class="fa-solid fa-cube" /></h1></a> -->
-	</div>
+    <div id="cubyconnect" class="cubyconnect">
+        <a href="cubyconnect">
+            <h1>Hello {name}! <i class="fa-solid fa-cube"></i></h1>
+        </a>
+        <h2>Connect to cuby here!</h2>
+    </div>
 
-	<div class="profile">
-		<br />
-		<i class="fa-regular fa-address-card icons" />
-	  </div>
-	<div class="top">
-		<div class="events">
-			<br /><i class="fa-solid fa-users icons" />
-		</div>
-		<div class="calender">
-			calender<br />
-			<i class="fa-regular fa-calendar-days icons" />
-		</div>
-	</div>
-	<div class="bottom">
-		<div class="stats">
-			stats<br /><i class="fa-solid fa-chart-line icons" />
-		</div>
-		<div class="self-help">
-			self-help center<br /><i
-				class="fa-solid fa-circle-info icons"
-			/>
-		</div>
-	</div>
+    <div class="icon-container">
+        <div class="icon-row">
+            <div class="icon profile">
+                <a href="Profile.svelte">profile</a><br />
+                <img src="img/profile.png" alt="profile"/>
+            </div>
+        </div>
+        <div class="icon-row multi-icons">
+            <div class="icon events">
+                <a href="Events.svelte">events</a><br />
+                <img src="img/events.png" alt="events"/>
+            </div>
+            <div class="icon calendar">
+                <a href="Calendar.svelte">calendar</a><br />
+                <img src="img/calendar.png" alt="calendar"/>
+            </div>
+        </div>
+        <div class="icon-row multi-icons">
+            <div class="icon stats">
+                <a href="Stats.svelte">stats</a><br />
+                <img src="img/stats.png" alt="stats"/>
+            </div>
+            <div class="icon self-help">
+                <a href="Self-help.svelte">self-help</a><br />
+                <img src="img/self-help.png" alt="self help"/>
+            </div>
+        </div>
+    </div>
 </main>
 
 <!-- <Router>
@@ -50,80 +58,70 @@
 	  <Route path="/profile" component={Profile} />
   </Router> -->
 
-<style>
-	main {
-		padding: 1em;
-		margin: 0 auto;
-	}
+  <style>
+    :global(body) {
+        background-color: #87abab;
+        margin: 0;
+        overflow-x: hidden;
+    }
 
-	h1 {
-		color: rgb(221, 143, 156);
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+    main {
+        padding: 1em;
+        text-align: center; /* Center content */
+    }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-	:global(body) {
-		background-color: #87abab;
-	}
+    .cubyconnect {
+        background-color: darkblue;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
 
-	.profile {
-		background-color: dimgray;
-		text-align: center;
-		margin-bottom: 2cm;
-		margin-left: 30%;
-		margin-right: 30%;
-		margin-top: 1.5cm;
-	}
+    .icon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
-	.calender {
-		background-color: dimgray;
-		text-align: center;
-		margin-left: 70%;
-		margin-bottom: 1cm; 
-		display: inline-block;
-	}
+    .icon-row {
+        display: flex;
+        justify-content: center;
+        width: 100%; /* Make sure this takes up the full width */
+    }
 
-	.events {
-		background-color: dimgray;
-		text-align: center;
-		
-		display: inline-block;
-	}
+    .icon-row.multi-icons {
+        justify-content: space-around;
+    }
 
-	.stats {
-		background-color: dimgray;
-		text-align: center;
-		margin-right: 60%;
-		display: inline-block;
-	}
+    .icon {
+        background-color: dimgray;
+        border-radius: 20px;
+        padding: 10px;
+        width: calc(50% - 40px); /* Adjust this to make sure two icons fit in one row */
+        margin: 10px; /* Center and space out icons */
+    }
 
-	.self-help {
-		background-color: dimgray;
-		text-align: center;
-		display: inline-block;
-	}
+    .icon img {
+        max-width: 100%; /* Responsive image sizing */
+        height: auto;
+    }
 
-	.cubyconnect {
-		background-color: darkblue;
-	}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .icon {
+            width: calc(100% - 20px); /* Full width on smaller screens */
+        }
+    }
 
-	.icons {
-		font-size: xx-large;
-	}
+    @media (max-width: 412px) {
+        .cubyconnect h1 {
+            font-size: 1.5em; /* Adjust font size for small screens */
+        }
 
-	.top {
-		font-size: 20px;
-		padding: 20px;
-	}
-
-	.bottom {
-		font-size: 20px;
-		padding: 20px;
-	}
+        .cubyconnect h2 {
+            font-size: 1.2em; /* Adjust sub-header font size for small screens */
+        }
+    }
 </style>
