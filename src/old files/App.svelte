@@ -3,7 +3,7 @@
 	import "@fortawesome/fontawesome-free/js/all.js";
 	import { Router, Link, Route } from "svelte-routing";
   	import Profile from "../../../src/Profile.svelte";
-    import Home from "./Home.svelte";
+    import Home from "../lib/components/Home.svelte";
 </script>
 
 
