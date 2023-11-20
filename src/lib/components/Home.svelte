@@ -44,14 +44,7 @@
     </div>
 </main>
 
-<Router>
-	<nav>
-	
-		<Link to="/profile">Profile</Link> 
-	  </nav>
 
-	  <Route path="/profile" component={Profile} />
-  </Router>
 
   <style>
     :global(body) {
