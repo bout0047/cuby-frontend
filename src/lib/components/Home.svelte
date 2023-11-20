@@ -1,16 +1,11 @@
 <script>
-	import SettingsMenu from "./SettingsMenu.svelte";
 	import "@fortawesome/fontawesome-free/js/all.js";
   	import { Link, Route, Router } from "svelte-routing";
+    import NavBar from "./NavBar.svelte";
 </script>
 
 
-<div class="home">
-    <!-- <Link to="/home">Home</Link><br /> -->
-    <i class="fa-regular fa-address-card icons" />
-  </div>
-
-<SettingsMenu />
+<NavBar />
 <main>
     <div id="cubyconnect" class="cubyconnect">
         <a href="cubyconnect">
@@ -49,14 +44,14 @@
     </div>
 </main>
 
-<!-- <Router>
+<Router>
 	<nav>
 	
 		<Link to="/profile">Profile</Link> 
 	  </nav>
 
 	  <Route path="/profile" component={Profile} />
-  </Router> -->
+  </Router>
 
   <style>
     :global(body) {

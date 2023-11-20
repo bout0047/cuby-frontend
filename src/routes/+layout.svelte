@@ -4,7 +4,6 @@
 
 <div class="flex flex-col h-screen justify-between">
   <main>
-    &#128013
     <slot />
     <!-- here the page content of +page.svelte is loaded-->
   </main>
