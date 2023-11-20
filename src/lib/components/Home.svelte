@@ -1,5 +1,4 @@
 <script>
-	export let name;
 	import SettingsMenu from "./SettingsMenu.svelte";
 	import "@fortawesome/fontawesome-free/js/all.js";
   	import { Link, Route, Router } from "svelte-routing";
