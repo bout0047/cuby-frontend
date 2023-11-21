@@ -9,16 +9,18 @@
   <main>
     <slot />
     <!-- here the page content of +page.svelte is loaded-->
-    
+    <Router>
+    <Route path="/home" component={Home} />
+    <Route path="/profile" component={Profile} />
+    </Router>
   </main>
 
   <footer>
     <Router>
-      <Route path="/home" component={Home} />
-      <Route path="/profile" component={Profile} />
+     
       <nav class="grid grid-cols-7 gap-4 p-4 md:p-8 rounded-md shadow-md">
-        <Link to="/home" class="bg-gray-300 text-base md:text-xl lg:text-2xl">Home</Link>
-        <Link to="/profile" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Profile</Link>
+        <Link to="/home" class="bg-gray-300 text-sm text-center">Home</Link>
+        <Link to="/profile" class="bg-gray-300 p-1 text-base rounded-md shadow-md text-base">Profile</Link>
         <Link to="/events" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Events</Link>
         <Link to="/calender" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Calender</Link>
         <Link to="/stats" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Stats</Link>

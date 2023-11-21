@@ -10,8 +10,7 @@
 
 
 <main>
-  the text
-  <p class="text-xs">the bigger text</p>
+
 </main>
 <style>
   /* Your component styles go here */
