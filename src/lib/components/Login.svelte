@@ -1,33 +1,29 @@
-<!-- Login.svelte -->
 <script>
+    import { navigate } from 'svelte-routing';
     let username = "";
     let password = "";
-  
-    const handleLogin = () => {
-      // Simulate authentication (replace with actual authentication logic)
-      if (username === "demo" && password === "password") {
-        // Redirect to home page on successful login
-        window.location.href = "/home";
-      } else {
-        alert("Invalid credentials");
-      }
-    };
-  </script>
-  
-  <style>
-    /* Your component styles go here */
-  </style>
-  
-  <div>
-    <h1>Login</h1>
+    let isLoggedIn = false;
+    function handleLogin() {
+        isLoggedIn = true;
+    }
+</script>
+
+<div class="text-center">
+   
+    <h1>Login Page</h1>
     <label>
-      Username:
-      <input bind:value={username} />
+        Username:
+        <input bind:value={username} />
     </label>
+    <br />
     <label>
-      Password:
-      <input type="password" bind:value={password} />
+        Password:
+        <input type="password" bind:value={password} />
     </label>
+    <br />
     <button on:click={handleLogin}>Login</button>
-  </div>
-  
+</div>
+
+<style>
+    /* Your component styles go here */
+</style>

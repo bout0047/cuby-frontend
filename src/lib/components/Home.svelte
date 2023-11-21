@@ -6,7 +6,6 @@
 </script>
 
 
-<NavBar />
 <main>
     <div id="cubyconnect" class="cubyconnect">
         <a href="cubyconnect">
