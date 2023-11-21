@@ -1,5 +1,5 @@
 <script>
-  
+    import { Router, Link, Route } from "svelte-routing";
 </script>
 
 <div>
@@ -16,7 +16,8 @@
 
     <button type="submit">Login</button>
     
-      <footer>
+
+    <footer>
     <Router>
      
       <nav class="grid grid-cols-7 gap-4 p-4 md:p-8 rounded-md shadow-md">
@@ -28,7 +29,8 @@
         <Link to="/profile" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Profile</Link>
         <Link to="/self-help" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Self-help</Link>
       </nav>
-    <footer/>
+      </Router>
+    </footer>
 
   </main>
 </div>
