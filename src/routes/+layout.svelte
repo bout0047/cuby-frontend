@@ -9,6 +9,7 @@
   <main>
     <slot />
     <!-- here the page content of +page.svelte is loaded-->
+    
     <Router>
     <Route path="/home" component={Home} />
     <Route path="/profile" component={Profile} />
