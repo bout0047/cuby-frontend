@@ -9,9 +9,4 @@
 </main>
 
 <style>
-    .top-right {
-        text-align: right;
-        font-size: x-large;
-        padding-right: 5px;
-    }
 </style>
