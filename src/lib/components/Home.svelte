@@ -2,6 +2,7 @@
 	import "@fortawesome/fontawesome-free/js/all.js";
   	import { Link, Route, Router } from "svelte-routing";
     import NavBar from "./NavBar.svelte";
+	import Profile from "./Profile.svelte";
 </script>
 
 

@@ -1,5 +1,17 @@
 <script>
-  import Home from "$lib/components/Home.svelte";
+  import { Router, Link, Route } from "svelte-routing";
+  import Home from "../lib/components/Home.svelte";
+  import Profile from "../lib/components/Profile.svelte";
 </script>
 
-<Home />
+<!-- Your component markup goes here -->
+
+
+
+
+<main>
+
+</main>
+<style>
+  /* Your component styles go here */
+</style>
