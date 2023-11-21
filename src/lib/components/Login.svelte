@@ -1,28 +1,29 @@
 <script>
-  import { navigate } from "svelte-routing";
-
-  let username = "";
-  let password = "";
-
-  function handleSubmit() {
-    // Perform login logic here
-
-    // Redirect to /home
-    navigate("/home");
-  }
+    import { navigate } from 'svelte-routing';
+    let username = "";
+    let password = "";
+    let isLoggedIn = false;
+    function handleLogin() {
+        isLoggedIn = true;
+    }
 </script>
 
-<main>
-  <h1>Login</h1>
-  <form on:submit={handleSubmit}>
+<div class="text-center">
+   
+    <h1>Login Page</h1>
     <label>
-      Username:
-      <input type="text" />
+        Username:
+        <input bind:value={username} />
     </label>
+    <br />
     <label>
-      Password:
-      <input type="password" />
+        Password:
+        <input type="password" bind:value={password} />
     </label>
-    <button type="submit">Submit</button>
-  </form>
-</main>
+    <br />
+    <button on:click={handleLogin}>Login</button>
+</div>
+
+<style>
+    /* Your component styles go here */
+</style>
