@@ -1,8 +1,7 @@
 <script>
 	import "@fortawesome/fontawesome-free/js/all.js";
   	import { Link, Route, Router } from "svelte-routing";
-    import NavBar from "../lib/components/NavBar.svelte";
-	import Profile from "./Profile.svelte";
+    import NavBar from "./NavBar.svelte";
     import Calendar from "./Calendar.svelte";
 </script>
 
