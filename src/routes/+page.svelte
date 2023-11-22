@@ -25,6 +25,5 @@
           >
           Register
         </div>
-
     </div>
 </main>
