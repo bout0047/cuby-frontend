@@ -1,19 +1,17 @@
 <script>
-  import Home from '$lib/components/Home.svelte';
-import '../app.css';
-  import NavBar from '../lib/components/NavBar.svelte';
-  import TopNav from '../lib/components/TopNav.svelte';
+  import "../app.css";
+  import NavBar from "../lib/components/NavBar.svelte";
+  import TopNav from "../lib/components/TopNav.svelte";
 </script>
 
 <div class="flex flex-col h-screen justify-between">
   <main>
-    <TopNav/>
-<Home/>
-    </main>
+    <TopNav />
+  </main>
 
-<footer>
-  <NavBar />
-</footer>
+  <footer>
+    <NavBar />
+  </footer>
 </div>
 
 <style>

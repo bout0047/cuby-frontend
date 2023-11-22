@@ -1,12 +1,13 @@
 <script>
 	import "@fortawesome/fontawesome-free/js/all.js";
-  	import { Link, Route, Router } from "svelte-routing";
     import NavBar from "./NavBar.svelte";
     import Calendar from "./Calendar.svelte";
+    import TopNav from "./TopNav.svelte";
+    import '../../app.css';
 </script>
 
 
-
+<TopNav/>
 <main>
     <div id="cubyconnect" class="cubyconnect">
         <a href="cubyconnect">
@@ -43,6 +44,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <NavBar/>
+    </footer>
 </main>
 
 
