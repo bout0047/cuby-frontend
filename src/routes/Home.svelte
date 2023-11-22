@@ -3,6 +3,7 @@
   	import { Link, Route, Router } from "svelte-routing";
     import NavBar from "../lib/components/NavBar.svelte";
 	import Profile from "./Profile.svelte";
+    import Calendar from "./Calendar.svelte";
 </script>
 
 
