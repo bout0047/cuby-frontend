@@ -1,11 +1,11 @@
 <script>
-    import NavBar from "$lib/components/NavBar.svelte";
 
-
+  import Home from '$lib/components/Home.svelte';
+  import NavBar from "$lib/components/NavBar.svelte";
 </script>
 
 <main>
-<h1> this page isnt finished</h1>
+  <Home/>
 
 <footer>
   <NavBar/>

@@ -5,8 +5,6 @@
     import Calendar from "./Calendar.svelte";
 </script>
 
-
-
 <main>
     <div id="cubyconnect" class="cubyconnect">
         <a href="cubyconnect">
