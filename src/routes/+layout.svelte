@@ -8,14 +8,16 @@
 </script>
 
 <div>
+  yes
   <slot/>
   {#if isLoggedIn}
-  <!-- <Home /> -->
+  <Home />
 {:else}
-  <!-- <Login /> -->
+  <Login />
 {/if}
 
 </div>
 
 <style>
+
 </style>
