@@ -3,6 +3,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import Home from "../lib/components/Home.svelte";
   import Profile from "../lib/components/Profile.svelte";
+  import Calendar from '../lib/components/Calendar.svelte';
 </script>
 
 <div class="flex flex-col h-screen justify-between">
@@ -12,6 +13,7 @@
     <Router>
     <Route path="/home" component={Home} />
     <Route path="/profile" component={Profile} />
+    <Route path="/calendar" component={Calendar} />
     </Router>
   </main>
 
@@ -22,7 +24,7 @@
         <Link to="/home" class="bg-gray-300 text-sm text-center">Home</Link>
         <Link to="/profile" class="bg-gray-300 p-1 text-base rounded-md shadow-md text-base">Profile</Link>
         <Link to="/events" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Events</Link>
-        <Link to="/calender" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Calender</Link>
+        <Link to="/calendar" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Calendar</Link>
         <Link to="/stats" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Stats</Link>
         <Link to="/profile" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Profile</Link>
         <Link to="/self-help" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Self-help</Link>
