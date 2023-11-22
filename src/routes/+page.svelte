@@ -1,18 +1,29 @@
 <script>
-  import "../app.css";
-  import NavBar from "../lib/components/NavBar.svelte";
-  import TopNav from "../lib/components/TopNav.svelte";
+  import '../app.css';
+
 </script>
 
-<div class="flex flex-col h-screen justify-between">
-  <main>
-    <TopNav />
-  </main>
+<main>
+    <div>
+        <h1 class="text-5xl text-center decoration-8 mt-20">Cuby</h1>
 
-  <footer>
-    <NavBar />
-  </footer>
-</div>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div 
+          class="bg-somePaleGreen hover:bg-darkestBlue text-blue-700 hover:text-somePaleGreen font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          on:click={() => {
+            window.location.href = "/login";
+          }}
+          >
+          Login
+        </div>
 
-<style>
-</style>
+        <div 
+          class="bg-darkestBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          on:click={() => {
+            window.location.href = "/register";
+          }}
+          >
+          Register
+        </div>
+    </div>
+</main>
