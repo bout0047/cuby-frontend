@@ -12,6 +12,7 @@
             <a href="/self-help" class="bg-gray-300 p-1 rounded-md shadow-md text-base">Self-help</a>
           </nav>
         <p class="p-2 text-center">Made with <i class="fa-solid fa-cube" style="color: pink;"></i></p>
+
       </footer>
 </main>
 
