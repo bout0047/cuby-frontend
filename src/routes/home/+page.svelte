@@ -16,7 +16,7 @@
     <div class="icon-container">
         <div class="icon-row">
             <div class="icon profile">
-                <a href="Profile.svelte">profile</a><br />
+                <a href="/profile">profile</a><br />
                 <img src="img/profile.png" alt="profile"/>
             </div>
         </div>
