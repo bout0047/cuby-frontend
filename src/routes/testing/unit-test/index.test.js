@@ -1,5 +1,5 @@
 import { render } from '@testing-library/svelte';
-import Index from '../index.svelte';
+import Index from '../../+page.svelte';
 
 test('renders welcome message', () => {
   const { getByText } = render(Index, { props: { name: 'World' } });
