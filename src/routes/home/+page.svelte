@@ -40,22 +40,22 @@
     />
   </section>
 
-  <div class="grid grid-cols-2 gap-4 content-evenly">
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-10">
     <div>
-      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 ml-5">
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
         <h3>Clicks today:</h3>
         <p>{user.stats.clicks}</p>
       </div>
     </div>
     <div>
-      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 ml-5">
-        <h3>Events<br /> this month</h3>
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
+        <h3>Events this month:</h3>
         <p>{user.goals.length}</p>
       </div>
     </div>
   </div>
 
-  <section>
+  <section class="my-5 mx-2">
     <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
     <div class="left-2 border rounded">
       <div class="grid grid-cols-2 m-3 text-left">
@@ -77,16 +77,16 @@
     </div>
   </section>
 
-  <div class="grid grid-cols-2 gap-4 content-evenly">
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5">
     {#each otherEvents as event}
       <div>
-        <div class="box bg-somePaleGreen rounded-lg w-30 h-40 ml-5">
+        <div class="box bg-somePaleGreen rounded-lg w-30 h-40">
           <img
             src={event.image}
             alt="Event Image"
             class="rounded-full text-lg shadow-md mx-auto pb-10 mb-10"
           />
-          <button class="bg-blue text-white text-lg p-1 rounded-lg"
+          <button class="bg-darkestBlue text-white text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto"
             >{event.joinButton}</button
           >
         </div>
