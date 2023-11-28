@@ -42,13 +42,13 @@
 
   <div class="grid grid-cols-2 gap-4 content-evenly">
     <div>
-      <div class="box bg-white text-lg rounded-lg w-30 h-20 ml-5">
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 ml-5">
         <h3>Clicks today:</h3>
         <p>{user.stats.clicks}</p>
       </div>
     </div>
     <div>
-      <div class="box bg-white text-lg rounded-lg w-30 h-20 ml-5">
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 ml-5">
         <h3>Events<br /> this month</h3>
         <p>{user.goals.length}</p>
       </div>
@@ -80,7 +80,7 @@
   <div class="grid grid-cols-2 gap-4 content-evenly">
     {#each otherEvents as event}
       <div>
-        <div class="box bg-white rounded-lg w-30 h-40 ml-5">
+        <div class="box bg-somePaleGreen rounded-lg w-30 h-40 ml-5">
           <img
             src={event.image}
             alt="Event Image"
