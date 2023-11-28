@@ -1,38 +1,66 @@
 <script>
 	import "@fortawesome/fontawesome-free/js/all.js";
-    import NavBar from '$lib/components/NavBar.svelte';
-    import TopNav from '$lib/components/TopNav.svelte';
-    let user = {
-      name: "John Doe",
-      email: "john@example.com",
-      picture: "../src/img/stokstraart.png", 
-      goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
-      stats: {
-        clicks: 50,
-        stress: 37,
-        excersies: 3,
-      },
-    };</script>
+        import NavBar from '$lib/components/NavBar.svelte';
+        import TopNav from '$lib/components/TopNav.svelte';
+        let user = {
+            name: "John Doe",
+            email: "john@example.com",
+            picture: "../src/img/stokstraart.png", 
+            goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
+            stats: {
+                clicks: 50,
+                stress: 37,
+                excersies: 3,
+            },
+        };
+        let otherEvents = [
+            {
+                image: "path/to/image1.jpg",
+                joinButton: "Join",
+            },
+            {
+                image: "path/to/image2.jpg",
+                joinButton: "Join",
+            },
+        ];
+</script>
 
 <main>
-  <TopNav/>
-   <section class="pt-5">
-    <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4 w-40 h-40" />
+    <TopNav/>
+     <section class="pt-5">
+        <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4 w-40 h-40" />
+</section>
+
 <div class="grid grid-cols-2 gap-4 content-evenly">
-    <div>
-        <div class="box bg-white rounded-lg w-20 ml-10">
-            <h3>Clicks today:</h3>
-            <p>{user.stats.clicks}</p>
+        <div>
+                <div class="box bg-white text-lg rounded-lg w-30 h-20 ml-5">
+                        <h3>Clicks today:</h3>
+                        <p>{user.stats.clicks}</p>
+                </div>
         </div>
-    </div>
-    <div>
-        <div class="box bg-white rounded-lg w-20 ml-10">
-            <h3>Events<br> this month</h3>
-            <p>{user.goals.length}</p>
+        <div>
+                <div class="box bg-white text-lg rounded-lg w-30 h-20 ml-5">
+                        <h3>Events<br> this month</h3>
+                        <p>{user.goals.length}</p>
+                </div>
         </div>
-    </div>
 </div>
-   </section>
+<br><br><br><br><br>
+<div class="grid grid-cols-2 gap-4 content-evenly">
+    {#each otherEvents as event}
+        <div>
+                <div class="box bg-white rounded-lg w-30 h-40 ml-5">
+                        <img src={event.image} alt="Event Image" class="rounded-full text-lg shadow-md mx-auto pb-10 mb-10" />
+                        <button class="bg-blue text-white text-lg p-1 rounded-lg">{event.joinButton}</button>
+                </div>
+        </div>
+    {/each}
+</div>
+
+<div>
+
+</div>
+  
    
     <footer>
         <NavBar/>

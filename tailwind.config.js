@@ -9,6 +9,7 @@ export default {
       salmonLikeColor: '#ffa480',
       'black': '#000000',
       'white': '#ffffff',
+      'blue': '#090C9B',
     },
     extend: {},
   },
