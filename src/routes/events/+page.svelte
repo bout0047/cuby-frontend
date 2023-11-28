@@ -1,13 +1,13 @@
 <script>
     import NavBar from "$lib/components/NavBar.svelte";
     import '../../app.css';
+    import EventPage from "$lib/components/EventPage.svelte";
 
 
 </script>
 
 <main>
-<h1> this page isnt finished</h1>
-
+<EventPage/>
 <footer>
   <NavBar/>
 </footer>
