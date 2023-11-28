@@ -1,24 +1,23 @@
 <script>
 	import "@fortawesome/fontawesome-free/js/all.js";
     import NavBar from '$lib/components/NavBar.svelte';
-  import TopNav from '$lib/components/TopNav.svelte';
-  let user = {
+    import TopNav from '$lib/components/TopNav.svelte';
+    let user = {
       name: "John Doe",
       email: "john@example.com",
-      picture: "https://via.placeholder.com/150", 
+      picture: "../src/img/stokstraart.png", 
       goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
       stats: {
         clicks: 50,
         stress: 37,
         excersies: 3,
       },
-    };
-</script>
+    };</script>
 
 <main>
   <TopNav/>
-   <section>
-    <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4" />
+   <section class="pt-5">
+    <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4 w-40 h-40" />
    </section>
    
     <footer>
