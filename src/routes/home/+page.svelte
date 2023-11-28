@@ -7,6 +7,32 @@
 <main>
   <TopNav />
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <section>
     <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
     <div class="left-2 border rounded">
