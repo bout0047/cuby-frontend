@@ -2,46 +2,25 @@
 	import "@fortawesome/fontawesome-free/js/all.js";
     import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
+  let user = {
+      name: "John Doe",
+      email: "john@example.com",
+      picture: "https://via.placeholder.com/150", 
+      goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
+      stats: {
+        clicks: 50,
+        stress: 37,
+        excersies: 3,
+      },
+    };
 </script>
 
 <main>
   <TopNav/>
-    <div id="cubyconnect" class="cubyconnect">
-        <a href="cubyconnect">
-            <h1>Hello ! <i class="fa-solid fa-cube"></i></h1>
-        </a>
-        <h2>Connect to cuby here!</h2>
-    </div>
-
-    <div class="icon-container">
-        <div class="icon-row">
-            <div class="icon profile">
-                <a href="/profile">profile</a><br />
-                <img src="img/profile.png" alt="profile"/>
-            </div>
-        </div>
-        <div class="icon-row multi-icons">
-            <div class="icon events">
-                <a href="Events.svelte">events</a><br />
-                <img src="img/events.png" alt="events"/>
-            </div>
-            <div class="icon calendar">
-                <a href="Calendar.svelte">calendar</a><br />
-                <img src="img/calendar.png" alt="calendar"/>
-            </div>
-        </div>
-        <div class="icon-row multi-icons">
-            <div class="icon stats">
-                <a href="Stats.svelte">stats</a><br />
-                <img src="img/stats.png" alt="stats"/>
-            </div>
-            <div class="icon self-help">
-                <a href="Self-help.svelte">self-help</a><br />
-                <img src="img/self-help.png" alt="self help"/>
-            </div>
-        </div>
-    </div>
-
+   <section>
+    <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4" />
+   </section>
+   
     <footer>
         <NavBar/>
     </footer>
