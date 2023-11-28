@@ -18,6 +18,20 @@
   <TopNav/>
    <section class="pt-5">
     <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4 w-40 h-40" />
+<div class="grid grid-cols-2 gap-4 content-evenly">
+    <div>
+        <div class="box bg-white rounded-lg w-20 ml-10">
+            <h3>Clicks today:</h3>
+            <p>{user.stats.clicks}</p>
+        </div>
+    </div>
+    <div>
+        <div class="box bg-white rounded-lg w-20 ml-10">
+            <h3>Events<br> this month</h3>
+            <p>{user.goals.length}</p>
+        </div>
+    </div>
+</div>
    </section>
    
     <footer>

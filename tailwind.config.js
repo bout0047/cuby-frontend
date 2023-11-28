@@ -8,6 +8,7 @@ export default {
       darkestBlue: '#090C9B',
       salmonLikeColor: '#ffa480',
       'black': '#000000',
+      'white': '#ffffff',
     },
     extend: {},
   },
