@@ -2,7 +2,7 @@
 </script>
 <main>
 
-    <footer>         
+    <footer class="mt-auto fixed inset-x-0 bottom-0">         
           <nav class="grid grid-cols-6 gap-4 p-4 md:p-8 rounded-md shadow-md">
             <a href="/home" class="bg-gray-300 text-3xl text-center"><i class="fa-solid fa-house"></i></a>
             <a href="/profile" class="bg-gray-300 p-1 text-3xl rounded-md shadow-md text-3xl"><i class="fa-solid fa-user"></i></a>

@@ -2,10 +2,10 @@
 <script>
    import NavBar from "$lib/components/NavBar.svelte";
    import '../../app.css';
-    let user = {
+   let user = {
       name: "John Doe",
       email: "john@example.com",
-      picture: "https://via.placeholder.com/150", // Placeholder image URL
+      picture: "../src/img/stokstraart.png", 
       goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
       stats: {
         clicks: 50,
