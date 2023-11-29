@@ -1,118 +1,100 @@
 <script>
-	import "@fortawesome/fontawesome-free/js/all.js";
-    import NavBar from '$lib/components/NavBar.svelte';
+  import '@fortawesome/fontawesome-free/js/all.js';
+  import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
+
+  let user = {
+    name: 'John Doe',
+    email: 'john@example.com',
+    picture: '../src/img/stokstraart.png',
+    goals: [
+      'Talk to a random person',
+      'Have conversation for 10 min',
+      'Join 5 events',
+    ],
+    stats: {
+      clicks: 50,
+      stress: 37,
+      excersies: 3,
+    },
+  };
+  let otherEvents = [
+    {
+      image: 'path/to/image1.jpg',
+      joinButton: 'Join',
+    },
+    {
+      image: 'path/to/image2.jpg',
+      joinButton: 'Join',
+    },
+  ];
 </script>
 
 <main>
-  <TopNav/>
-    <div id="cubyconnect" class="cubyconnect">
-        <a href="cubyconnect">
-            <h1>Hello ! <i class="fa-solid fa-cube"></i></h1>
-        </a>
-        <h2>Connect to cuby here!</h2>
-    </div>
+  <TopNav />
+  <section class="pt-5">
+    <img
+      src={user.picture}
+      alt="Profile Picture"
+      class="rounded-full shadow-md mx-auto mb-4 w-40 h-40"
+    />
+  </section>
 
-    <div class="icon-container">
-        <div class="icon-row">
-            <div class="icon profile">
-                <a href="/profile">profile</a><br />
-                <img src="img/profile.png" alt="profile"/>
-            </div>
-        </div>
-        <div class="icon-row multi-icons">
-            <div class="icon events">
-                <a href="Events.svelte">events</a><br />
-                <img src="img/events.png" alt="events"/>
-            </div>
-            <div class="icon calendar">
-                <a href="Calendar.svelte">calendar</a><br />
-                <img src="img/calendar.png" alt="calendar"/>
-            </div>
-        </div>
-        <div class="icon-row multi-icons">
-            <div class="icon stats">
-                <a href="Stats.svelte">stats</a><br />
-                <img src="img/stats.png" alt="stats"/>
-            </div>
-            <div class="icon self-help">
-                <a href="Self-help.svelte">self-help</a><br />
-                <img src="img/self-help.png" alt="self help"/>
-            </div>
-        </div>
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-10">
+    <div>
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
+        <h3>Clicks today:</h3>
+        <p>{user.stats.clicks}</p>
+      </div>
     </div>
+    <div>
+      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
+        <h3>Events this month:</h3>
+        <p>{user.goals.length}</p>
+      </div>
+    </div>
+  </div>
 
-    <footer>
-        <NavBar/>
-    </footer>
+  <section class="my-5 mx-2">
+    <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
+    <div class="left-2 border rounded">
+      <div class="grid grid-cols-2 m-3 text-left">
+        <div class=" gap-4">
+          <div>
+            <h2>Event Name</h2>
+          </div>
+          <div>
+            <h3>Event Time</h3>
+          </div>
+          <div>
+            <h3>Event Location</h3>
+          </div>
+        </div>
+        <div class="w-12 ml-32">
+          <img src="src/img/calender.png" class="w-10 h-10 float-right mr-4" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5">
+    {#each otherEvents as event}
+      <div>
+        <div class="box bg-somePaleGreen rounded-lg w-30 h-40">
+          <img
+            src={event.image}
+            alt="Event Image"
+            class="rounded-full text-lg shadow-md mx-auto pb-10 mb-10"
+          />
+          <button class="bg-darkestBlue text-white text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto"
+            >{event.joinButton}</button
+          >
+        </div>
+      </div>
+    {/each}
+  </div>
+
+  <footer>
+    <NavBar />
+  </footer>
 </main>
-
-
-
-  <style>
-    :global(body) {
-        background-color: #87abab;
-        margin: 0;
-        overflow-x: hidden;
-    }
-
-    main {
-        padding: 1em;
-        text-align: center; /* Center content */
-    }
-
-    .cubyconnect {
-        background-color: darkblue;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-    }
-
-    .icon-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .icon-row {
-        display: flex;
-        justify-content: center;
-        width: 100%; /* Make sure this takes up the full width */
-    }
-
-    .icon-row.multi-icons {
-        justify-content: space-around;
-    }
-
-    .icon {
-        background-color: dimgray;
-        border-radius: 20px;
-        padding: 10px;
-        width: calc(50% - 40px); /* Adjust this to make sure two icons fit in one row */
-        margin: 10px; /* Center and space out icons */
-    }
-
-    .icon img {
-        max-width: 100%; /* Responsive image sizing */
-        height: auto;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .icon {
-            width: calc(100% - 20px); /* Full width on smaller screens */
-        }
-    }
-
-    @media (max-width: 412px) {
-        .cubyconnect h1 {
-            font-size: 1.5em; /* Adjust font size for small screens */
-        }
-
-        .cubyconnect h2 {
-            font-size: 1.2em; /* Adjust sub-header font size for small screens */
-        }
-    }
-</style>
