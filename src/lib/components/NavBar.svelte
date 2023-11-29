@@ -11,7 +11,7 @@
             <a href="/stats" class="bg-gray-300 p-1 rounded-md shadow-md text-3xl"><i class="fa-solid fa-chart-simple"></i></a>
             <a href="/self-help" class="bg-gray-300 p-1 rounded-md shadow-md text-3xl"><i class="fa-solid fa-book-open"></i></a>
           </nav>
-        <p class="p-2 text-center">Made with <i class="fa-solid fa-cube" style="color: pink;"></i></p>
+        <p class="p-2 text-center">Made with <i class="fa-solid fa-cube" style="color: pink;"></i>!</p>
 
       </footer>
 </main>
