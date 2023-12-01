@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meditation Button</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="flex flex-col items-center justify-center w-full h-screen bg-blue-900">
+<script>
+  // Your script code goes here
+
+  import NavBar from "./NavBar.svelte";
+
+</script>
+
+
+<main class="items-center justify-center w-full h-screen bg-blue-900">
   <!-- Added margin-top (mt-8) to the top of the container -->
-  <div class="flex flex-col items-center space-y-4 mt-8">
+  <div class="space-y-4 ml-6">
     <!-- Self Help Text and Cube Icon Container -->
     <div class="flex items-center justify-center">
       <!-- Self Help Text -->
@@ -37,5 +37,8 @@
       <span class="text-xl">→</span>
     </button>
   </div>
-</body>
-</html>
+  <NavBar />
+</main>
+<style>
+  /* Your styles go here */
+</style>
