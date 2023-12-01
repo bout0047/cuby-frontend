@@ -1,15 +1,14 @@
 <script>
 	import "@fortawesome/fontawesome-free/js/all.js";
-  	import { Link, Route, Router } from "svelte-routing";
-    import NavBar from "./NavBar.svelte";
+  	import TopNav from '$lib/components/TopNav.svelte';
+    import NavBar from '$lib/components/NavBar.svelte';
 </script>
 
+<TopNav />
 
-<NavBar />
 <main>
-<!-- component -->
-<div class="flex items-center justify-center py-8 px-4">
-    <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+    <h1 class="text-4xl font-extrabold dark:text-white flex justify-center items-center">Calendar</h1>
+<div class="flex items-center justify-center py-8 px-4 my-10">
     
                 <div class="max-w-sm w-full shadow-lg">
                     <div class="md:p-8 p-5 dark:bg-gray-800 bg-white rounded-t">
@@ -47,10 +46,8 @@
                                 
                                 <tbody>
                                     <tr>
-                                        <!-- Columns 1-7 -->
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"></div></td>
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"></div></td>
-                                        <!-- <td><div class="px-2 py-2 cursor-pointer flex justify-center"></div></td> -->
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">1</p></div></td>
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">2</p></div></td>
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base text-gray-500 dark:text-gray-100">3</p></div></td>
@@ -58,7 +55,6 @@
                                         <td class="pt-6"><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base text-gray-500 dark:text-gray-100">5</p></div></td>
                                     </tr>
                                     <tr>
-                                        <!-- Columns 8-14 -->
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">6</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">7</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">8</p></div></td>
@@ -74,7 +70,6 @@
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base text-gray-500 dark:text-gray-100">12</p></div></td>
                                     </tr>
                                     <tr>
-                                        <!-- Columns 15-21 -->
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">13</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">14</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">15</p></div></td>
@@ -84,7 +79,6 @@
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base text-gray-500 dark:text-gray-100">19</p></div></td>
                                     </tr>
                                     <tr>
-                                        <!-- Columns 22-28 -->
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">20</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">21</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">22</p></div></td>
@@ -94,7 +88,6 @@
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base text-gray-500 dark:text-gray-100">26</p></div></td>
                                     </tr>
                                     <tr>
-                                        <!-- Columns 29-35 -->
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">27</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">28</p></div></td>
                                         <td><div class="px-2 py-2 cursor-pointer flex justify-center"><p class="text-base font-medium text-gray-500 dark:text-gray-100">29</p></div></td>
@@ -117,18 +110,13 @@
                                 <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Standup with the team</a>
                                 <p class="text-sm pt-2 leading-4 leading-none text-gray-600 dark:text-gray-300">Discussion on what each member did and what each member is going to do today.</p>
                             </div>
-                            <div class="border-b pb-4 border-gray-400 border-dashed pt-5">
-                                <p class="text-xs font-light leading-3 text-gray-500 dark:text-gray-300">9:00 AM</p>
-                                <a tabindex="0" class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">Standup with the team</a>
-                                <p class="text-sm pt-2 leading-4 leading-none text-gray-600 dark:text-gray-300">Discussion on what each member did and what each member is going to do today.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>        
 </main>
 
-
+<NavBar />
 
 <style>
     
