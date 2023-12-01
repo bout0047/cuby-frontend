@@ -8,9 +8,6 @@
 
 <main>
 <Selfhelp/>
-<footer>
-  <NavBar/>
-</footer>
 </main>
 
 <style>
