@@ -1,14 +1,15 @@
-<script>
-  export let events = [];
-</script>
+export let events = [];
 
-<main>
-  <h2>Event List</h2>
-  <ul>
-    {#each events as event (event.id)}
-      <li>
-        {event.name}
-      </li>
-    {/each}
-  </ul>
-</main>
+
+export async function load() {
+  try {
+    const response = await fetch('http://your-backend-api-url/api/events');
+    if (response.ok) {
+      events = await response.json();
+    } else {
+      console.error('Error fetching events:', response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error('Error fetching events:', error);
+  }
+}
