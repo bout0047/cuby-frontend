@@ -1,16 +1,13 @@
 <script>
     import NavBar from "$lib/components/NavBar.svelte";
     import '../../app.css';
+    import Selfhelp from "$lib/components/Selfhelp.svelte";
 
 
 </script>
 
 <main>
-<h1> this page isnt finished</h1>
-
-<footer>
-  <NavBar/>
-</footer>
+<Selfhelp/>
 </main>
 
 <style>

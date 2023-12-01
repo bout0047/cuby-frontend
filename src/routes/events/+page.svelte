@@ -1,5 +1,6 @@
 <script>
-    import NavBar from "$lib/components/NavBar.svelte";
+    import Events from "$lib/components/Events.svelte";
+import NavBar from "$lib/components/NavBar.svelte";
     import '../../app.css';
 
 
@@ -11,6 +12,8 @@
 <footer>
   <NavBar/>
 </footer>
+
+
 </main>
 
 <style>

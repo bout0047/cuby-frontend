@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
   import { goto } from '$app/navigation'; // Import the goto function from SvelteKit
   import NavBar from "$lib/components/NavBar.svelte";
   import Profile from "$lib/components/Profile.svelte";
@@ -9,6 +10,16 @@
      picture: "https://via.placeholder.com/150", // Placeholder image URL
      goals: ["Talk to a random person", "Have a conversation for 10 min", "Join 5 events"],
      stats: {
+=======
+   import NavBar from "$lib/components/NavBar.svelte";
+   import '../../app.css';
+   let user = {
+      name: "John Doe",
+      email: "john@example.com",
+      picture: "../src/img/stokstraart.png", 
+      goals: ["Talk to a random person", "Have conversation for 10 min", "Join 5 events"],
+      stats: {
+>>>>>>> 80104fb9665d6451874a0f456b73122432c49abe
         clicks: 50,
         stress: 37,
         exercises: 3,

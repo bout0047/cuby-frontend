@@ -7,7 +7,13 @@ export default {
       backgroundBlue: '#B4C5E4',
       darkestBlue: '#090C9B',
       salmonLikeColor: '#ffa480',
+      Navbarblue: '#99a8c2',
       'black': '#000000',
+      'white': '#ffffff',
+      'blue': '#090C9B',
+    },
+    shadow: {
+    'shadow-2xl': 'box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);',
     },
     extend: {},
   },
