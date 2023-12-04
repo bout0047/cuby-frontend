@@ -15,6 +15,3 @@
 
       </footer>
 </main>
-
-<style>
-</style>
