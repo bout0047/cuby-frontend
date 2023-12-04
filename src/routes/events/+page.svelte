@@ -1,5 +1,7 @@
 <script>
-  import { onMount } from 'svelte';
+  import '@fortawesome/fontawesome-free/js/all.js';
+  import NavBar from '$lib/components/NavBar.svelte';
+  import TopNav from '$lib/components/TopNav.svelte';  import { onMount } from 'svelte';
 
   export let events = [];
 
@@ -29,4 +31,7 @@
   {:else}
     <p>No events available.</p>
   {/if}
+  <footer>
+    <NavBar />
+    </footer>
 </main>
