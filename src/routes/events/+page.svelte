@@ -53,4 +53,7 @@
   <footer>
     <NavBar />
     </footer>
+  <footer>
+    <NavBar />
+    </footer>
 </main>
