@@ -1,65 +1,131 @@
-<!-- src/routes/profile/EditProfile.svelte -->
 <script>
-    import { onMount } from 'svelte';
-    import NavBar from "$lib/components/NavBar.svelte";
- 
-    let user = {
-       name: "John Doe",
-       email: "john@example.com",
-       picture: "https://via.placeholder.com/150", // Placeholder image URL
-       goals: ["Talk to a random person", "Have a conversation for 10 min", "Join 5 events"],
-       stats: {
-          clicks: 50,
-          stress: 37,
-          exercises: 3,
-       },
-    };
- 
-    onMount(() => {
-       // Fetch additional data or perform other setup actions if needed
-    });
- 
-    function saveChanges() {
-       // Add logic to save changes to the user profile
-       console.log('Changes saved!');
-    }
- </script>
- 
- <main class="container mx-auto p-4 bg-090C9B">
-    <section class="text-center">
-       <img src={user.picture} alt="Profile Picture" class="rounded-full shadow-md mx-auto mb-4" />
-       <h1 class="text-3xl font-bold">{user.name}</h1>
-       <p class="text-gray-600">Email: {user.email}</p>
-    </section>
- 
-    <section class="mt-6">
-       <h2 class="text-2xl font-semibold mb-4">Edit Profile</h2>
-       <!-- Add input fields or other form elements for editing profile information -->
-    </section>
- 
-    <section class="mt-6">
-       <h2 class="text-2xl font-semibold mb-2">Goals</h2>
-       <ul class="list-disc ml-6">
-          {#each user.goals as goal (goal)}
-             <li>{goal}</li>
-          {/each}
-       </ul>
-    </section>
- 
-    <section class="mt-6">
-       <h2 class="text-2xl font-semibold mb-2">Stats</h2>
-       <p class="text-gray-600">Clicks today: {user.stats.clicks}</p>
-       <p class="text-gray-600">Stress level in the last hour: {user.stats.stress}%</p>
-       <p class="text-gray-600">Exercises done: {user.stats.exercises}</p>
-    </section>
- 
-    <button on:click={saveChanges} class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700">Save Changes</button>
- 
-    <footer>
-       <NavBar />
-    </footer>
- </main>
- 
- <style>
- </style>
- 
+   // @ts-nocheck
+
+   import { UserArray } from "../user.js";
+   import { onMount } from "svelte";
+   import "../../../app.css";
+   import "@fortawesome/fontawesome-free/js/all.js";
+   $: user = $UserArray;
+   let profilepicture = "../src/img/stokstraart.png";
+
+   let newName = "";
+   let newEmail = "";
+   let newGoals = [];
+   let newInterests = $UserArray.interests.map((interest) => interest.selected);
+
+   function log() {
+      console.log(newName, newEmail, newGoals, newInterests);
+   }
+
+   function updateValues() {
+      newName = document.getElementById("newName").value;
+      newEmail = document.getElementById("newEmail").value;
+      newGoals = user.goals.map((goal) => {
+         const goalInput = document.getElementById("new" + goal);
+         return goalInput ? goalInput.value : "";
+      });
+      newInterests = user.interests.map((interest) => interest.selected);
+   }
+
+   function toggleInterest(id) {
+      const interestIndex = user.interests.findIndex(
+         (interest) => interest.id === id
+      );
+
+      console.log("Before changes:", user.interests[interestIndex].selected);
+
+      user.interests[interestIndex].selected =
+         !user.interests[interestIndex].selected;
+
+      const newInterests = user.interests.map((interest) => interest.selected);
+
+      console.log("After changes:", user.interests[interestIndex].selected);
+      console.log("After changes:", newInterests);
+   }
+
+   function saveChanges() {
+      updateValues();
+      const newUserArray = {
+         name: newName,
+         email: newEmail,
+         goals: newGoals,
+         interests: newInterests,
+      };
+      console.log(newUserArray);
+      // @ts-ignore
+      // UserArray.update((users) => [newUserArray]);
+      // window.location.href = "/profile";
+   }
+</script>
+
+
+<main class="container mx-auto px-4 bg-090C9B relative">
+   <section class="mt-6">
+      <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
+      <button on:click={log}>Log</button>
+   </section>
+   <section class="text-center border-t pt-5">
+      <!-- svelte-ignore a11y-img-redundant-alt -->
+      <img
+         src={profilepicture}
+         alt="Profile Picture"
+         class="rounded-full shadow-md mx-auto mb-4 w-60 h-60"
+      />
+      <button
+         class="absolute right-20 top-64 bg-white rounded-full text-lg px-2"
+         ><i class="fa-solid fa-plus" /></button
+      >
+      <input
+      type="text"
+      id="newName"
+      class="caret-Navbarblue font-bold"
+      value={user.name}
+    />
+    
+      <br />
+      <input
+         type="text"
+         id="newEmail"
+         class="caret-Navbarblue text-black"
+         value={user.email}
+      />
+   </section>
+
+   <section class="mt-6">
+      <h2 class="text-2xl font-semibold mb-2">Goals</h2>
+      <ul class="list-disc ml-6">
+         {#each user.goals as goal (goal)}
+            <input
+               type="text"
+               id="new{goal}"
+               class="text-left"
+               value={goal}
+            />
+         {/each}
+      </ul>
+   </section>
+
+   <p class="text-2xl font-semibold">Interests:</p>
+   <div class="grid grid-cols-4">
+      {#each user.interests as { id, name, selected }}
+         <button
+            id="new{name}"
+            on:click={() => toggleInterest(id)}
+            class={`rounded-lg border-2  px-1 ${
+               selected ? "bg-salmonLikeColor" : ""
+            }`}
+         >
+            {name}
+         </button>
+      {/each}
+   </div>
+
+   <button
+      on:click={saveChanges}
+      class="mt-10 text-lg font-bold rounded-lg px-2 transition ease-in-out delay-150 bg-Navbarblue hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
+      >Save Changes</button
+   >
+</main>
+
+<style>
+</style>

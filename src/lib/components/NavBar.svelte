@@ -1,5 +1,7 @@
-<script>    
-</script>
+<script>  
+  import "../../app.css";
+  import '@fortawesome/fontawesome-free/js/all.js';
+  </script>
 <main>
 
     <footer class="mt-auto fixed inset-x-0 bottom-0 ">         
