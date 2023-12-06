@@ -1,7 +1,9 @@
 <script>
   import '@fortawesome/fontawesome-free/js/all.js';
   import NavBar from '$lib/components/NavBar.svelte';
-  import TopNav from '$lib/components/TopNav.svelte';  import { onMount } from 'svelte';
+  import TopNav from '$lib/components/TopNav.svelte';
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
 
   export let events = [];
 
@@ -19,13 +21,42 @@
       console.error('Error fetching events:', error.message);
     }
   });
+
+  async function fetchEventData() {
+    try {
+      const response = await fetch(`http://localhost:3011/events/:id`);
+      
+      if (!response.ok) {
+        console.error('Error fetching event:', response.status, response.statusText);
+        throw new Error('Failed to fetch event');
+      }
+
+      const eventData = await response.json();
+      console.log('Event Data:', eventData);
+    } catch (error) {
+      console.error('Error fetching event:', error.message);
+    }
+  }
+
+
 </script>
 
 <main>
   {#if events.length > 0}
-    <ul>
-      {#each events as event (event.id)}
-        <li>{event.name}</li>
+  <ul class="">
+    {#each events as event (event.id)}
+      <div class="rounded-lg bg-somePaleGreen m-2 mx-5 p-2">
+        <div class="flex mx-2">
+          <li class="text-2xl ">{event.name}</li>
+          <li class="ml-12 font-bold rounded-xl bg-darkestBlue text-white p-2">17 Jan 2024</li>
+        </div>
+        <div class="flex">
+          <li class="rounded w-1/2 p-2 bg-royalBlue text-white">{event.location}</li>
+          <button class="ml-32 mt-4" on:click={() => goto(`/events/${event.id}`)} >
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
       {/each}
     </ul>
   {:else}
