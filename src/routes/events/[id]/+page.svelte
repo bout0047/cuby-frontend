@@ -1,14 +1,8 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';	
-
-  console.log('Page:', $page.params.id);
-
-  let url = window.location.href;
-  console.log('URL:', url); 
-  let id = url.substring(url.lastIndexOf('/') + 1);
-  console.log('Event ID:', id);
+  import { page } from '$app/stores';	  
+  import TopNav from '$lib/components/TopNav.svelte';
 
   let event;
 
@@ -30,6 +24,8 @@
   
 </script>
 
+<TopNav />
+
 <main>
   {#if event}
     <h1>Event Details</h1>
@@ -41,3 +37,7 @@
 </main>
 
 <button on:click={() => goto('/events')}>Back to Events</button>
+
+<style>
+
+</style>
