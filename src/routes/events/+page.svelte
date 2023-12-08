@@ -25,32 +25,15 @@
     }
   });
 
-  async function fetchEventData() {
-    try {
-      const response = await fetch(`http://localhost:3011/events/:id`);
-      
-      if (!response.ok) {
-        console.error('Error fetching event:', response.status, response.statusText);
-        throw new Error('Failed to fetch event');
-      }
-
-      const eventData = await response.json();
-      console.log('Event Data:', eventData);
-    } catch (error) {
-      console.error('Error fetching event:', error.message);
-    }
-  }
-
-
 </script>
 
 <TopNav />
 
 <main>
   {#if events.length > 0}
-  <ul class="">
+  <ul class="h-1/2">
     {#each events as event (event.id)}
-      <div class="rounded-lg bg-somePaleGreen m-2 mx-5 p-2">
+      <div class="rounded-lg bg-somePaleGreen m-2 mx-5 p-2 mt-5 scroll-smooth">
         <div class="flex mx-2">
           <li class="text-2xl ">{event.name}</li>
           <li class="ml-12 font-bold rounded-xl bg-darkestBlue text-white p-2">17 Jan 2024</li>

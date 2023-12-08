@@ -5,10 +5,16 @@
 
   console.log('Page:', $page.params.id);
 
+  let url = window.location.href;
+  console.log('URL:', url); 
+  let id = url.substring(url.lastIndexOf('/') + 1);
+  console.log('Event ID:', id);
+
   let event;
 
   onMount(async () => {
     try {
+      const response = await fetch(`http://localhost:3011/events/${$page.params.id}`);
       const response = await fetch(`http://localhost:3011/events/${$page.params.id}`);
 
       if (!response.ok) {
@@ -18,10 +24,13 @@
 
       event = await response.json();
       console.log(event);    
+      event = await response.json();
+      console.log(event);    
     } catch (error) {
       console.error('Error fetching events:', error.message);
     }
   });
+  
   
 </script>
 
@@ -29,6 +38,7 @@
   {#if event}
     <h1>Event Details</h1>
     <p>{event.name}</p>
+    <p>{event.location}</p>
     <p>{event.location}</p>
   {:else}
     <p>Loading...</p>
