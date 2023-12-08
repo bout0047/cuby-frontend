@@ -1,41 +1,40 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  import { page } from '$app/stores';	
 
-  export let events;
-  export let eventId;
-  
-  let url = 'http://127.0.0.1/events/';
-  let id = url.substring(url.lastIndexOf('/'));
+  console.log('Page:', $page.params.id);
+
+  let url = window.location.href;
+  console.log('URL:', url); 
+  let id = url.substring(url.lastIndexOf('/') + 1);
   console.log('Event ID:', id);
 
   let event;
 
   onMount(async () => {
     try {
-      const response = await fetch(`http://localhost:3011/events/${id}`);
+      const response = await fetch(`http://localhost:3011/events/${$page.params.id}`);
 
       if (!response.ok) {
         console.error('Error fetching events:', response.status, response.statusText);
         throw new Error('Failed to fetch events');
       }
 
-      events = await response.json();
-
-      const eventId = 2;
-      const selectedEvent = events.find(event => event.id === eventId);
-      console.log('Selected Event:', selectedEvent);
+      event = await response.json();
+      console.log(event);    
     } catch (error) {
       console.error('Error fetching events:', error.message);
     }
   });
+  
 </script>
 
 <main>
   {#if event}
     <h1>Event Details</h1>
     <p>{event.name}</p>
-    <!-- Display other event details as needed -->
+    <p>{event.location}</p>
   {:else}
     <p>Loading...</p>
   {/if}
