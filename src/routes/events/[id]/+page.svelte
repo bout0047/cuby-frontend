@@ -10,7 +10,6 @@
   onMount(async () => {
     try {
       const response = await fetch(`http://localhost:3011/events/${$page.params.id}`);
-      const response = await fetch(`http://localhost:3011/events/${$page.params.id}`);
 
       if (!response.ok) {
         console.error('Error fetching events:', response.status, response.statusText);
