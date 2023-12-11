@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';
+  import { page } from '$app/stores';	
   import TopNav from '$lib/components/TopNav.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
 
@@ -23,7 +23,8 @@
       }
 
       event = await response.json();
-      console.log(event);
+      console.log(event);    
+      event = await response.json();
     } catch (error) {
       console.error('Error fetching events:', error.message);
     }
@@ -34,6 +35,7 @@
 
 <main>
   {#if event}
+
     <div class="mt-10">
       <h2 class="text-3xl font-bold mt-16 flex justify-center text-center">{event.name}</h2>
       <div class="">
