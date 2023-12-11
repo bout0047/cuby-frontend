@@ -1,7 +1,7 @@
 <script>
-  import '@fortawesome/fontawesome-free/js/all.js';
   import NavBar from '$lib/components/NavBar.svelte';
-  import TopNav from '$lib/components/TopNav.svelte';  import { onMount } from 'svelte';
+  import TopNav from '$lib/components/TopNav.svelte';
+  import { onMount } from 'svelte';
 
   export let events = [];
 

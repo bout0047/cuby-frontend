@@ -1,6 +1,24 @@
 <script>
    import NavBar from "$lib/components/NavBar.svelte";
    import { UserArray } from "./user.js";
+   import { onMount } from "svelte";
+   
+   export let profiles = [];
+
+   onMount(async () => {
+    try {
+      const response = await fetch('http://localhost:3011/profile');
+
+      if (!response.ok) {
+        console.error('Error fetching profiles:1', response.status, response.statusText);
+        throw new Error('Failed to fetch profiles');
+      }
+
+      profiles = await response.json();
+    } catch (error) {
+      console.error('Error fetching profiles:2', error.message);
+    }
+  });
    $: user = $UserArray;
 </script>
 
@@ -22,7 +40,17 @@
       <h1 class="text-3xl font-bold">{user.name}</h1>
       <p class="text-gray-600">Email: {user.email}</p>
    </section>
-
+<section>
+   {#if profiles.length > 0}
+    <ul>
+      {#each profiles as profiles (profiles.id)}
+        <li>{profiles.name}</li>
+      {/each}
+    </ul>
+  {:else}
+    <p>No profiles available.</p>
+  {/if}
+</section>
    <section class="mt-6">
       <h2 class="text-2xl font-semibold mb-4">Goals</h2>
       <ul class="list-disc ml-6">
