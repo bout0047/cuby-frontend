@@ -1,10 +1,34 @@
 <script>
   import '/src/app.css';
 
-  let email = '';
+  let username = '';
   let password = '';
   let confirmPassword = '';
 
+  const registerUser = async () => {
+    try {
+      const response = await fetch('http://localhost:3011/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+
+      if (response.ok) {
+        // User registration successful, redirect to home page
+        window.location.href = '/home';
+      } else {
+        // Handle registration failure
+        console.error('User registration failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during user registration:', error.message);
+    }
+  };
 </script>
 
 <main class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -26,7 +50,7 @@
             autocomplete="email"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Email address"
-            value="{email}"
+            bind:value="{username}"
           >
         </div>
         <div class="mb-2">
@@ -38,7 +62,7 @@
             autocomplete="current-password"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Password"
-            value="{password}"
+            bind:value="{password}"
           >
         </div>
         <div>
@@ -56,16 +80,14 @@
       </div>
 
       <div>
-        <button
-          type="submit"
-          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          on:click="{() => {
-            window.location.href = '/home';
-          }}"
-        >
-          Register
-        </button>
-      </div>
+      <button
+        type="button"
+        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        on:click="{registerUser}"
+      >
+        Register
+      </button>
+    </div>
     </form>
     <div class="text-sm text-center">
       <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500 underline hover:text-salmonLikeColor">

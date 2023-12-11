@@ -1,6 +1,6 @@
 <script>
   import '../app.css';
-
+  import { writable } from 'svelte/store';
 </script>
 
 <main>
