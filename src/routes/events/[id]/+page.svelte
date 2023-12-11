@@ -5,11 +5,6 @@
 
   console.log('Page:', $page.params.id);
 
-  let url = window.location.href;
-  console.log('URL:', url); 
-  let id = url.substring(url.lastIndexOf('/') + 1);
-  console.log('Event ID:', id);
-
   let event;
 
   onMount(async () => {
