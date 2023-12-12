@@ -17,6 +17,7 @@
 </script>
 <main>
 
+
     <footer class="bg-slate mt-auto fixed inset-x-0 bottom-0 ">         
           <nav class="grid grid-cols-6 gap-4 p-4 md:p-8 rounded-md">
             <a href="/home" class="bg-gray-300 text-3xl rounded-md text-center shadow-lg bg-Navbarblue"><i class="fa-solid fa-house"></i></a>
