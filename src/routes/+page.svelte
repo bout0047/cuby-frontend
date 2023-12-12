@@ -1,6 +1,8 @@
 <script>
   import '../app.css';
   import { writable } from 'svelte/store';
+  import sessionStore from '../stores/sessionStore';
+
 </script>
  
 <main>
