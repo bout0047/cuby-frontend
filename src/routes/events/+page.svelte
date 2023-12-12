@@ -4,13 +4,13 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   export let events = [];
-  export const userToken = localStorage.getItem('userToken');
+  //export const userToken = localStorage.getItem('userToken') || 'lol';
 
   onMount(async () => {
     try {
       const response = await fetch('http://localhost:3011/events', {
         headers: {
-          'Authorization': `Bearer ${userToken}`
+          'Authorization': `Bearer`
         }
       });
       if (!response.ok) {

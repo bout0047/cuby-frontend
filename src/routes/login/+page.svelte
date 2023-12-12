@@ -1,5 +1,7 @@
 <script>
   import '/src/app.css';
+  import { goto } from '$app/navigation';
+  import sessionStore from '../../stores/sessionStore';
   let username = '';
   let password = '';
 
@@ -20,7 +22,13 @@
     // Assuming the API returns a token upon successful login
     if (response.ok) {
       localStorage.setItem('userToken', data.token);
-      window.location.href = '/home';
+      localStorage.setItem('loggedIn', 'true');
+      sessionStore.update((xol) => {
+        xol.loggedIn = true;
+        xol.userToken = data.token;
+        return xol;
+      });
+      goto('/home');
     } else {
       // Handle login failure
       console.error(data.message);
