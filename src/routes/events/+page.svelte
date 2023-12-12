@@ -26,7 +26,7 @@
 
 <main>
   <TopNav />
-  <input type="text" bind:value={searchQuery} placeholder="Search events..." class="search-bar" />
+  <input type="text" bind:value={searchQuery} placeholder="Search events..." class="relative w-full my-3 mx-10 rounded p-2" />
 
   {#if filteredEvents.length > 0}
     <ul class="events-list">
@@ -43,14 +43,3 @@
   </footer>
 </main>
 
-<style>
-  .search-bar {
-    /* Your search bar styles */
-  }
-  .events-list {
-    /* Styles for your events list */
-  }
-  .event-item {
-    /* Styles for each event item */
-  }
-</style>
