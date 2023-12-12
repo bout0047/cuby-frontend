@@ -2,12 +2,14 @@
    import NavBar from "$lib/components/NavBar.svelte";
    import { UserArray } from "./user.js";
    import { onMount } from "svelte";
-   
+   import { goto } from '$app/navigation';
+   let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
+
 
    onMount(async () => {
     try {
-      const response = await fetch('http://localhost:3011/profile');
+      const response = await fetch('http://localhost:3011/profiles');
 
       if (!response.ok) {
         console.error('Error fetching profiles:1', response.status, response.statusText);
@@ -19,7 +21,9 @@
       console.error('Error fetching profiles:2', error.message);
     }
   });
-   $: user = $UserArray;
+  $: user = $UserArray;
+  console.log(profiles);
+
 </script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
@@ -33,7 +37,7 @@
       >
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
-         src={user.picture}
+         src={profilepicture}
          alt="Profile Picture"
          class="rounded-full shadow-md w-80 h-80 mx-auto mb-4 mt-2"
       />
@@ -41,11 +45,10 @@
       <p class="text-gray-600">Email: {user.email}</p>
    </section>
 <section>
-   {#if profiles.length > 0}
+   {#if profiles}
     <ul>
-      {#each profiles as profiles (profiles.id)}
         <li>{profiles.name}</li>
-      {/each}
+         <li>{profiles.email}</li>  
     </ul>
   {:else}
     <p>No profiles available.</p>

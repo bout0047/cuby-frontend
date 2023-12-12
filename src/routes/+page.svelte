@@ -1,12 +1,14 @@
 <script>
   import '../app.css';
+  import '@fortawesome/fontawesome-free/js/all.js';
   import { writable } from 'svelte/store';
 </script>
  
 <main>
     <div>
         <h1 class="text-5xl text-center decoration-8 mt-20">Cuby</h1>
- 
+        <a href="/home" class="bg-gray-300 text-3xl rounded-md text-center shadow-lg bg-Navbarblue"><i class="fa-solid fa-house"></i></a>
+
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="bg-somePaleGreen hover:bg-darkestBlue text-blue-700 hover:text-somePaleGreen font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"

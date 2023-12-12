@@ -6,7 +6,7 @@ export default {
       somePaleGreen: '#FBFFF1',
       backgroundBlue: '#B4C5E4',
       darkestBlue: '#090C9B',
-      salmonLikeColor: '#ffa480',
+      salmonLikeColor: '#ffe1d9',
       Navbarblue: '#99a8c2',
       royalBlue: '#3066BE',
       'black': '#000000',
