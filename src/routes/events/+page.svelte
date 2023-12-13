@@ -3,6 +3,7 @@
   import TopNav from '$lib/components/TopNav.svelte';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+
   let events = [];
   let searchQuery = '';
 
