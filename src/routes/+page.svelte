@@ -2,6 +2,8 @@
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { writable } from 'svelte/store';
+  import sessionStore from '../stores/sessionStore';
+
 </script>
  
 <main>

@@ -9,6 +9,7 @@ export default {
       salmonLikeColor: '#ffe1d9',
       Navbarblue: '#99a8c2',
       royalBlue: '#3066BE',
+      slate: '#475569',
       'black': '#000000',
       'white': '#ffffff',
       'blue': '#090C9B',
