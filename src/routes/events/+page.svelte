@@ -29,6 +29,21 @@
     }
   });
 
+  const formatDate = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+
+    const year = date.getFullYear();
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    // Format the time as HH:mm
+    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+    return `${month} ${day}, ${year} ${formattedTime}`;
+  };
+  
   $: filteredEvents = searchQuery
     ? events.filter(event => 
         event.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -54,7 +69,7 @@
               <div
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-xl bg-darkestBlue text-white p-2 w-1/4"
               >
-                17 Jan 2024
+                { formatDate(event.datetime) }
             </div>
             </div>
             <div class="flex">
