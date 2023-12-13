@@ -13,10 +13,6 @@
    let newGoals = [];
    let newInterests = $UserArray.interests.map((interest) => interest.selected);
 
-   function log() {
-      console.log(newName, newEmail, newGoals, newInterests);
-   }
-
    function updateValues() {
       newName = document.getElementById("newName").value;
       newEmail = document.getElementById("newEmail").value;
@@ -25,6 +21,10 @@
          return goalInput ? goalInput.value : "";
       });
       newInterests = user.interests.map((interest) => interest.selected);
+      console.log(newName);
+      console.log(newEmail);
+      console.log(newGoals);
+      console.log(newInterests);
    }
 
    function toggleInterest(id) {
@@ -44,17 +44,8 @@
    }
 
    function saveChanges() {
+      window.location.href = "/profile";
       updateValues();
-      const newUserArray = {
-         name: newName,
-         email: newEmail,
-         goals: newGoals,
-         interests: newInterests,
-      };
-      console.log(newUserArray);
-      // @ts-ignore
-      // UserArray.update((users) => [newUserArray]);
-      // window.location.href = "/profile";
    }
 </script>
 
@@ -62,7 +53,6 @@
 <main class="container mx-auto px-4 bg-090C9B relative">
    <section class="mt-6">
       <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
-      <button on:click={log}>Log</button>
    </section>
    <section class="text-center border-t pt-5">
       <!-- svelte-ignore a11y-img-redundant-alt -->

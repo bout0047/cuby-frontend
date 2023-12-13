@@ -39,7 +39,7 @@
       <img
          src={profilepicture}
          alt="Profile Picture"
-         class="rounded-full shadow-md w-80 h-80 mx-auto mb-4 mt-2"
+         class="rounded-full shadow-md w-56 h-56 mx-auto mb-4 mt-2"
       />
       <h1 class="text-3xl font-bold">{user.name}</h1>
       <p class="text-gray-600">Email: {user.email}</p>

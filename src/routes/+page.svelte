@@ -7,7 +7,6 @@
 <main>
     <div>
         <h1 class="text-5xl text-center decoration-8 mt-20">Cuby</h1>
-        <a href="/home" class="bg-gray-300 text-3xl rounded-md text-center shadow-lg bg-Navbarblue"><i class="fa-solid fa-house"></i></a>
 
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
