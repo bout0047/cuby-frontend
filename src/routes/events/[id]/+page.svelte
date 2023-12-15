@@ -1,7 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { page } from '$app/stores';	
   import TopNav from '$lib/components/TopNav.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
 
