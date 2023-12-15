@@ -5,29 +5,11 @@
   import TopNav from '$lib/components/TopNav.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
 
-  let event;
+  export let data;
+
+  const { event } = data;
+
   let joined = false;
-
-  onMount(async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:3011/events/${$page.params.id}`
-      );
-
-      if (!response.ok) {
-        console.error(
-          'Error fetching events:',
-          response.status,
-          response.statusText
-        );
-        throw new Error('Failed to fetch events');
-      }
-
-      event = await response.json();
-    } catch (error) {
-      console.error('Error fetching events:', error.message);
-    }
-  });
 
   function changeButton() {
     let button = document.getElementById('joinLeave');

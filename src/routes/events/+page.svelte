@@ -1,33 +1,12 @@
 <script>
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
-  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  export let data;
 
-  let events = [];
+  const { events } = data;
   let searchQuery = '';
 
-  onMount(async () => {
-    try {
-      const response = await fetch('http://localhost:3011/events', {
-        headers: {
-          'Authorization': `Bearer`
-        }
-      });
-      if (!response.ok) {
-        console.error(
-          'Error fetching events:',
-          response.status,
-          response.statusText
-        );
-
-        throw new Error('Failed to fetch events');
-      }
-      events = await response.json();
-    } catch (error) {
-      console.error('Error fetching events:', error.message);
-    }
-  });
 
   $: filteredEvents = searchQuery
     ? events.filter(event => 
