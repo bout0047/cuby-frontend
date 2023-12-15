@@ -14,6 +14,7 @@
         </svg>
       </div>
       <button style="background-color: #fbfff1;" class="w-full max-w-xs hover:bg-gray-100 text-black font-bold py-4 px-6 rounded-2xl shadow-lg flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 active:shadow-inner transform active:scale-95 transition duration-150 ease-in-out">
+        <a href="https://www.youtube.com/watch?v=inpok4MKVLM" target="_blank">
         <span>Meditation 20 minutes</span>
         <span class="text-xl">→</span>
       </button>
