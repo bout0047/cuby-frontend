@@ -32,14 +32,16 @@
 <main>
   <TopNav />
   <section class="pt-5">
-    <img
+    <a href="/profile" class="bg-gray-300 text-center p-1 text-3xl rounded-md shadow-lg bg-Navbarblue text-3xl"> <img
       src={user.picture}
       alt="Profile Picture"
-      class="rounded-full shadow-md mx-auto mb-4 w-40 h-40"
+      class="rounded-full shadow-md mx-auto mb-4 w-56 h-56"
     />
+  </a>
+   
   </section>
 
-  <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-10">
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5">
     <div>
       <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
         <h3>Clicks today:</h3>
@@ -93,7 +95,7 @@
     {/each}
   </div>
 
-  <footer>
+  <footer class="mt-20">
     <NavBar />
   </footer>
 </main>
