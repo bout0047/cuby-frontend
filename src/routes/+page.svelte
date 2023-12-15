@@ -1,5 +1,6 @@
 <script>
   import '../app.css';
+  import '@fortawesome/fontawesome-free/js/all.js';
   import { writable } from 'svelte/store';
   import sessionStore from '../stores/sessionStore';
 
@@ -8,7 +9,7 @@
 <main>
     <div>
         <h1 class="text-5xl text-center decoration-8 mt-20">Cuby</h1>
- 
+
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="bg-somePaleGreen hover:bg-darkestBlue text-blue-700 hover:text-somePaleGreen font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
