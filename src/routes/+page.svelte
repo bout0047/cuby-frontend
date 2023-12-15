@@ -1,10 +1,15 @@
 <script>
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
-  import { writable } from 'svelte/store';
-  import sessionStore from '../stores/sessionStore';
-    import { goto } from '$app/navigation';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
 
+  onMount(async () => {
+    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
+    if (loggedIn) {
+      goto('/home');
+    }
+  });
 </script>
  
 <main>

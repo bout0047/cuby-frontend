@@ -1,6 +1,15 @@
 <script>
   import '/src/app.css';
   import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+
+  onMount(async () => {
+    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
+    if (loggedIn) {
+      goto('/home');
+    }
+  });
+
   let username = '';
   let password = '';
 
