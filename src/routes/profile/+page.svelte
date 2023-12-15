@@ -1,11 +1,11 @@
 <script>
    import NavBar from "$lib/components/NavBar.svelte";
-   import { UserArray } from "./user.js";
    import { onMount } from "svelte";
    import { goto } from '$app/navigation';
+   import { UserArray } from "./user.js";
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
-
+   let id = 1;
 
    onMount(async () => {
     try {
@@ -22,11 +22,11 @@
     }
   });
   $: user = $UserArray;
-  console.log(profiles);
 
 </script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
+   {#if profiles.length > 0}
    <section class="text-center relative">
       <button
          on:click={() => {
@@ -41,25 +41,19 @@
          alt="Profile Picture"
          class="rounded-full shadow-md w-56 h-56 mx-auto mb-4 mt-2"
       />
-      <h1 class="text-3xl font-bold">{user.name}</h1>
-      <p class="text-gray-600">Email: {user.email}</p>
+      
+      <h1 class="text-3xl font-bold">{profiles[id].name}</h1>
+      <p class="text-gray-600">Email: {profiles[id].email}</p>
    </section>
 <section>
-   {#if profiles}
-    <ul>
-        <li>{profiles.name}</li>
-         <li>{profiles.email}</li>  
-    </ul>
-  {:else}
-    <p>No profiles available.</p>
-  {/if}
 </section>
    <section class="mt-6">
       <h2 class="text-2xl font-semibold mb-4">Goals</h2>
       <ul class="list-disc ml-6">
-         {#each user.goals as goal (goal)}
+         {#each profiles[id].goals as goal (goal)}
             <li>{goal}</li>
          {/each}
+
       </ul>
    </section>
 
@@ -75,6 +69,9 @@
    <footer>
       <NavBar />
    </footer>
+   {:else}
+   <p>No profiles available.</p>
+{/if}
 </main>
 
 <style>
