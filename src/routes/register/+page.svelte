@@ -1,7 +1,6 @@
 <script>
   import '/src/app.css';
   import { goto } from '$app/navigation';
-  import sessionStore from '../../stores/sessionStore';
 
   let username = '';
   let password = '';
@@ -46,13 +45,8 @@
 
         if (response.ok) {
           // User registration successful, redirect to home page
-          localStorage.setItem('userToken', data.token);
-          localStorage.setItem('loggedIn', 'true');
-          sessionStore.update((xol) => {
-            xol.loggedIn = true;
-            xol.userToken = data.token;
-            return xol;
-          });
+          sessionStorage.setItem('loggedIn', 'true');
+          sessionStorage.setItem('userToken', data.token);
           goto('/home');
         } else {
           const responseData = await response.json();

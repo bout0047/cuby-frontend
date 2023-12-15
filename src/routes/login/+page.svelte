@@ -1,45 +1,19 @@
 <script>
   import '/src/app.css';
-  import { goto } from '$app/navigation';
-  import sessionStore from '../../stores/sessionStore';
-  let username = '';
-  let password = '';
+  import { redirect } from '@sveltejs/kit';
 
-  const loginUser = async () => {
-    const response = await fetch('http://localhost:3011/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ 
-        username, 
-        password
-      }),
-    });
+  /** @type {import('./$types').PageData} */
+	export let data;
 
-    const data = await response.json();
+  /** @type {import('./$types').ActionData} */
+  export let form;
 
-    // Assuming the API returns a token upon successful login
-    if (response.ok) {
-      localStorage.setItem('userToken', data.token);
-      localStorage.setItem('loggedIn', 'true');
-      sessionStore.update((xol) => {
-        xol.loggedIn = true;
-        xol.userToken = data.token;
-        return xol;
-      });
-      goto('/home');
-    } else {
-      // Handle login failure
-      console.error(data.message);
-    }
-  };
 </script>
 
 <main class="flex items-center justify-center my-20">
   <div class="bg-darkestBlue text-somePaleGreen shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h2 class="text-2xl font-bold mb-6">Login</h2>
-      <form>
+      <form method="POST" action="?/login">
           <div>
               <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                   Email
@@ -47,11 +21,15 @@
               <input
                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
                   id="username"
+                  name="username"
                   type="username"
+                  value={form?.username ?? ''}
                   placeholder="Enter your email"
-                  bind:value={username}
+                 
               />
           </div>
+          {#if form?.missingUser}<p class="error">Username is required</p>{/if}
+	        {#if form?.incorrectUser}<p class="error">Username not found!</p>{/if}
           <div class="mb-6">
               <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                   Password
@@ -59,16 +37,18 @@
               <input
                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
                   id="password"
+                  name="password"
                   type="password"
                   placeholder="Enter your password"
-                  bind:value={password}
               />
           </div>
+          {#if form?.missingPass}<p class="error">Password is required</p>{/if}
+	        {#if form?.incorrectPass}<p class="error">Username and password do not match!</p>{/if}
+          {#if form?.serverError}<p class="error">Something went wrong on our end. Try again later.</p>{/if}
           <div class="flex items-center justify-between">
               <button
                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                  on:click="{loginUser}"
+                  type="submit"
               >
                   Sign In
               </button>

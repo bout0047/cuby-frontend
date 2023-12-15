@@ -1,5 +1,5 @@
 export const load = async () => {
-
+    //const token = sessionStorage.getItem('userToken')
     const fetchEvents = async() => {
         const response = await fetch('http://localhost:3011/events');
 

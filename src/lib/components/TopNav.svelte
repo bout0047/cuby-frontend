@@ -4,8 +4,8 @@
   import '@fortawesome/fontawesome-free/js/all.js';
 
   const logout = async () => {
-    localStorage.setItem('userToken', '');
-    localStorage.setItem('loggedIn', 'false');
+    sessionStorage.setItem('loggedIn', 'false');
+          sessionStorage.setItem('userToken', '');
     goto('/');
   }
 
