@@ -18,24 +18,17 @@
 
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
-          class="bg-somePaleGreen hover:bg-darkestBlue text-blue-700 hover:text-somePaleGreen font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          class="cursor-pointer bg-darkestBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          on:click={ () => goto('./login')}
         >
-          <button
-            type=button
-            on:click={ () => goto('/login')}
-          >
-            Login
-          </button>
+          Login
         </div>
  
         <div
-          class="bg-darkestBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          class="cursor-pointer bg-darkestBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
+          on:click={ () => goto('./register')}
         >
-          <button
-            on:click={ () => goto('register')}
-          >
-            Register
-          </button>
+          Register
         </div>
     </div>
 </main>
