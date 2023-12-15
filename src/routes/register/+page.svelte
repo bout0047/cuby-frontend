@@ -29,7 +29,7 @@
       passwordMismatchError = true;
     }
 
-    if (!passwordError && !passwordMismatchError) {
+    if (!usernameError && !passwordError && !passwordMismatchError) {
       try {
         const response = await fetch('http://localhost:3011/register', {
           method: 'POST',
@@ -48,23 +48,17 @@
           // User registration successful, redirect to home page
           localStorage.setItem('userToken', data.token);
           localStorage.setItem('loggedIn', 'true');
-          sessionStore.update((xol) => {
-            xol.loggedIn = true;
-            xol.userToken = data.token;
-            return xol;
-          });
           goto('/home');
         } else {
-          const responseData = await response.json();
-          if (response.status === 400 && responseData.error === 'Username is already taken') {
+          if (response.status === 400 && data.error === 'Username is already taken') {
             usernameTakenError = true;
           } else {
           // Handle other registration failures
-          console.error('User registration failed:', responseData.error);
+          console.error('User registration failed:', data.error);
           }
         }
       } catch (error) {
-        console.error('Error during user registration:', error.message);
+        console.error('Error during user registration');
       }
     } else {
 
@@ -86,16 +80,17 @@
           <label for="email-address" class="sr-only ">Email address</label>
           <input
             id="email-address"
-            name="email"
-            type="email"
+            name="username"
+            type="username"
             autocomplete="email"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Username"
             bind:value="{username}"
           >
+          <div class="{usernameError ? 'text-yellow' : 'hidden'}">Username is required</div>
+          <div class="{usernameTakenError ? 'text-yellow' : 'hidden'}">This username is already taken</div>
         </div>
-        <div class="{usernameError ? 'text-red-500' : 'hidden'}">Username is required</div>
-        <div class="{usernameTakenError ? 'text-red-500' : 'hidden'}">This username is already taken</div>
+        
         <div class="mb-2">
           <label for="password" class="sr-only">Password</label>
           <input
@@ -107,9 +102,10 @@
             placeholder="Password"
             bind:value="{password}"
           >
+          <div class="{passwordError ? 'text-yellow' : 'hidden'}">Password is required</div>
+          <div class="{passwordMismatchError ? 'text-yellow' : 'hidden'}">Passwords do not match</div>
         </div>
-        <div class="{passwordError ? 'text-red-500' : 'hidden'}">Password is required</div>
-        <div class="{passwordMismatchError ? 'text-red-500' : 'hidden'}">Passwords do not match</div>
+        
         <div>
           <label for="confirm-password" class="sr-only">Confirm Password</label>
           <input
@@ -134,6 +130,7 @@
         </button>
       </div>
     </form>
+    <br/>
     <div>
       <button
         type="button"
