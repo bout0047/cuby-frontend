@@ -1,9 +1,15 @@
 <script>
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
-  import { writable } from 'svelte/store';
-  import sessionStore from '../stores/sessionStore';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
 
+  onMount(async () => {
+    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
+    if (loggedIn) {
+      goto('/home');
+    }
+  });
 </script>
  
 <main>
@@ -13,20 +19,23 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="bg-somePaleGreen hover:bg-darkestBlue text-blue-700 hover:text-somePaleGreen font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
-          on:click={() => {
-            window.location.href = "/login";
-          }}
+        >
+          <button
+            type=button
+            on:click={ () => goto('/login')}
           >
-          Login
+            Login
+          </button>
         </div>
  
         <div
           class="bg-darkestBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
-          on:click={() => {
-            window.location.href = "/register";
-          }}
+        >
+          <button
+            on:click={ () => goto('register')}
           >
-          Register
+            Register
+          </button>
         </div>
     </div>
 </main>

@@ -13,6 +13,7 @@ export default {
       'black': '#000000',
       'white': '#ffffff',
       'blue': '#090C9B',
+      'yellow': '#ffff00'
     },
     shadow: {
     'shadow-2xl': 'box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);',
