@@ -28,13 +28,12 @@
 <main class="container mx-auto p-4 bg-090C9B relative">
    {#if profiles.length > 0}
    <section class="text-center relative">
-      <button
+      <!-- <button
          on:click={() => {
             window.location.href = "/profile/edit";
          }}
          class="corner-button absolute top-0 right-0 p-2 px-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 ease-in-out"
-         >Edit</button
-      >
+         >Edit</button> -->
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
          src={profilepicture}
