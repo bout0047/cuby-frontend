@@ -9,9 +9,11 @@ export default {
       salmonLikeColor: '#ffe1d9',
       Navbarblue: '#99a8c2',
       royalBlue: '#3066BE',
+      slate: '#475569',
       'black': '#000000',
       'white': '#ffffff',
       'blue': '#090C9B',
+      'yellow': '#ffff00'
     },
     shadow: {
     'shadow-2xl': 'box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);',
