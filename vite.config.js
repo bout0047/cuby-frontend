@@ -1,9 +1,17 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
 
-export default defineConfig({
-	plugins: [sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
-});
+/** @type {import('vite').UserConfig} */
+const config = {
+  plugins: [sveltekit()],
+  /** Add below settings */
+  test: {
+    // Jest like globals
+    globals: true,
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.ts'],
+    // Extend jest-dom matchers
+    setupFiles: ['./setupTest.js']
+  }
+};
+
+export default config;

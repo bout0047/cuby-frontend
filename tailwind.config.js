@@ -4,6 +4,7 @@ export default {
   theme: {
     colors: {
       somePaleGreen: '#FBFFF1',
+      platinum: '#E9E9E9',
       backgroundBlue: '#B4C5E4',
       darkestBlue: '#090C9B',
       salmonLikeColor: '#ffe1d9',
