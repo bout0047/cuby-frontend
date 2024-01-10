@@ -1,4 +1,5 @@
 <script>
+// @ts-nocheck
    import NavBar from "$lib/components/NavBar.svelte";
    import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
@@ -25,13 +26,14 @@
 <main class="container mx-auto p-4 bg-090C9B relative">
    {#if profiles.length > 0}
    <section class="text-center relative">
-      <button
-         on:click={() => {
-            window.location.href = "/profile/edit";
-         }}
-         class="corner-button absolute top-0 right-0 p-2 px-4 bg-blue-600 text-white rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 ease-in-out"
-         >Edit</button
-      >
+      <button on:click={() => {
+            window.location.href = "/profile/edit";}}
+         class="corner-button absolute bg-royalBlue top-0 text-wrap text-sm right-0 p-2 px-4 text-white rounded-full focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 ease-in-out"
+         >Edit Profile</button>
+         <button on:click={() => {
+            window.location.href = "/profile/goals";}}
+         class="corner-button absolute bg-royalBlue top-0 text-sm right-72 text-nowrap p-2 px-4 text-white rounded-full "
+         >Edit Goals</button>
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
          src={profilepicture}
@@ -45,20 +47,17 @@
 <section>
 </section>
    <section class="mt-6">
-      <h2 class="text-2xl font-semibold mb-4">Goals</h2>
-      <ul class="list-disc ml-6">
-         {#each profiles[id].goals as goal (goal)}
-            <li>{goal}</li>
-         {/each}
-
-      </ul>
+      <h2 class="text-4xl font-semibold mb-2">Goals</h2>
+      <p class="text-2xl font-semibold">I want to focus on:</p> <div class="text-xl font-medium">{profiles[id].goals[0]}</div>
+      <p class="text-2xl font-semibold">I will do this by:</p> <div class="text-xl font-medium">{profiles[id].goals[1]}</div>
+      <p class="text-2xl font-semibold">If I stress to much I will:</p> <div class="text-xl font-medium">{profiles[id].goals[2]}</div>
    </section>
 
-   <p class="text-2xl font-semibold">Interests:</p>
+   <p class="text-4xl font-semibold">Interests:</p>
    <div class="grid grid-cols-4">
       {#each profiles[id].interests as interest}
-         <button class={`rounded-lg border-2 px-1 ${interest[4]==="true" ? "bg-salmonLikeColor" : ""}`}>
-            {interest[2]}
+         <button class={`rounded-lg text-center text-lg mt-2 border-2 ${interest[2]==="true" ? "bg-salmonLikeColor" : ""}`}>
+            {interest[1]}
          </button>
       {/each}
    </div>
@@ -72,17 +71,5 @@
 </main>
 
 <style>
-   .corner-button {
-      background-color: #4299e1; /* Base color */
-      transition: background-color 0.3s, transform 0.3s;
-   }
 
-   .corner-button:hover {
-      background-color: #1e40af; /* Darker shade of blue on hover */
-      transform: scale(1.05); /* Scale the button slightly on hover */
-   }
-
-   .corner-button:focus {
-      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Add a subtle blue outline on focus */
-   }
 </style>

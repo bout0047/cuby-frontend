@@ -5,10 +5,13 @@
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
    let id = 1;
-   let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
-   let newGoals = [];
+   let newGoals = [
+      ["join new event", "connect more people", "participate more events"],
+      ["eye contact", "talking", "presentation"],
+      ["meditation", "yoga", "breath"],
+   ];
    let newInterests = [];
    let jsonData = {
       id: id,
@@ -17,6 +20,13 @@
       goals: newGoals,
       interests: newInterests,
    };
+   let focus = "";
+   let method = "";
+   let stress = "";
+
+   function handleSelection(subject) {
+      subject = event.target.value;
+   }
 
    onMount(async () => {
       try {
@@ -40,27 +50,13 @@
    function updateValues() {
       jsonData = {
          id: id,
-         name: document.getElementById("newName").value,
-         email: document.getElementById("newEmail").value,
-         goals: profiles[id].goals,
-         // goals: profiles[id].goals.map((goal) => {
-         //    const goalInput = document.getElementById("new" + goal);
-         //    return goalInput ? goalInput.value : "";
-         // }),
-         interests: profiles[id].interests.map((interest) => interest),
+         name: profiles[id].name,
+         email: profiles[id].email,
+         goals: [focus, method, stress],
+         interests: profiles[id].interests,
       };
       console.log(jsonData);
       sendToDataBase();
-   }
-
-   function toggleInterest(numberOfInterest) {
-      if (profiles[id].interests[numberOfInterest][2] === "true") {
-         profiles[id].interests[numberOfInterest][2] = "false";
-      } else {
-         profiles[id].interests[numberOfInterest][2] = "true";
-      }
-
-      newInterests = profiles[id].interests.map((interest) => interest[2]);
    }
 
    function saveChanges() {
@@ -96,53 +92,49 @@
          console.error("Error updating profile:", error);
       }
    }
-   
 </script>
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
       <section class="mt-6">
-         <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
+         <h2 class="text-2xl font-semibold mb-4">Edit your Goals:</h2>
+         <div class="relative inline-block text-left" />
       </section>
       <section class="text-center border-t pt-5">
-         <!-- svelte-ignore a11y-img-redundant-alt -->
-         <img
-            src={profilepicture}
-            alt="Profile Picture"
-            class="rounded-full shadow-md mx-auto mb-4 w-60 h-60"
-         />
-         <button
-            class="absolute right-20 top-64 bg-white rounded-full text-lg px-2"
-            ><i class="fa-solid fa-plus" /></button
+         <p class="text-2xl font-semibold">I want to focus on:</p>
+         <div>
+            <select
+            id="focus"
+            bind:value={focus}
+            on:change={handleSelection(focus)}
          >
-         <input
-            type="text"
-            id="newName"
-            class="caret-Navbarblue font-bold"
-            value={profiles[id].name}
-         />
+            {#each newGoals[0] as option (option)}
+               <option value={option}>{option}</option>
+            {/each}
+         </select>
 
-         <br />
-         <input
-            type="text"
-            id="newEmail"
-            class="caret-Navbarblue text-black"
-            value={profiles[id].email}
-         />
+         <p class="text-2xl font-semibold">I will do this by:</p>
+         <select
+            id="method"
+            bind:value={method}
+            on:change={handleSelection(method)}
+         >
+            {#each newGoals[1] as option (option)}
+               <option value={option}>{option}</option>
+            {/each}
+         </select>
+         <p class="text-2xl font-semibold">If I stress to much I will:</p>
+         <select
+            id="stress"
+            bind:value={stress}
+            on:change={handleSelection(stress)}
+         >
+            {#each newGoals[2] as option (option)}
+               <option value={option}>{option}</option>
+            {/each}
+         </select>
+         </div>
       </section>
-
-      <p class="text-2xl font-semibold">Interests:</p>
-      <div class="grid grid-cols-4">
-         {#each profiles[id].interests as interest (interest)}
-            <button
-               on:click={() => toggleInterest(interest[0])}
-               class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${
-                  interest[2] === "true" ? "bg-salmonLikeColor" : ""
-               }`}
-            >{interest[1]}
-            </button>
-         {/each}
-      </div>
       <button
          on:click={saveChanges}
          class="mt-10 text-lg font-bold rounded-lg px-2 transition ease-in-out delay-150 bg-Navbarblue hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
