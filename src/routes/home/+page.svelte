@@ -19,16 +19,16 @@
   };
   let otherEvents = [
     {
-      joinButton: 'Join',
+      detailsButton: 'Details',
     },
     {
-      joinButton: 'Join',
+      detailsButton: 'Details',
     },
     {
-      joinButton: 'Join',
+      detailsButton: 'Details',
     },
     {
-      joinButton: 'Join',
+      detailsButton: 'Details',
     },
   ];
 </script>
@@ -36,7 +36,7 @@
 <main>
   <TopNav />
 
-  <h1 class="text-4xl text-center mt-8 font-bold">Hello {user.name}!</h1>
+  <h1 class="text-3xl text-center mt-4 font-bold">Hello {user.name}!</h1>
   <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-7">
     <div>
       <div
@@ -57,19 +57,19 @@
   </div>
 
   <section class="mx-3">
-    <div class="bg-cream rounded-t-lg p-2.5 mt-8">
+    <div class="bg-cream rounded-t-lg p-2.5 mt-4">
       <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
     </div>
     <div class="bg-royalBlue p-1 rounded-b-lg">
-      <div class="grid grid-cols-1 mx-3 my-2 text-left">
+      <div class="grid grid-cols-1 mx-3 my-1 text-left">
         <div class="gap-4 text-platinum font-semibold">
           <div>
             <h2>Event Name</h2>
           </div>
-          <div class="mt-2">
+          <div class="mt-1">
             <h3>Great description of the event</h3>
           </div>
-          <div class="mt-5">
+          <div class="mt-4">
             <h3>Where:</h3>
           </div>
         </div>
@@ -77,23 +77,23 @@
     </div>
   </section>
 
-  <div>
+  <div class="mx-3">
     <div class="bg-cream rounded-t-lg mt-5 p-2">
       <h1 class="text-left ml-2 underline font-bold">Other Events:</h1>
     </div>
-    <div class="bg-aquamarine p-2">
-      <div class="grid grid-cols-2 gap-6 content-evenly">
+    <div class="bg-aquamarine p-5 rounded-b-lg">
+      <div class="grid grid-cols-2 gap-4 mr-1.5">
         {#each otherEvents as event}
           <div>
-            <div class="box bg-somePaleGreen rounded-lg w-30 h-40">
+            <div class="box bg-somePaleGreen rounded-lg w-40 h-28 p-2 ">
               <img
                 src={event.image}
                 alt="Event Image"
-                class="rounded-full text-lg shadow-md mx-auto pb-10 mb-10"
+                class="rounded-lg text-lg shadow-md mx-auto p-2"
               />
               <button
-                class="bg-darkestBlue text-white text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto"
-                >{event.joinButton}</button
+                class="bg-royalBlue text-platinum text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto my-4"
+                >{event.detailsButton}</button
               >
             </div>
           </div>

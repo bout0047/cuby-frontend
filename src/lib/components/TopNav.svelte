@@ -15,7 +15,7 @@
     <a href="/profile" class=""> <img
       src="../src/img/stokstraart.png"
       alt="Profile Picture"
-      class="rounded-full shadow-md ml-4 mb-4 w-16 h-16"
+      class="rounded-full shadow-md ml-4 mb-4 w-14 h-14"
     />
   </a>
    
