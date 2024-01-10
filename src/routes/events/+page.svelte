@@ -36,7 +36,7 @@
             </div>
             </div>
             <div class="flex">
-              <div class="rounded-lg w-full m-2 p-2 bg-aquamarine text-white">
+              <div class="rounded-lg w-full m-2 p-2 bg-aquamarine text-black">
                 {event.location}
               </div>
                 <i class="fa-solid fa-arrow-right m-6 mr-10" />
