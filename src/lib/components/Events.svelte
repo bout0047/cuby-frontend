@@ -6,7 +6,7 @@
       const response = await fetch('http://localhost:3011/events');
 
       if (!response.ok) {
-        console.error('Error fetching events:', response.status, response.statusText);
+        console.error('Error fetching events: hjynrstbethrytumr,ymh', response.status, response.statusText);
         throw new Error('Failed to fetch events');
       }
 
