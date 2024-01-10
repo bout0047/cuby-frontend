@@ -14,7 +14,8 @@ export default {
       Navbarblue: '#99a8c2',
       royalBlue: '#0A2463',
       slate: '#475569',
-      black: '#000000'
+      black: '#000000',
+      red: '#FF0000'
     },
     fontFamily: {
       'sans': ['Raleway', 'sans-serif']
