@@ -2,22 +2,40 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { goto } from '$app/navigation';
+
   export let data;
 
   const { events } = data;
   let searchQuery = '';
 
-
   $: filteredEvents = searchQuery
-    ? events.filter(event => 
-        event.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    ? events.filter((event) =>
+        event.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
     : events;
+
+  function formatDateTime(dateTimeString) {
+    const eventDateTime = new Date(dateTimeString);
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+    return eventDateTime.toLocaleString('en-US', options);
+  }
 </script>
 
 <TopNav />
 <main>
   <TopNav />
-  <input type="text" bind:value={searchQuery} placeholder="Search events..." class="relative w-full mt-16 m-5 rounded p-2" />
+  <input
+    type="text"
+    bind:value={searchQuery}
+    placeholder="Search events..."
+    class="relative w-full mt-16 m-5 rounded p-2"
+  />
 
   <h1 class="text-3xl font-bold m-6 mt-0 fixed">Upcoming Events</h1>
 
@@ -33,8 +51,8 @@
               <div
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-xl bg-darkestBlue text-white p-2 w-1/4"
               >
-                {event.datetime}
-            </div>
+                {formatDateTime(event.datetime)}
+              </div>
             </div>
             <div class="flex">
               <div class="rounded w-full mt-2 p-2 bg-royalBlue text-white">
@@ -58,4 +76,3 @@
     <NavBar />
   </footer>
 </main>
-
