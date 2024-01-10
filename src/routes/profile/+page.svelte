@@ -1,8 +1,6 @@
 <script>
    import NavBar from "$lib/components/NavBar.svelte";
    import { onMount } from "svelte";
-   import { goto } from '$app/navigation';
-   import { UserArray } from "./user.js";
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
    let id = 1;
@@ -21,7 +19,6 @@
       console.error('Error fetching profiles:2', error.message);
     }
   });
-  $: user = $UserArray;
 
 </script>
 
@@ -59,9 +56,9 @@
 
    <p class="text-2xl font-semibold">Interests:</p>
    <div class="grid grid-cols-4">
-      {#each user.interests as { id, name, selected }}
-         <button class={`rounded-lg border-2  px-1 ${selected ? "bg-salmonLikeColor" : ""}`}>
-            {name}
+      {#each profiles[id].interests as interest}
+         <button class={`rounded-lg border-2 px-1 ${interest[4]==="true" ? "bg-salmonLikeColor" : ""}`}>
+            {interest[2]}
          </button>
       {/each}
    </div>
