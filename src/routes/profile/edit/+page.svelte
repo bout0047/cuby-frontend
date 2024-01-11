@@ -4,6 +4,7 @@
    import "../../../app.css";
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
+   import { goto } from "$app/navigation";
    let id = 1;
    let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
@@ -143,11 +144,16 @@
             </button>
          {/each}
       </div>
+      <div class="grid grid-cols-2">
+         <button
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue mr-5 hover:bg-platinum"
+         on:click={() => goto("/profile")}>Back to Profile</button>
+      
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 transition ease-in-out delay-150 bg-Navbarblue hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
-         >Save Changes</button
-      >
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         >Save Changes</button>
+      </div>
    {:else}
       <p>No profiles available.</p>
    {/if}

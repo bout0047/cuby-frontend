@@ -4,13 +4,27 @@
    import "../../../app.css";
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
+   import { goto } from "$app/navigation";
    let id = 1;
    let newName = "";
    let newEmail = "";
    let newGoals = [
-      ["join new event", "connect more people", "participate more events"],
-      ["eye contact", "talking", "presentation"],
-      ["meditation", "yoga", "breath"],
+      [
+         "joining a new event",
+         "connecting with more people",
+         "participate in more events",
+      ],
+      [
+         "making more eye contact",
+         "talking with a person for longer",
+         "speak publicly like a presentation",
+      ],
+      [
+         "meditate for a few minutes",
+         "do yoga until im relaxed",
+         "deeply breath in and out 10 times",
+         "take a walk",
+      ],
    ];
    let newInterests = [];
    let jsonData = {
@@ -97,49 +111,52 @@
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
       <section class="mt-6">
-         <h2 class="text-2xl font-semibold mb-4">Edit your Goals:</h2>
+         <h2 class="text-2xl font-semibold">Edit your Goals:</h2>
          <div class="relative inline-block text-left" />
       </section>
       <section class="text-center border-t pt-5">
          <p class="text-2xl font-semibold">I want to focus on:</p>
          <div>
             <select
-            id="focus"
-            bind:value={focus}
-            on:change={handleSelection(focus)}
-         >
-            {#each newGoals[0] as option (option)}
-               <option value={option}>{option}</option>
-            {/each}
-         </select>
+               id="focus"
+               bind:value={focus}
+               on:change={handleSelection(focus)}
+            >
+               {#each newGoals[0] as option (option)}
+                  <option value={option}>{option}</option>
+               {/each}
+            </select>
 
-         <p class="text-2xl font-semibold">I will do this by:</p>
-         <select
-            id="method"
-            bind:value={method}
-            on:change={handleSelection(method)}
-         >
-            {#each newGoals[1] as option (option)}
-               <option value={option}>{option}</option>
-            {/each}
-         </select>
-         <p class="text-2xl font-semibold">If I stress to much I will:</p>
-         <select
-            id="stress"
-            bind:value={stress}
-            on:change={handleSelection(stress)}
-         >
-            {#each newGoals[2] as option (option)}
-               <option value={option}>{option}</option>
-            {/each}
-         </select>
+            <p class="text-2xl font-semibold pt-5">I will do this by:</p>
+            <select
+               id="method"
+               bind:value={method}
+               on:change={handleSelection(method)}
+            >
+               {#each newGoals[1] as option (option)}
+                  <option value={option}>{option}</option>
+               {/each}
+            </select>
+            <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
+            <select
+               id="stress"
+               bind:value={stress}
+               on:change={handleSelection(stress)}>
+               {#each newGoals[2] as option (option)}
+                  <option value={option}>{option}</option>
+               {/each}
+            </select>
          </div>
       </section>
+      <div class="grid grid-cols-2"> 
+         <button
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         on:click={() => goto("/profile")}>Back to Profile</button>
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 transition ease-in-out delay-150 bg-Navbarblue hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
-         >Save Changes</button
-      >
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue ml-5 hover:bg-platinum"
+         >Save Changes</button>
+      </div>
    {:else}
       <p>No profiles available.</p>
    {/if}

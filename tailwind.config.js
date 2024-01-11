@@ -13,6 +13,7 @@ export default {
       'black': '#000000',
       'white': '#ffffff',
       'blue': '#090C9B',
+      platinum: '#E9E9E9',
     },
     shadow: {
     'shadow-2xl': 'box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);',
