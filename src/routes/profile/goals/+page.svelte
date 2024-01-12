@@ -110,6 +110,8 @@
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
+   {console.log(profiles[id].id)}
+   {console.log(profiles)}
       <section class="mt-6">
          <h2 class="text-2xl font-semibold">Edit your Goals:</h2>
          <div class="relative inline-block text-left" />
