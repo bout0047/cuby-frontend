@@ -30,6 +30,7 @@
 
   <div class="mt-10">
       <h2 class="text-3xl font-bold mt-10 flex justify-center text-center">{event.name}</h2>
+      <img src={event.link} alt="Event Image" class="max-w-full my-4" />
       <div class="">
         <p class="text-xl m-4 mt-3 font-bold">Where: {event.location}</p>
         <p class="text-lg m-3">{event.description}</p>
