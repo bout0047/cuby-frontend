@@ -4,7 +4,7 @@
    import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
-   let id = 1;
+   let id = 3;
 
    onMount(async () => {
     try {
@@ -27,7 +27,7 @@
    {#if profiles.length > 0}
    <section class="text-center relative">
       <button on:click={() => {
-            window.location.href = "/profile/edit";}}
+            window.location.href = "/register/edit";}}
          class="corner-button absolute bg-royalBlue top-0 text-wrap text-sm right-0 p-2 px-4 text-white rounded-full focus:outline-none focus:ring focus:border-blue-300 transition-all duration-300 ease-in-out"
          >Edit Profile</button>
          <button on:click={() => {

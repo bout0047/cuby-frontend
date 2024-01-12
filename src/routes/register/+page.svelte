@@ -20,7 +20,7 @@
 
       if (response.ok) {
         // User registration successful, redirect to home page
-        window.location.href = '/home';
+        window.location.href = '/register/profile';
       } else {
         // Handle registration failure
         console.error('User registration failed:', response.statusText);
