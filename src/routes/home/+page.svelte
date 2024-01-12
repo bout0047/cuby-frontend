@@ -19,80 +19,87 @@
   };
   let otherEvents = [
     {
-      image: 'path/to/image1.jpg',
-      joinButton: 'Join',
+      detailsButton: 'Details',
     },
     {
-      image: 'path/to/image2.jpg',
-      joinButton: 'Join',
+      detailsButton: 'Details',
+    },
+    {
+      detailsButton: 'Details',
+    },
+    {
+      detailsButton: 'Details',
     },
   ];
 </script>
 
 <main>
   <TopNav />
-  <section class="pt-5">
-    <a href="/profile" class="bg-gray-300 text-center p-1 text-3xl rounded-md shadow-lg bg-Navbarblue text-3xl"> <img
-      src={user.picture}
-      alt="Profile Picture"
-      class="rounded-full shadow-md mx-auto mb-4 w-56 h-56"
-    />
-  </a>
-   
-  </section>
 
-  <div class="grid grid-cols-2 gap-4 content-evenly m-5">
+  <h1 class="text-3xl text-center mt-4 font-bold">Hello {user.name}!</h1>
+  <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-7">
     <div>
-      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
+      <div
+        class="box bg-aquamarine font-semibold p-3 text-lg rounded-lg w-35 h-20 text-center"
+      >
         <h3>Clicks today:</h3>
         <p>{user.stats.clicks}</p>
       </div>
     </div>
     <div>
-      <div class="box bg-somePaleGreen text-lg rounded-lg w-30 h-20 text-center">
+      <div
+        class="box bg-aquamarine font-semibold p-0.5 text-lg rounded-lg w-35 h-20 text-center"
+      >
         <h3>Events this month:</h3>
         <p>{user.goals.length}</p>
       </div>
     </div>
   </div>
 
-  <section class="my-5 mx-2">
-    <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
-    <div class="left-2 border rounded">
-      <div class="grid grid-cols-2 m-3 text-left">
-        <div class=" gap-4">
+  <section class="mx-3">
+    <div class="bg-cream rounded-t-lg p-2.5 mt-4">
+      <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
+    </div>
+    <div class="bg-royalBlue p-1 rounded-b-lg">
+      <div class="grid grid-cols-1 mx-3 my-1 text-left">
+        <div class="gap-4 text-platinum font-semibold">
           <div>
             <h2>Event Name</h2>
           </div>
-          <div>
-            <h3>Event Time</h3>
+          <div class="mt-1">
+            <h3>Great description of the event</h3>
           </div>
-          <div>
-            <h3>Event Location</h3>
+          <div class="mt-4">
+            <h3>Where:</h3>
           </div>
-        </div>
-        <div class="w-12 ml-32">
-          <img src="src/img/calender.png" class="w-10 h-10 float-right mr-4" />
         </div>
       </div>
     </div>
   </section>
 
-  <div class="grid grid-cols-2 gap-4 content-evenly m-5">
-    {#each otherEvents as event}
-      <div>
-        <div class="box bg-somePaleGreen rounded-lg w-30 h-40">
-          <img
-            src={event.image}
-            alt="Event Image"
-            class="rounded-full text-lg shadow-md mx-auto pb-10 mb-10"
-          />
-          <button class="bg-darkestBlue text-white text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto"
-            >{event.joinButton}</button
-          >
-        </div>
+  <div class="mx-3">
+    <div class="bg-cream rounded-t-lg mt-5 p-2">
+      <h1 class="text-left ml-2 underline font-bold">Other Events:</h1>
+    </div>
+    <div class="bg-aquamarine p-5 rounded-b-lg">
+      <div class="grid grid-cols-2 gap-4 mr-1.5">
+        {#each otherEvents as event}
+          <div>
+            <div class="box bg-somePaleGreen rounded-lg w-40 h-28 p-2 ">
+              <img
+                src={event.image}
+                alt="Event Image"
+                class="rounded-lg text-lg shadow-md mx-auto p-2"
+              />
+              <button
+                class="bg-royalBlue text-platinum text-lg p-1 rounded-md flex justify-center items-center w-20 h-10 mx-auto my-4"
+                >{event.detailsButton}</button
+              >
+            </div>
+          </div>
+        {/each}
       </div>
-    {/each}
+    </div>
   </div>
 
   <footer class="mt-20">

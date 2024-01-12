@@ -44,10 +44,6 @@
          name: document.getElementById("newName").value,
          email: document.getElementById("newEmail").value,
          goals: profiles[id].goals,
-         // goals: profiles[id].goals.map((goal) => {
-         //    const goalInput = document.getElementById("new" + goal);
-         //    return goalInput ? goalInput.value : "";
-         // }),
          interests: profiles[id].interests.map((interest) => interest),
       };
       console.log(jsonData);
@@ -102,6 +98,9 @@
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
+   {console.log(profiles[id].id)}
+   {console.log(profiles)}
+ 
       <section class="mt-6">
          <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
       </section>

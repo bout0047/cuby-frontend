@@ -1,9 +1,21 @@
 <script>  
   import "../../app.css";
   import '@fortawesome/fontawesome-free/js/all.js';
-  </script>
-<main>
+  import { goto } from "$app/navigation";
+  //import sessionStore from "../../stores/sessionStore";
+  import { onMount } from "svelte";
 
+  
+  //const loggedIn = (localStorage.getItem('loggedIn') == 'true');
+  
+  onMount(async () => {
+    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
+    if (!loggedIn) {
+      goto('./');
+    }
+  });
+</script>
+<main>
     <footer class="mt-auto fixed inset-x-0 bottom-0 bg-royalBlue">         
           <nav class="grid grid-cols-6 gap-4 p-4 md:p-8 rounded-md ">
             <a href="/home" class="text-3xl rounded-md text-center shadow-lg bg-royalBlue"><i class="fa-solid fa-house" style="color: #FFFDD0;"></i></a>
