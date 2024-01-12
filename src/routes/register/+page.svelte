@@ -1,32 +1,74 @@
 <script>
   import '/src/app.css';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+
+  onMount(async () => {
+    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
+    if (loggedIn) {
+      goto('/home');
+    }
+  });
 
   let username = '';
   let password = '';
   let confirmPassword = '';
+  let usernameError = false;
+  let usernameTakenError = false;
+  let passwordError = false;
+  let passwordMismatchError = false;
 
   const registerUser = async () => {
-    try {
-      const response = await fetch('http://localhost:3011/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
+    usernameError = false;
+    usernameTakenError = false;
+    passwordError = false;
+    passwordMismatchError = false;
 
-      if (response.ok) {
-        // User registration successful, redirect to home page
-        window.location.href = '/home';
-      } else {
-        // Handle registration failure
-        console.error('User registration failed:', response.statusText);
+    if (!username) {
+      usernameError = true;
+    }
+
+    if (!password) {
+      passwordError = true;
+    }
+
+    if (password && password !== confirmPassword) {
+      passwordMismatchError = true;
+    }
+
+    if (!usernameError && !passwordError && !passwordMismatchError) {
+      try {
+        const response = await fetch('http://localhost:3011/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // User registration successful, redirect to home page
+          localStorage.setItem('userToken', data.token);
+          localStorage.setItem('loggedIn', 'true');
+          goto('/home');
+        } else {
+          if (response.status === 400 && data.error === 'Username is already taken') {
+            usernameTakenError = true;
+          } else {
+          // Handle other registration failures
+          console.error('User registration failed:', data.error);
+          }
+        }
+      } catch (error) {
+        console.error('Error during user registration');
       }
-    } catch (error) {
-      console.error('Error during user registration:', error.message);
+    } else {
+
     }
   };
 </script>
@@ -45,14 +87,17 @@
           <label for="email-address" class="sr-only ">Email address</label>
           <input
             id="email-address"
-            name="email"
-            type="email"
+            name="username"
+            type="username"
             autocomplete="email"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
-            placeholder="Email address"
+            placeholder="Username"
             bind:value="{username}"
           >
+          <div class="{usernameError ? 'text-yellow' : 'hidden'}">Username is required</div>
+          <div class="{usernameTakenError ? 'text-yellow' : 'hidden'}">This username is already taken</div>
         </div>
+        
         <div class="mb-2">
           <label for="password" class="sr-only">Password</label>
           <input
@@ -64,7 +109,10 @@
             placeholder="Password"
             bind:value="{password}"
           >
+          <div class="{passwordError ? 'text-yellow' : 'hidden'}">Password is required</div>
+          <div class="{passwordMismatchError ? 'text-yellow' : 'hidden'}">Passwords do not match</div>
         </div>
+        
         <div>
           <label for="confirm-password" class="sr-only">Confirm Password</label>
           <input
@@ -74,25 +122,30 @@
             autocomplete="current-password"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Confirm Password"
-            value="{confirmPassword}"
+            bind:value="{confirmPassword}"
           >
         </div>
       </div>
 
       <div>
+        <button
+          type="button"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          on:click="{registerUser}"
+        >
+        Register
+        </button>
+      </div>
+    </form>
+    <br/>
+    <div>
       <button
         type="button"
         class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        on:click="{registerUser}"
+        on:click={() => goto(`/login`)}
       >
-        Register
+      Already have an account? Login
       </button>
-    </div>
-    </form>
-    <div class="text-sm text-center">
-      <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500 underline hover:text-salmonLikeColor">
-        Already have an account? Login
-      </a>
     </div>
   </div>
 </main>
