@@ -22,15 +22,12 @@
   }
 </script>
 
-<TopNav />
-
 <main>
-    <button on:click={() => goto('/events')} ><i class="fa-solid fa-arrow-left w-7 h-7 p-2 m-2"></i></button>
+  <button on:click={() => goto('/events')}><i class="fa-solid fa-arrow-left w-7 h-7 p-2 m-2" /></button>
   {#if event}
-
-  <div class="mt-10">
-      <h2 class="text-3xl font-bold mt-10 flex justify-center text-center">{event.name}</h2>
-      <div class="">
+    <div class="mt-4">
+      <h2 class="text-3xl font-bold mt-3 text-center">{event.name}</h2>
+      <div>
         <p class="text-xl m-4 mt-3 font-bold">Where: {event.location}</p>
         <p class="text-lg m-3">{event.description}</p>
       </div>
@@ -40,8 +37,12 @@
   {/if}
 </main>
 
-<button id="joinLeave" on:click={changeButton} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
+<button
+  id="joinLeave"
+  on:click={changeButton}
+  class="bg-aquamarine text-black w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
 
 <NavBar />
+
 <style>
 </style>
