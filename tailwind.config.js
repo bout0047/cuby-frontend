@@ -13,7 +13,6 @@ export default {
       salmonLikeColor: '#ffe1d9',
       Navbarblue: '#99a8c2',
       royalBlue: '#0A2463',
-      cream: 'fffdd0',
       platinum: '#E9E9E9',
       slate: '#475569',
       black: '#000000',
