@@ -98,8 +98,6 @@
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
-   {console.log(profiles[id].id)}
-   {console.log(profiles)}
  
       <section class="mt-6">
          <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
@@ -137,7 +135,7 @@
             <button
                on:click={() => toggleInterest(interest[0])}
                class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${
-                  interest[2] === "true" ? "bg-salmonLikeColor" : ""
+                  interest[2] === "true" ? "bg-aquamarine" : ""
                }`}
             >{interest[1]}
             </button>
@@ -145,12 +143,12 @@
       </div>
       <div class="grid grid-cols-2">
          <button
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue mr-5 hover:bg-platinum"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate mr-5 hover:bg-Navbarblue"
          on:click={() => goto("/profile")}>Back to Profile</button>
       
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate hover:bg-Navbarblue"
          >Save Changes</button>
       </div>
    {:else}

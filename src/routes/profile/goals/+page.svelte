@@ -119,42 +119,45 @@
          <div>
             <select
                id="focus"
+               class="bg-slate"
                bind:value={focus}
                on:change={handleSelection(focus)}
             >
                {#each newGoals[0] as option (option)}
-                  <option value={option}>{option}</option>
+                  <option class="bg-platinum" value={option}>{option}</option>
                {/each}
             </select>
 
             <p class="text-2xl font-semibold pt-5">I will do this by:</p>
             <select
                id="method"
+               class="bg-slate"
                bind:value={method}
                on:change={handleSelection(method)}
             >
                {#each newGoals[1] as option (option)}
-                  <option value={option}>{option}</option>
+                  <option class="bg-platinum" value={option}>{option}</option>
                {/each}
             </select>
             <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
             <select
                id="stress"
+               class="bg-slate"
                bind:value={stress}
                on:change={handleSelection(stress)}>
                {#each newGoals[2] as option (option)}
-                  <option value={option}>{option}</option>
+                  <option class="bg-platinum border-inherit" value={option}>{option}</option>
                {/each}
             </select>
          </div>
       </section>
       <div class="grid grid-cols-2"> 
          <button
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate hover:bg-Navbarblue"
          on:click={() => goto("/profile")}>Back to Profile</button>
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue ml-5 hover:bg-platinum"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate ml-5 hover:bg-Navbarblue"
          >Save Changes</button>
       </div>
    {:else}
