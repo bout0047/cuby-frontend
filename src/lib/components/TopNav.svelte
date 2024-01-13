@@ -20,7 +20,7 @@
   </a>
    
   </section>
-    <div class="fixed top-0 right-0 text-2xl p-3 mr-4 mt-5">
+    <div data-testID="logout-button" class="fixed top-0 right-0 text-2xl p-3 mr-4 mt-5">
         <button on:click="{logout}">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </button>
