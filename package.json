@@ -16,6 +16,7 @@
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.6",
 		"@testing-library/svelte": "^4.0.5",
+		"@testing-library/user-event": "^14.5.2",
 		"@types/jest": "^29.5.11",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.28.0",
@@ -36,6 +37,6 @@
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^6.4.2",
 		"@fortawesome/fontawesome-svg-core": "^6.4.2",
-		"svelte-routing": "^2.6.0"
+		"svelte-routing": "^2.11.0"
 	}
 }
