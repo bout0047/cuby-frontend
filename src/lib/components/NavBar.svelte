@@ -2,18 +2,7 @@
   import "../../app.css";
   import '@fortawesome/fontawesome-free/js/all.js';
   import { goto } from "$app/navigation";
-  //import sessionStore from "../../stores/sessionStore";
-  import { onMount } from "svelte";
 
-  
-  //const loggedIn = (localStorage.getItem('loggedIn') == 'true');
-  
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (!loggedIn) {
-      goto('./');
-    }
-  });
 </script>
 <main>
 

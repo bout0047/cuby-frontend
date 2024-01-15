@@ -6,18 +6,54 @@
   export let data;
 
   const { event } = data;
-
+  const eventId = event.id;
+  const datetime = event.datetime;
   let joined = false;
 
-  function changeButton() {
-    let button = document.getElementById('joinLeave');
+  const changeAttendance = async () => {
+    const button = document.getElementById('joinLeave');
 
-    if (button?.innerHTML === 'Join Event') {
-      button.innerHTML = 'Leave Event';
-      joined = true;
+    if (joined) {
+      try {
+        const response = await fetch(`http://localhost:3011/calendar/`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            eventId
+          }),
+        });
+        if (response.ok) {
+          button.innerHTML = 'Join Event';
+          joined = false;
+          
+        } else {
+
+        }
+      } catch (error) {
+        console.error('Error removing calendar entry');
+      }
     } else {
-      button.innerHTML = 'Join Event';
-      joined = false;
+      try {
+        const response = await fetch(`http://localhost:3011/calendar/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            eventId,
+            datetime
+          }),
+        });
+        if (response.ok) {
+          button.innerHTML = 'Leave Event';
+          joined = true;  
+        } else {
+        }
+      } catch (error) {
+        console.error('Error adding calendar entry');
+      }
     }
   }
 </script>
@@ -40,7 +76,7 @@
   {/if}
 </main>
 
-<button id="joinLeave" on:click={changeButton} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
+<button id="joinLeave" on:click={changeAttendance} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
 
 <NavBar />
 <style>

@@ -2,34 +2,35 @@
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
+  import axios from 'axios';
+  import Cookies from 'js-cookie';
 
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (loggedIn) {
-      goto('/home');
-    }
-  });
-
-  const handleGoogleLogin = async function () {
+  const googleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:3011/auth/google', {
-        method: 'GET',
-        // You may need to include additional headers or credentials based on your server configuration
-      });
-  
-      if (response.ok) {
-        // Handle successful response (e.g., redirect or show a success message)
-        console.log('Google login successful!');
-      } else {
-        // Handle error response (e.g., show an error message)
-        console.error('Google login failed:', response.statusText);
-      }
+      const response = await axios.get('http://localhost:3011/auth/google'); // Make sure this path matches your API Gateway route
+      window.location.href = response.data.redirectUrl;
     } catch (error) {
-      // Handle fetch error
-      console.error('Error during Google login:', error);
+      console.error('Error initiating Google login:', error.message);
     }
+  };
+  const handleCallback = async () => {
+  try {
+    // Make a request to your backend to handle the callback
+    const response = await axios.post('http://api-gateway-url/auth/callback');
+
+    // Assuming your backend returns the token and redirect URL in the response
+    const { token, redirectUrl } = response.data;
+
+    // Store the token as a cookie
+    Cookies.set('authToken', token);
+
+    // Redirect to the specified URL
+    window.location.href = redirectUrl;
+  } catch (error) {
+    console.error('Error handling callback:', error.message);
+    // Handle error, e.g., show an error message to the user
   }
+};
   
 </script>
  
@@ -52,11 +53,8 @@
           Register
         </div>
 
-        <div
-          class="cursor-pointer bg-red-500 hover:bg-red-600 text-white font-semibold w-1/2 text-center justify-center m-auto mt-20 py-2 px-4 rounded"
-          on:click={() => handleGoogleLogin()}
-        >
-          Google Login
+        <div>
+          <button on:click={googleLogin}>Login with Google</button>
         </div>
     </div>
 </main>
