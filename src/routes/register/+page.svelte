@@ -81,6 +81,7 @@
   };
 </script>
 
+
 <main
   class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
 >
@@ -88,9 +89,12 @@
     class="bg-darkestBlue text-somePaleGreen shadow-md rounded px-8 pt-6 pb-8 mb-4"
   >
     <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Register
+      <h2 class="mt-6 text-5xl font-extrabold">
+        Cuby
       </h2>
+      <h3 class="ml-1 mt-6 text-3xl font-extrabold">
+        Register
+      </h3>
     </div>
     <form class="mt-8 space-y-6" action="#">
       <input type="hidden" name="remember" value="true" />
@@ -98,49 +102,36 @@
         <div class="mb-2">
           <label for="email-address" class="sr-only">Email address</label>
           <input
-            id="email-address"
-            name="username"
+            class="border-4 rounded w-full p-2 leading-tight text-black"
+            id="username"
             type="username"
-            autocomplete="email"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Username"
             bind:value={username}
           />
-          <div class={usernameError ? "text-yellow" : "hidden"}>
-            Username is required
-          </div>
-          <div class={usernameTakenError ? "text-yellow" : "hidden"}>
-            This username is already taken
-          </div>
+          <div class="{usernameError ? 'text-red' : 'hidden'}">Username is required</div>
+          <div class="{usernameTakenError ? 'text-red' : 'hidden'}">This username is already taken</div>
         </div>
-
-        <div class="mb-2">
-          <label for="password" class="sr-only">Password</label>
+        
+        <div class="m-5">
+          <label for="password" class="text-2xl">Password</label>
           <input
-            id="password"
-            name="password"
+            class="shadow appearance-none border-4 rounded w-full py-2 px-3 leading-tight text-black"
             type="password"
-            autocomplete="current-password"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
             placeholder="Password"
             bind:value={password}
           />
-          <div class={passwordError ? "text-yellow" : "hidden"}>
-            Password is required
-          </div>
-          <div class={passwordMismatchError ? "text-yellow" : "hidden"}>
-            Passwords do not match
-          </div>
+          <div class="{passwordError ? 'text-red' : 'hidden'}">Password is required</div>
+          <div class="{passwordMismatchError ? 'text-red' : 'hidden'}">Passwords do not match</div>
         </div>
-
-        <div>
-          <label for="confirm-password" class="sr-only">Confirm Password</label>
+        
+        <div class="m-5">
+          <label for="confirm-password" class="text-2xl">Confirm Password</label>
           <input
             id="confirm-password"
             name="confirmPassword"
             type="password"
             autocomplete="current-password"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
+            class="shadow appearance-none border-4 rounded w-full py-2 px-3 leading-tight text-black"
             placeholder="Confirm Password"
             bind:value={confirmPassword}
           />
@@ -150,8 +141,9 @@
       <div>
         <button
           type="button"
-          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          on:click={registerUser}
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-royalBlue text-platinum"
+          on:click="{registerUser}"
+
         >
           Register
         </button>
