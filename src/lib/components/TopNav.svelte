@@ -16,6 +16,7 @@
       src="../src/img/stokstraart.png"
       alt="Profile Picture"
       class="rounded-full shadow-md ml-4 mb-4 w-14 h-14"
+      aria-hidden="true"
     />
   </a>
    

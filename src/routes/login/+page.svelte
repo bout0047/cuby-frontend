@@ -61,7 +61,7 @@
           }
         }
       } catch (error) {
-        console.error('Error during user registration:', error.message);
+        console.error('Error during user registration:', error);
       }
     }
   };
@@ -73,17 +73,14 @@
       <h2 class="mt-6 text-5xl font-extrabold">
         Cuby
       </h2>
-      <h3 class="ml-1 mt-6 text-3xl font-extrabold">
-        Login
-      </h3>
     </div>
       <form class="mt-24" action="#">
         <input type="hidden" name="remember" value="true">
-        <div class="rounded-md mb-10">
+        <div class="rounded-md  mb-10">
           <div class="m-5">
             <label for="username" class="text-2xl">Username</label>
               <input
-                  class="border-4 rounded w-full p-2 leading-tight text-black"
+                  class=" border-4 rounded w-full p-2 leading-tight text-black hover:text-black"
                   id="username"
                   type="username"
                   placeholder="Username"
@@ -96,7 +93,7 @@
           <div class="m-5">
               <label for="password" class="text-2xl">Password</label>
               <input
-              class="shadow appearance-none border-4 rounded w-full py-2 px-3 leading-tight text-black"
+              class="shadow appearance-none border-4 rounded w-full p-2 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
                   type="password"
                   placeholder="Password"
                   bind:value={password}
@@ -109,7 +106,7 @@
         <div>
             <button
             type="button"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-royalRed text-platinum"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-royalRed text-platinum"
                 on:click="{loginUser}"
             >
                 Sign In
