@@ -5,7 +5,7 @@
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
    import { goto } from "$app/navigation";
-   let id = 1;
+   let id = 0;
    let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
@@ -33,6 +33,7 @@
          }
 
          profiles = await response.json();
+         id = profiles.length - 1;
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
@@ -152,7 +153,7 @@
          >Save Changes</button>
       </div>
    {:else}
-      <p>No profiles available.</p>
+      <p>loading</p>
    {/if}
 </main>
 

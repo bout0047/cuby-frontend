@@ -5,7 +5,7 @@
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
    import { goto } from "$app/navigation";
-   let id = 1;
+   let id = 0;
    let newName = "";
    let newEmail = "";
    let newGoals = [
@@ -56,6 +56,7 @@
          }
 
          profiles = await response.json();
+         id = profiles.length - 1;
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
@@ -119,7 +120,7 @@
          <div>
             <select
                id="focus"
-               class="bg-slate"
+               class="bg-aquamarine"
                bind:value={focus}
                on:change={handleSelection(focus)}
             >
@@ -131,7 +132,7 @@
             <p class="text-2xl font-semibold pt-5">I will do this by:</p>
             <select
                id="method"
-               class="bg-slate"
+               class="bg-aquamarine"
                bind:value={method}
                on:change={handleSelection(method)}
             >
@@ -142,26 +143,26 @@
             <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
             <select
                id="stress"
-               class="bg-slate"
+               class="bg-aquamarine"
                bind:value={stress}
                on:change={handleSelection(stress)}>
                {#each newGoals[2] as option (option)}
-                  <option class="bg-platinum border-inherit" value={option}>{option}</option>
+                  <option class="border-red bg-platinum" value={option}>{option}</option>
                {/each}
             </select>
          </div>
       </section>
       <div class="grid grid-cols-2"> 
          <button
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate hover:bg-Navbarblue"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
          on:click={() => goto("/profile")}>Back to Profile</button>
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate ml-5 hover:bg-Navbarblue"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue ml-5 hover:bg-platinum"
          >Save Changes</button>
       </div>
    {:else}
-      <p>No profiles available.</p>
+      <p>loading...</p>
    {/if}
 </main>
 

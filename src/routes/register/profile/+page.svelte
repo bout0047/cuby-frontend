@@ -2,6 +2,7 @@
    // @ts-nocheck
    import "../../../app.css";
    import "@fortawesome/fontawesome-free/js/all.js";
+   import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
@@ -20,35 +21,54 @@
       ["10", "Music", "false"],
       ["11", "Puzzle", "false"],
     ];
-   let id = 2;
-   let jsonData = {
-      id: id,
+    
+   let jsonData = [];
+   let profileData = {
       name: newName,
       email: newEmail,
       goals: newGoals,
       interests: newInterests,
    };
 
+   onMount(async () => {
+      try {
+         const response = await fetch("http://localhost:3011/users");
+
+         if (!response.ok) {
+            console.error(
+               "Error fetching profiles:1",
+               response.status,
+               response.statusText
+            );
+            throw new Error("Failed to fetch profiles");
+         }
+
+         jsonData = await response.json();
+         jsonData = jsonData[jsonData.length - 1];
+      } catch (error) {
+         console.error("Error fetching profiles:2", error.message);
+      }
+   });
+
    function updateValues() {
       jsonData = {
-         id: id,
-         name: document.getElementById("newName").value,
+         name: jsonData.username,
          email: document.getElementById("newEmail").value,
          goals: newGoals,
-         interests: jsonData.interests.map((interest) => interest),
+         interests: profileData.interests.map((interest) => interest),
       };
       console.log(jsonData);
-      sendToDataBase();
+      createProfile();
    }
 
    function toggleInterest(numberOfInterest) {
-      if (jsonData.interests[numberOfInterest][2] === "true") {
-         jsonData.interests[numberOfInterest][2] = "false";
+      if (profileData.interests[numberOfInterest][2] === "true") {
+         profileData.interests[numberOfInterest][2] = "false";
       } else {
-         jsonData.interests[numberOfInterest][2] = "true";
+         profileData.interests[numberOfInterest][2] = "true";
       }
 
-      newInterests = jsonData.interests.map((interest) => interest[2]);
+      newInterests = profileData.interests.map((interest) => interest[2]);
    }
 
    function saveChanges() {
@@ -56,12 +76,14 @@
       updateValues();
    }
 
-   async function sendToDataBase() {
+  
+
+   async function createProfile() {
       try {
          const response = await fetch(
-            `http://localhost:3011/profiles/${jsonData.id}`,
+            `http://localhost:3011/profiles/`,
             {
-               method: "PUT",
+               method: "POST",
                headers: {
                   "Content-Type": "application/json",
                },
@@ -89,6 +111,7 @@
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if jsonData}
+   {console.log(jsonData)}
       <section class="mt-6">
          <h2 class="text-2xl font-semibold mb-4">Create your Profile:</h2>
       </section>
@@ -107,7 +130,7 @@
             type="text"
             id="newName"
             class="caret-Navbarblue font-bold"
-            value={jsonData.name}
+            value={jsonData.username}
             placeholder= "Your Name"
          />
 
@@ -116,14 +139,14 @@
             type="text"
             id="newEmail"
             class="caret-Navbarblue text-black"
-            value={jsonData.email}
+            value=""
             placeholder= "Your Email"
          />
       </section>
 
       <p class="text-2xl font-semibold">Interests:</p>
       <div class="grid grid-cols-4">
-         {#each jsonData.interests as interest (interest)}
+         {#each profileData.interests as interest (interest)}
             <button
                on:click={() => toggleInterest(interest[0])}
                class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${

@@ -4,7 +4,8 @@
    import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
-   let id = 1;
+   let id = 0;
+ 
 
    onMount(async () => {
       try {
@@ -20,10 +21,12 @@
          }
 
          profiles = await response.json();
+         id = profiles.length - 1;
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
    });
+
 </script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
@@ -83,7 +86,7 @@
          <NavBar />
       </footer>
    {:else}
-      <p>No profiles available.</p>
+      <p>loading...</p>
    {/if}
 </main>
 
