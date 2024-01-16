@@ -1,18 +1,29 @@
 <script>
    // @ts-nocheck
-   import { onMount } from "svelte";
    import "../../../app.css";
    import "@fortawesome/fontawesome-free/js/all.js";
-   export let profiles = [];
-   import { goto } from "$app/navigation";
-   let id = 0;
+   import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
    let newGoals = [];
-   let newInterests = [];
-   let jsonData = {
-      id: id,
+   let newInterests = [
+      ["0", "Football", "false"],
+      ["1", "Basketball", "false"],
+      ["2", "Reading", "false"],
+      ["3", "Painting", "false"],
+      ["4", "Hiking", "false"],
+      ["5", "Games", "false"],
+      ["6", "Drawing", "false"],
+      ["7", "Cooking", "false"],
+      ["8", "Yoga", "false"],
+      ["9", "Writing", "false"],
+      ["10", "Music", "false"],
+      ["11", "Puzzle", "false"],
+    ];
+    
+   let jsonData = [];
+   let profileData = {
       name: newName,
       email: newEmail,
       goals: newGoals,
@@ -21,7 +32,7 @@
 
    onMount(async () => {
       try {
-         const response = await fetch("http://localhost:3011/profiles");
+         const response = await fetch("http://localhost:3011/users");
 
          if (!response.ok) {
             console.error(
@@ -32,8 +43,8 @@
             throw new Error("Failed to fetch profiles");
          }
 
-         profiles = await response.json();
-         id = profiles.length - 1;
+         jsonData = await response.json();
+         jsonData = jsonData[jsonData.length - 1];
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
@@ -41,37 +52,38 @@
 
    function updateValues() {
       jsonData = {
-         id: id,
-         name: document.getElementById("newName").value,
+         name: jsonData.username,
          email: document.getElementById("newEmail").value,
-         goals: profiles[id].goals,
-         interests: profiles[id].interests.map((interest) => interest),
+         goals: newGoals,
+         interests: profileData.interests.map((interest) => interest),
       };
       console.log(jsonData);
-      sendToDataBase();
+      createProfile();
    }
 
    function toggleInterest(numberOfInterest) {
-      if (profiles[id].interests[numberOfInterest][2] === "true") {
-         profiles[id].interests[numberOfInterest][2] = "false";
+      if (profileData.interests[numberOfInterest][2] === "true") {
+         profileData.interests[numberOfInterest][2] = "false";
       } else {
-         profiles[id].interests[numberOfInterest][2] = "true";
+         profileData.interests[numberOfInterest][2] = "true";
       }
 
-      newInterests = profiles[id].interests.map((interest) => interest[2]);
+      newInterests = profileData.interests.map((interest) => interest[2]);
    }
 
    function saveChanges() {
-      window.location.href = "/profile";
+      window.location.href = "/home";
       updateValues();
    }
 
-   async function sendToDataBase() {
+  
+
+   async function createProfile() {
       try {
          const response = await fetch(
-            `http://localhost:3011/profiles/${jsonData.id}`,
+            `http://localhost:3011/profiles/`,
             {
-               method: "PUT",
+               method: "POST",
                headers: {
                   "Content-Type": "application/json",
                },
@@ -98,10 +110,9 @@
 </script>
 
 <main class="container mx-auto px-4 bg-090C9B relative">
-   {#if profiles.length > 0}
- 
+   {#if jsonData}
       <section class="mt-6">
-         <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
+         <h2 class="text-2xl font-semibold mb-4">Create your Profile:</h2>
       </section>
       <section class="text-center border-t pt-5">
          <!-- svelte-ignore a11y-img-redundant-alt -->
@@ -118,7 +129,8 @@
             type="text"
             id="newName"
             class="caret-Navbarblue font-bold"
-            value={profiles[id].name}
+            value={jsonData.username}
+            placeholder= "Your Name"
          />
 
          <br />
@@ -126,34 +138,29 @@
             type="text"
             id="newEmail"
             class="caret-Navbarblue text-black"
-            value={profiles[id].email}
+            value=""
+            placeholder= "Your Email"
          />
       </section>
 
       <p class="text-2xl font-semibold">Interests:</p>
       <div class="grid grid-cols-4">
-         {#each profiles[id].interests as interest (interest)}
+         {#each profileData.interests as interest (interest)}
             <button
                on:click={() => toggleInterest(interest[0])}
                class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${
-                  interest[2] === "true" ? "bg-aquamarine" : ""
+                  interest[2] === "true" ? "bg-salmonLikeColor" : ""
                }`}
             >{interest[1]}
             </button>
          {/each}
-      </div>
-      <div class="grid grid-cols-2">
-         <button
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate mr-5 hover:bg-Navbarblue"
-         on:click={() => goto("/profile")}>Back to Profile</button>
-      
+      </div>      
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate hover:bg-Navbarblue"
-         >Save Changes</button>
-      </div>
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         >Create Profile</button>
    {:else}
-      <p>loading</p>
+      <p>No profiles available.</p>
    {/if}
 </main>
 

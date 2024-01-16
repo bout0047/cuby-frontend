@@ -58,15 +58,13 @@
   }
 </script>
 
-<TopNav />
-
 <main>
-    <button on:click={() => goto('/events')} ><i class="fa-solid fa-arrow-left w-7 h-7 p-2 m-2"></i></button>
+  <button on:click={() => goto('/events')}><i class="fa-solid fa-arrow-left w-7 h-7 p-2 m-2" /></button>
   {#if event}
-
-  <div class="mt-10">
-      <h2 class="text-3xl font-bold mt-10 flex justify-center text-center">{event.name}</h2>
-      <div class="">
+    <div class="mt-4">
+      <h2 class="text-3xl font-bold mt-3 mx-10">{event.name}</h2>
+      <img src={event.link} alt="Event Image" class="max-w-full ml-7 my-4 flex justify-center items-center" aria-hidden="true" />
+      <div>
         <p class="text-xl m-4 mt-3 font-bold">Where: {event.location}</p>
         <p class="text-lg m-3">{event.description}</p>
       </div>
@@ -76,8 +74,9 @@
   {/if}
 </main>
 
-<button id="joinLeave" on:click={changeAttendance} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
+<button id="joinLeave" on:click={changeAttendance} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button
 
 <NavBar />
+
 <style>
 </style>
