@@ -73,10 +73,25 @@
   };
 </script>
 
+<<<<<<< Updated upstream
 <main class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
   <div class="bg-darkestBlue text-somePaleGreen shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div>
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+=======
+
+<main
+  class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+>
+  <div
+    class="text-black shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div>
+      <h2 class="mt-6 text-5xl font-extrabold">
+        Cuby 
+      </h2>
+      <h3 class="ml-1 mt-6 text-3xl font-extrabold">
+>>>>>>> Stashed changes
         Register
       </h2>
     </div>
@@ -84,10 +99,17 @@
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px mb-10">
         <div class="mb-2">
+<<<<<<< Updated upstream
           <label for="email-address" class="sr-only ">Email address</label>
           <input
             id="email-address"
             name="username"
+=======
+          <label for="username" class="text-2xl"> Username</label>
+          <input
+            class="shadow appearance-none right-4 border-4 bg-platinum rounded w-full py-2 px-3 leading-tight text-black"
+            id="username"
+>>>>>>> Stashed changes
             type="username"
             autocomplete="email"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
@@ -101,11 +123,16 @@
         <div class="mb-2">
           <label for="password" class="sr-only">Password</label>
           <input
+<<<<<<< Updated upstream
             id="password"
             name="password"
             type="password"
             autocomplete="current-password"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
+=======
+          class="shadow appearance-none right-4 border-4 bg-platinum rounded w-full py-2 px-3 leading-tight text-black"
+          type="password"
+>>>>>>> Stashed changes
             placeholder="Password"
             bind:value="{password}"
           >
@@ -120,7 +147,11 @@
             name="confirmPassword"
             type="password"
             autocomplete="current-password"
+<<<<<<< Updated upstream
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-black hover:text-black"
+=======
+            class="shadow appearance-none right-4 border-4 bg-platinum rounded w-full py-2 px-3 leading-tight text-black"
+>>>>>>> Stashed changes
             placeholder="Confirm Password"
             bind:value="{confirmPassword}"
           >
