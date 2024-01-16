@@ -1,162 +1,85 @@
 <script>
-    import { each } from "svelte/internal";
-    const date = new Date();
+  import { each } from "svelte/internal";
+  import TopNav from "./TopNav.svelte";
+  import NavBar from "./NavBar.svelte";
+  import Scheduler from "./Scheduler.svelte";
+  
+  const date = new Date();
+  export let dateID;
+  export let dateHeading;
 
-    const today = {
-        dayNumber: date.getDate(),
-        month: date.getMonth(),
-        year: date.getFullYear()
+  const today = {
+    dayNumber: date.getDate(),
+    month: date.getMonth(),
+    year: date.getFullYear()
+  }
+
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  let monthIndex = date.getMonth();
+
+  $: month = monthNames[monthIndex];
+
+  let year = date.getFullYear();
+
+  $: firstDayIndex = new Date(year, monthIndex, 1).getDay();
+
+  $: numberOfDays = new Date(year, monthIndex + 1, 0).getDate();
+
+  let currentDay = date.getDate();
+
+  $: calendarCells = firstDayIndex <= 4 ? 35 : 42;
+
+  const goToNextMonth = ()  => { 
+    if (monthIndex >= 11) {
+      year += 1;
+      return monthIndex = 0;
     }
-  
-    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  
-    let monthIndex = date.getMonth();
-  
-    $: month = monthNames[monthIndex];
+    monthIndex += 1;
+  }
 
-    let year = date.getFullYear();
+  const goToPrevMonth = ()  => { 
+    if (monthIndex <= 0) {
+      year -= 1;
+      return monthIndex = 11;
+    }
+    monthIndex -= 1;
+  }
+
+  $: console.log(`Month Index: ${monthIndex} --- Number Of Days: ${numberOfDays} --- First Day Index: ${firstDayIndex} ${month} ${today.dayNumber}`);
   
-    $: firstDayIndex = new Date(year, monthIndex, 1).getDay();
+</script>
 
-    $: numberOfDays = new Date(year, monthIndex + 1, 0).getDate();
-
-    let currentDay = date.getDate();
-
-    $: calendarCells = firstDayIndex <= 4 ? 35 : 42;
-
-    const goToNextMonth = ()  => { 
-        if (monthIndex >= 11) {
-            year += 1;
-           return monthIndex = 0;
-        }
-        monthIndex += 1;
- }
-    const goToPrevMonth = ()  => { 
-        if (monthIndex <= 0) {
-            year -= 1;
-           return monthIndex = 11;
-        }
-        monthIndex -= 1;
- }
-  
-$: console.log(`Month Index: ${monthIndex} --- Number Of Days: ${numberOfDays} --- First Day Index: ${firstDayIndex} ${month} ${today.dayNumber}`);
-  </script>
-  
-
-<main>
-    <div class="month">
-        <ul>
-          <li class="prev" on:click={goToPrevMonth}>&#10094;</li>
-          <li class="next" on:click={goToNextMonth}>&#10095;</li>
-          <li>{month}<br>
-            <span style="font-size:18px">{year}</span>
-        </li>
-        </ul>
-      </div>
-      
-      <ul class="weekdays">
-        <li>Su</li>
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Th</li>
-        <li>Fr</li>
-        <li>Sa</li>
+<main class="container mx-auto my-8">
+  <div class="bg-white p-4 rounded-md">
+    <div class="month mb-6">
+      <ul class="flex justify-between items-center bg-gray-100 p-4 rounded-md">
+        <li class="cursor-pointer" on:click={goToPrevMonth}>&#10094;</li>
+        <li class="text-xl font-bold">{month}<br><span class="text-base font-normal">{year}</span></li>
+        <li class="cursor-pointer" on:click={goToNextMonth}>&#10095;</li>
       </ul>
-      
-      <ul class="days">
-        {#each Array(calendarCells)as _,i}
-        {#if i < firstDayIndex || i >= numberOfDays+firstDayIndex}
-       <li>&nbsp;</li>
-         {:else}
-         <!-- svelte-ignore a11y-click-events-have-key-events -->
-         <li class:active={i === today.dayNumber+(firstDayIndex-1) 
-          && monthIndex === today.month && year === today.year}
-          on:click
-          data-dateID={`${month}_${(i - firstDayIndex + 1)}_${year}`}>
-          {i-firstDayIndex+1}
-       {/if}
-       {/each}
-      </ul> 
+    </div>
 
+    <div class="days-container grid grid-cols-7 gap-2">
+      {#each ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as day}
+        <div class="text-center text-sm font-bold">{day}</div>
+      {/each}
+      {#each Array(calendarCells) as _, i}
+        {#if i < firstDayIndex || i >= numberOfDays + firstDayIndex}
+          <div class="w-full h-12"></div>
+        {:else}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <div
+            class="w-full h-12 p-2 cursor-pointer border border-white hover:bg-gray-100 active:bg-gray-200 rounded-md transition-all duration-300 ease-in-out
+                   {i === today.dayNumber + (firstDayIndex - 1) && monthIndex === today.month && year === today.year ? 'bg-indigo-500 text-black' : ''} 
+                   {i === today.dayNumber && monthIndex === today.month && year === today.year ? 'bg-French text-Navbarblue rounded-full' : ''}"
+            on:click
+            data-dateID={`${month}_${(i - firstDayIndex + 1)}_${year}`}
+          >
+            {i - firstDayIndex + 1}
+          </div>
+        {/if}
+      {/each}
+    </div>
+  </div>
 </main>
-
-<style>
-    ul {list-style-type: none;}
-main {font-family: Verdana, sans-serif;}
-
-/* Month header */
-.month {
-  padding: 70px 25px;
-  width: auto;
-  background: #1abc9c;
-  text-align: center;
-}
-
-/* Month list */
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-
-.month ul li {
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-
-/* Previous button inside month header */
-.month .prev {
-  float: left;
-  padding-top: 10px;
-  cursor: pointer;
-}
-
-/* Next button */
-.month .next {
-  float: right;
-  padding-top: 10px;
-}
-
-/* Weekdays (Mon-Sun) */
-.weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color:#ddd;
-}
-
-.weekdays li {
-  display: inline-block;
-  width: 13.6%;
-  color: #666;
-  text-align: center;
-}
-
-/* Days (1-31) */
-.days {
-  padding: 10px 0;
-  background: #eee;
-  margin: 0;
-}
-
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  border: 1px solid black;
-  padding: 9px;
-  width: 11.6%;
-  text-align: center;
-  margin-bottom: 1px;
-  font-size:1.2rem;
-  color: #777;
-  cursor: pointer;
-}
-
-/* Highlight the "current" day */
-.active {
-  padding: 5px;
-  background: #1abc9c;
-  color: white !important
-}
-</style>
