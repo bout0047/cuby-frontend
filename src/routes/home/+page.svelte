@@ -66,6 +66,21 @@
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
   }
+
+  onMount(async () => {
+    try {
+      const response = await fetch('http://localhost:3011/calendar');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch events data: ${response.statusText}`);
+      }
+
+      const userEvents = await response.json();
+      return userEvents;
+
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  });
 </script>
 
 <style>
@@ -127,9 +142,7 @@
     <div class="bg-royalBlue p-1 rounded-b-lg">
       <div class="grid grid-cols-1 mx-3 my-1 text-left">
         <div class="gap-4 text-platinum font-semibold">
-          <h2>Event Name</h2>
-          <p class="mt-1">Great description of the event</p>
-          <p class="mt-4">Where:</p>
+          
         </div>
       </div>
     </div>
