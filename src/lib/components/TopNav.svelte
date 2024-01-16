@@ -10,7 +10,6 @@
   };
 </script>
 
-
 <main>
   <section class="pt-5">
     <a href="/profile" class="disply: inline-block"
