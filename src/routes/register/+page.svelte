@@ -81,6 +81,19 @@
   };
 </script>
 
+<main
+  class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+>
+  <div
+    class="text-black shadow-md rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div>
+      <h2 class="mt-6 text-5xl font-extrabold">
+        Cuby 
+      </h2>
+      <h3 class="ml-1 mt-6 text-3xl font-extrabold">
+        Register
+
 
 <main
   class="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
@@ -91,6 +104,7 @@
     <div>
       <h2 class="mt-6 text-5xl font-extrabold">
         Cuby
+
       </h2>
       <h3 class="ml-1 mt-6 text-3xl font-extrabold">
         Register
@@ -104,6 +118,7 @@
           <input
             class="border-4 rounded w-full p-2 leading-tight text-black"
             id="username"
+
             type="username"
             placeholder="Username"
             bind:value={username}
@@ -115,8 +130,11 @@
         <div class="m-5">
           <label for="password" class="text-2xl">Password</label>
           <input
-            class="shadow appearance-none border-4 rounded w-full py-2 px-3 leading-tight text-black"
+            id="password"
+            name="password"
             type="password"
+            autocomplete="current-password"
+          class="shadow appearance-none right-4 border-4 bg-platinum rounded w-full py-2 px-3 leading-tight text-black"
             placeholder="Password"
             bind:value={password}
           />
@@ -131,7 +149,7 @@
             name="confirmPassword"
             type="password"
             autocomplete="current-password"
-            class="shadow appearance-none border-4 rounded w-full py-2 px-3 leading-tight text-black"
+            class="shadow appearance-none right-4 border-4 bg-platinum rounded w-full py-2 px-3 leading-tight text-black"
             placeholder="Confirm Password"
             bind:value={confirmPassword}
           />
