@@ -32,7 +32,7 @@
               <div
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-tr-lg bg-aquamarine text-white p-2 w-1/4"
               >
-                17 Jan 2024
+                {event.date}
             </div>
             </div>
             <div class="flex">

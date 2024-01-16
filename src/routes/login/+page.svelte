@@ -61,7 +61,7 @@
           }
         }
       } catch (error) {
-        console.error('Error during user registration:', error.message);
+        console.error('Error during user registration:', error);
       }
     }
   };
