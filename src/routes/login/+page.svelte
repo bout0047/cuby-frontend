@@ -2,6 +2,7 @@
   import '/src/app.css';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
+  import axios from 'axios';
 
   onMount(async () => {
     const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
@@ -65,6 +66,15 @@
       }
     }
   };
+
+  const googleLogin = async () => {
+    try {
+      const response = await axios.get('http://localhost:3011/auth/google'); // Make sure this path matches your API Gateway route
+      window.location.href = response.data.redirectUrl;
+    } catch (error) {
+      console.error('Error initiating Google login:', error.message);
+    }
+  };
 </script>
 
 <main class="flex items-center justify-center my-20">
@@ -121,6 +131,14 @@
           on:click={() => goto(`/register`)}
         >
         Don't have an account? Register
+        </button>
+      </div>
+      <div>
+        <button 
+        type="button"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          on:click={googleLogin}>
+          Login with Google
         </button>
       </div>
   </div>
