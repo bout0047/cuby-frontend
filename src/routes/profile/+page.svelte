@@ -1,36 +1,44 @@
 <script>
    // @ts-nocheck
+   import Loading from '$lib/components/Loading.svelte';
    import NavBar from "$lib/components/NavBar.svelte";
    import { onMount } from "svelte";
+ 
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
    let id = 0;
+   let loading = true;
  
-
    onMount(async () => {
-      try {
-         const response = await fetch("http://localhost:3011/profiles");
-
-         if (!response.ok) {
-            console.error(
-               "Error fetching profiles:1",
-               response.status,
-               response.statusText
-            );
-            throw new Error("Failed to fetch profiles");
-         }
-
-         profiles = await response.json();
-         id = profiles.length - 1;
-      } catch (error) {
-         console.error("Error fetching profiles:2", error.message);
-      }
+     try {
+       const response = await fetch("http://localhost:3011/profiles");
+ 
+       if (!response.ok) {
+         console.error(
+           "Error fetching profiles:1",
+           response.status,
+           response.statusText
+         );
+         throw new Error("Failed to fetch profiles");
+       }
+ 
+       profiles = await response.json();
+       id = profiles.length - 1;
+     } catch (error) {
+       console.error("Error fetching profiles:2", error.message);
+     } finally {
+       // Simulate a minimum loading time of 3 seconds
+       setTimeout(() => {
+         loading = false;
+       }, 3000);
+     }
    });
-
-</script>
+ </script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
-   {#if profiles.length > 0}
+   {#if loading}
+      <Loading />
+   {:else if profiles.length > 0}
       <section class="text-center relative">
          <button
             on:click={() => {

@@ -2,24 +2,34 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { goto } from '$app/navigation';
+  import Loading from '$lib/components/Loading.svelte'; // Import your Loading component
+
   export let data;
 
   const { events } = data;
   let searchQuery = '';
-
+  let loading = true; // Add a loading variable
 
   $: filteredEvents = searchQuery
     ? events.filter(event => 
         event.name.toLowerCase().includes(searchQuery.toLowerCase()))
     : events;
 
-    function formatDate(dateTimeString) {
+  function formatDate(dateTimeString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
   }
+
+  // Simulate a minimum loading time of 3 seconds
+  setTimeout(() => {
+    loading = false;
+  }, 3000);
 </script>
 
+{#if loading}
+    <Loading />
+  {/if}
 <TopNav />
 <main>
   <h1 class="text-3xl font-bold m-6 mt-0 fixed">Upcoming Events</h1>
