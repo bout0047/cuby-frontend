@@ -1,4 +1,5 @@
 <script>
+
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { onMount } from 'svelte';
@@ -31,20 +32,7 @@
     }
   });
 
-  let otherEvents = [
-    {
-      detailsButton: 'Details',
-    },
-    {
-      detailsButton: 'Details',
-    },
-    {
-      detailsButton: 'Details',
-    },
-    {
-      detailsButton: 'Details',
-    },
-  ];
+  let otherEvents;
 
   onMount(async () => {
     try {
@@ -54,7 +42,6 @@
       }
 
       const eventData = await response.json();
-      // Assuming eventData is an array with a 'datetime' property
       const latestFourEvents = eventData
         .sort((a, b) => new Date(b.datetime) - new Date(a.datetime))
         .slice(0, 5);
@@ -124,6 +111,7 @@
       </div>
     </div>
 
+
     <section class="mx-3">
       <div class="bg-cream rounded-t-lg p-2.5 mt-4">
         <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
@@ -131,6 +119,7 @@
       <div class="bg-royalBlue p-1 rounded-b-lg">
         <div class="grid grid-cols-1 mx-3 my-1 text-left">
           <div class="gap-4 text-platinum font-semibold" />
+
         </div>
       </div>
     </section>

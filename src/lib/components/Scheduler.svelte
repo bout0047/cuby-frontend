@@ -1,12 +1,8 @@
-<!-- Add Tailwind CSS classes to your HTML elements -->
-
-<script>
   import { onMount } from 'svelte';
   import Calendar from './Calendar.svelte';
   export let dateID;
-
   export let dateHeading;
-  import type { SchedulerProps } from './types';
+  import { SchedulerProps } from './types';
 
   document.querySelectorAll('.am-pm-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
