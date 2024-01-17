@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
 
   let id = 0;
+  let otherEvents = [];
   /**
    * @type {string | any[]}
    */
@@ -32,7 +33,6 @@
     }
   });
 
-  let otherEvents;
 
   onMount(async () => {
     try {
