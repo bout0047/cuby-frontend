@@ -9,9 +9,9 @@ export const load = async () => {
 
         const eventsData = await response.json();
         return eventsData;
-    }
+    };
 
     return {
         events: fetchEvents(),
-    }
-}
+    };
+};

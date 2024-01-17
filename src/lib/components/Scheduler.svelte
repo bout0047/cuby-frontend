@@ -1,13 +1,10 @@
-<!-- Add Tailwind CSS classes to your HTML elements -->
-
 <script>
   import { onMount } from 'svelte';
   import Calendar from './Calendar.svelte';
   export let dateID;
 
   export let dateHeading;
-  import type { SchedulerProps } from './types';
-
+  
   document.querySelectorAll('.am-pm-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
       document.querySelectorAll('.am-pm-toggle').forEach(function(btn) {
@@ -17,10 +14,78 @@
     });
   });
 
+  const changeAttendance = async () => {
+  const button = document.getElementById('joinLeave');
+
+  if (joined) {
+    try {
+      const response = await fetch(`http://localhost:3011/calendar/`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          eventId
+        }),
+      });
+      if (response.ok) {
+        button.innerHTML = 'Join Event';
+        joined = false;
+        
+      } else {
+
+      }
+    } catch (error) {
+      console.error('Error removing calendar entry');
+    }
+  } else {
+    try {
+      const response = await fetch(`http://localhost:3011/calendar/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          eventId,
+          datetime
+        }),
+      });
+      if (response.ok) {
+        button.innerHTML = 'Leave Event';
+        joined = true;  
+      } else {
+      }
+    } catch (error) {
+      console.error('Error adding calendar entry');
+    }
+  }
+}
+
+const createCustomEvent = async () => {
+  try {
+  const response = await fetch(`http://localhost:3011/calendar/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          datetime
+        }),
+      });
+      if (response.ok) {
+        button.innerHTML = 'Leave Event';
+        joined = true;  
+      } else {
+      }
+    } catch (error) {
+      console.error('Error adding calendar entry');
+    }
+}
 </script>
 
 <section id="scheduler-modal" class="bg-blue-500 p-4 rounded-md">
-  <form id="{dateID}" class="space-y-4">
+  <form id="{dateID}" class="">
     <div id="closer-cont">
       <span class="close text-white text-sm" title="Close Modal" on:click>&times;</span>
     </div>
@@ -42,7 +107,7 @@
             <input type="radio" id="pm" name="time" value="PM" class="mr-1"> PM
           </label>
         </div>
-        <button id="add-event-btn" class="bg-white text-blue-500 px-4 py-2 rounded-md text-sm">Add</button>
+        <button id="add-event-btn" class="bg-white text-blue-500 px-4 py-2 rounded-md text-sm" on:click={createCustomEvent}>Add</button>
       </div>
     </div>
     <ul>

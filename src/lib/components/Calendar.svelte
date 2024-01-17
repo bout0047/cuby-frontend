@@ -50,9 +50,9 @@
   
 </script>
 
-<main class="container mx-auto my-8">
+<main class="container mx-auto">
   <div class="bg-white p-4 rounded-md">
-    <div class="month mb-6">
+    <div class="month mb-2">
       <ul class="flex justify-between items-center bg-gray-100 p-4 rounded-md">
         <li class="cursor-pointer" on:click={goToPrevMonth}>&#10094;</li>
         <li class="text-xl font-bold">{month}<br><span class="text-base font-normal">{year}</span></li>
