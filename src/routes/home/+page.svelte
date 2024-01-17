@@ -113,7 +113,7 @@
           class="box bg-aquamarine font-semibold p-3 text-lg rounded-lg w-35 h-20 text-center"
         >
           <h3>Clicks today:</h3>
-          <p id="clickData">Loading...</p>
+          <p id="clickData"></p>
         </div>
       </div>
       <div>
