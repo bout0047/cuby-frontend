@@ -12,8 +12,9 @@
 
 <main>
   <section class="pt-5">
-    <a href="/profile" class="disply: inline-block"
-      ><img
+    <a href="/profile" class="disply: inline-block">
+      <!-- svelte-ignore a11y-img-redundant-alt -->
+      <img
         src="../src/img/stokstraart.png"
         alt="Profile Picture"
         class="rounded-full shadow-md ml-4 mb-4 w-14 h-14"
