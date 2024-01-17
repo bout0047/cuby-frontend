@@ -3,23 +3,34 @@
   import TopNav from '$lib/components/TopNav.svelte';
   import { onMount } from 'svelte';
 
-  export let events; 
-  
-  let user = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    picture: '../src/img/stokstraart.png',
-    goals: [
-      'Talk to a random person',
-      'Have a conversation for 10 min',
-      'Join 5 events',
-    ],
-    stats: {
-      clicks: 50,
-      stress: 37,
-      exercises: 3,
-    },
-  };
+  let id = 0;
+  /**
+     * @type {string | any[]}
+     */
+  let profiles = [];
+  let stats = [37, 5];
+
+  onMount(async () => {
+      try {
+         const response = await fetch("http://localhost:3011/profiles");
+
+         if (!response.ok) {
+            console.error(
+               "Error fetching profiles:1",
+               response.status,
+               response.statusText
+            );
+            throw new Error("Failed to fetch profiles");
+         }
+
+         profiles = await response.json();
+         id = profiles.length - 1;
+         console.log(profiles[id]);
+      } catch (error) {
+         console.error("Error fetching profiles:2", error.message);
+      }
+   });
+
 
   let otherEvents = [
     {
@@ -66,6 +77,21 @@
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
   }
+
+  onMount(async () => {
+    try {
+      const response = await fetch('http://localhost:3011/calendar');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch events data: ${response.statusText}`);
+      }
+
+      const userEvents = await response.json();
+      return userEvents;
+
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  });
 </script>
 
 <style>
@@ -103,19 +129,22 @@
 </style>
 
 <main>
-  <TopNav />
 
+
+  {#if profiles.length > 0}
+<TopNav />
+  <h1 class="text-3xl text-center mt-4 font-bold">Hello {profiles[id].name}!</h1>
   <div class="grid grid-cols-2 gap-4 content-evenly m-5 mt-7">
     <div>
       <div class="box bg-aquamarine font-semibold p-3 text-lg rounded-lg w-35 h-20 text-center">
         <h3>Clicks today:</h3>
-        <p>{user.stats.clicks}</p>
+        <p>{stats[0]}</p>
       </div>
     </div>
     <div>
       <div class="box bg-aquamarine font-semibold p-0.5 text-lg rounded-lg w-35 h-20 text-center">
         <h3>Events this month:</h3>
-        <p>{user.goals.length}</p>
+        <p>{stats[1]}</p>
       </div>
     </div>
   </div>
@@ -127,9 +156,7 @@
     <div class="bg-royalBlue p-1 rounded-b-lg">
       <div class="grid grid-cols-1 mx-3 my-1 text-left">
         <div class="gap-4 text-platinum font-semibold">
-          <h2>Event Name</h2>
-          <p class="mt-1">Great description of the event</p>
-          <p class="mt-4">Where:</p>
+          
         </div>
       </div>
     </div>
@@ -159,7 +186,10 @@
         {/each}
       </div>
     </div>
-
+  </div>
+  {:else}
+    <p>No homepage available.</p>
+  {/if}
   <footer class="mt-20">
     <NavBar />
   </footer>

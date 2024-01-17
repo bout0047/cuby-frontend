@@ -111,7 +111,6 @@
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if jsonData}
-   {console.log(jsonData)}
       <section class="mt-6">
          <h2 class="text-2xl font-semibold mb-4">Create your Profile:</h2>
       </section>
