@@ -186,7 +186,6 @@
         {/each}
       </div>
     </div>
-  </div>
   {:else}
     <p>No homepage available.</p>
   {/if}
