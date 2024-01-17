@@ -1,10 +1,10 @@
 <script>
+
   import { onMount } from 'svelte';
   import Calendar from './Calendar.svelte';
   export let dateID;
-
   export let dateHeading;
-  
+
   document.querySelectorAll('.am-pm-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
       document.querySelectorAll('.am-pm-toggle').forEach(function(btn) {
