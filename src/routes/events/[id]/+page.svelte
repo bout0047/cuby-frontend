@@ -1,4 +1,3 @@
-<script>
   import { goto } from '$app/navigation';
   import TopNav from '$lib/components/TopNav.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
@@ -38,8 +37,8 @@
   {#if event}
     <div class="mt-4">
       <h2 class="text-3xl font-bold mt-3 mx-10">{event.name}</h2>
-      <button
 
+      <button
   id="joinLeave"
   on:click={changeButton}
   class="bg-aquamarine text-black w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
@@ -53,7 +52,6 @@
   {:else}
     <p>Loading...</p>
   {/if}
-
 </main>
 
 <NavBar />

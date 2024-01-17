@@ -16,6 +16,7 @@
     : events;
 
   function formatDate(dateTimeString) {
+
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
@@ -25,6 +26,7 @@
   setTimeout(() => {
     loading = false;
   }, 3000);
+
 </script>
 
 {#if loading}
@@ -48,7 +50,7 @@
               <div
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-tr-lg bg-aquamarine text-white p-2 w-1/4"
               >
-              <p class="event-date">{formatDate(event.datetime)}</p>  
+                {formatDate(event.datetime)}
 
             </div>
             </div>
