@@ -84,6 +84,21 @@
 
     return text.length > characters ? `${truncatedText}...` : truncatedText;
   }
+
+  function fetchClickData() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    document.getElementById("clickData").innerText = data.mostRecentClick;
+                } else if (this.readyState == 4) {
+                    document.getElementById("clickData").innerText = "Error fetching data";
+                }
+            };
+            xhr.open("GET", "http://192.168.38.222/api/clicks", true);
+            xhr.send();
+            setInterval(fetchClickData, 10000);
+        } 
 </script>
 
 <main>
@@ -98,7 +113,7 @@
           class="box bg-aquamarine font-semibold p-3 text-lg rounded-lg w-35 h-20 text-center"
         >
           <h3>Clicks today:</h3>
-          <p>{stats[0]}</p>
+          <p id="clickData">Loading...</p>
         </div>
       </div>
       <div>
