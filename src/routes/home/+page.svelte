@@ -10,6 +10,10 @@
      */
   let profiles = [];
   let stats = [37, 5];
+  let otherEvents = [];
+  let userEvents = [];
+  let randomIndex;
+
 
   onMount(async () => {
       try {
@@ -32,8 +36,24 @@
       }
    });
 
+   onMount(async () => {
+  try {
+    const response = await fetch('http://localhost:3011/events');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch events data: ${response.statusText}`);
+    }
 
-  let otherEvents;
+    const eventData = await response.json();
+    const upcomingEvent = eventData
+      .sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
+      .find(event => new Date(event.datetime) > new Date());
+
+    userEvents = upcomingEvent ? [upcomingEvent] : [];
+  } catch (error) {
+    console.error('Error fetching events:', error);
+  }
+});
+
 
   onMount(async () => {
     try {
@@ -137,19 +157,26 @@
   </div>
 
   <section class="mx-3">
-    <div class="bg-cream rounded-t-lg p-2.5 mt-4">
-      <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
+  <div class="bg-cream rounded-t-lg p-2.5 mt-4">
+    <h1 class="text-left ml-2 underline font-bold">Next Event:</h1>
+  </div>
+  <div class="bg-royalBlue p-1 rounded-b-lg">
+    <div>
+      <a href={`http://localhost:5173/events/35`} target="_blank">
+        <div>
+    <div class="grid grid-cols-1 mx-3 my-1 text-left">
+      {#if otherEvents && otherEvents.length > 0}
+      {#if otherEvents[2]}
+    <div class="gap-4 text-platinum font-semibold">
+      <h1 class="event-title">{otherEvents[2].name}</h1>
+      <p class="event-date">{formatDate(otherEvents[2].datetime)}</p>
+      <!-- Add any additional information you want to display -->
     </div>
-    <div class="bg-royalBlue p-1 rounded-b-lg">
-      <div class="grid grid-cols-1 mx-3 my-1 text-left">
-
-
-        <div class="gap-4 text-platinum font-semibold">
-          
-        </div>
-      </div>
+  {/if}
+{/if}
     </div>
-  </section>
+  </div>
+</section>
 
   <div class="bg-cream rounded-t-lg mt-5 p-2">
     <h1 class="text-left ml-2 underline font-bold">Other Events:</h1>

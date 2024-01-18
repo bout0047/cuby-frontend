@@ -12,8 +12,8 @@
 
 <main>
   <section class="pt-5">
-    <a href="/profile" class="disply: inline-block"
-      ><img
+    <a href="/profile" class="display: inline-block">
+      <img
         src="../src/img/stokstraart.png"
         alt="Profile Picture"
         class="rounded-full shadow-md ml-4 mb-4 w-14 h-14"
@@ -30,4 +30,14 @@
 </main>
 
 <style>
+  /* Add your styles here */
+  /* Example styles: */
+  section {
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+
+  a {
+    color: blue;
+  }
 </style>

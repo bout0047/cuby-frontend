@@ -1,53 +1,66 @@
 <script>
-  import { each } from "svelte/internal";
-  import TopNav from "./TopNav.svelte";
-  import NavBar from "./NavBar.svelte";
-  import Scheduler from "./Scheduler.svelte";
-  
-  const date = new Date();
-  export let dateID;
-  export let dateHeading;
+  import { onMount } from 'svelte';
 
+  let dateID;
+  let dateHeading;
+
+  const date = new Date();
   const today = {
     dayNumber: date.getDate(),
     month: date.getMonth(),
-    year: date.getFullYear()
-  }
+    year: date.getFullYear(),
+  };
 
-  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
   let monthIndex = date.getMonth();
-
-  $: month = monthNames[monthIndex];
-
+  let month = monthNames[monthIndex];
   let year = date.getFullYear();
 
-  $: firstDayIndex = new Date(year, monthIndex, 1).getDay();
-
-  $: numberOfDays = new Date(year, monthIndex + 1, 0).getDate();
-
+  let firstDayIndex = new Date(year, monthIndex, 1).getDay();
+  let numberOfDays = new Date(year, monthIndex + 1, 0).getDate();
   let currentDay = date.getDate();
 
-  $: calendarCells = firstDayIndex <= 4 ? 35 : 42;
+  let calendarCells = firstDayIndex <= 4 ? 35 : 42;
 
-  const goToNextMonth = ()  => { 
+  const goToNextMonth = () => {
     if (monthIndex >= 11) {
       year += 1;
-      return monthIndex = 0;
+      return (monthIndex = 0);
     }
     monthIndex += 1;
-  }
+  };
 
-  const goToPrevMonth = ()  => { 
+  const goToPrevMonth = () => {
     if (monthIndex <= 0) {
       year -= 1;
-      return monthIndex = 11;
+      return (monthIndex = 11);
     }
     monthIndex -= 1;
-  }
+  };
 
-  $: console.log(`Month Index: ${monthIndex} --- Number Of Days: ${numberOfDays} --- First Day Index: ${firstDayIndex} ${month} ${today.dayNumber}`);
-  
+  const handleDateClick = (event, clickedMonth, clickedDay, clickedYear) => {
+    // Handle date click logic if needed
+  };
+
+  onMount(() => {
+    console.log(
+      `Month Index: ${monthIndex} --- Number Of Days: ${numberOfDays} --- First Day Index: ${firstDayIndex} ${month} ${today.dayNumber}`
+    );
+  });
 </script>
 
 <main class="container mx-auto my-8">
@@ -68,13 +81,13 @@
         {#if i < firstDayIndex || i >= numberOfDays + firstDayIndex}
           <div class="w-full h-12"></div>
         {:else}
-          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <div
-            class="w-full h-12 p-2 cursor-pointer border border-white hover:bg-gray-100 active:bg-gray-200 rounded-md transition-all duration-300 ease-in-out
-                   {i === today.dayNumber + (firstDayIndex - 1) && monthIndex === today.month && year === today.year ? 'bg-indigo-500 text-black' : ''} 
-                   {i === today.dayNumber && monthIndex === today.month && year === today.year ? 'bg-French text-Navbarblue rounded-full' : ''}"
-            on:click
-            data-dateID={`${month}_${(i - firstDayIndex + 1)}_${year}`}
+            class={`
+              w-full h-12 p-2 cursor-pointer border border-white hover:bg-gray-100 active:bg-gray-200 rounded-md transition-all duration-300 ease-in-out
+              ${i === today.dayNumber + (firstDayIndex - 1) && monthIndex === today.month && year === today.year ? 'bg-indigo-500 text-black' : ''}
+              ${i === today.dayNumber && monthIndex === today.month && year === today.year ? 'bg-French text-Navbarblue rounded-full' : ''}
+            `}
+            on:click={event => handleDateClick(event, month, i - firstDayIndex + 1, year)}
           >
             {i - firstDayIndex + 1}
           </div>

@@ -39,16 +39,9 @@
     <div class="mt-4">
       <h2 class="text-3xl font-bold mt-3 mx-10">{event.name}</h2>
       <button
-<<<<<<< Updated upstream
   id="joinLeave"
   on:click={changeButton}
   class="bg-aquamarine text-black w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
-=======
-            id="joinLeave"
-            on:click={changeButton}
-            class=" bottom-1000 left-0 right-0 bg-aquamarine text-black w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button>
-          
->>>>>>> Stashed changes
       <img src={event.link} alt="Event Image" class="max-w-full ml-7 my-4 flex justify-center items-center" aria-hidden="true" />
       <div>
         <p class="text-xl m-4 mt-3 font-bold">Where: {event.location}</p>
@@ -60,14 +53,6 @@
   {/if}
 
 </main>
-<<<<<<< Updated upstream
 <NavBar />
-=======
 
-<footer>
-  <NavBar />
-</footer>
-
-
->>>>>>> Stashed changes
 
