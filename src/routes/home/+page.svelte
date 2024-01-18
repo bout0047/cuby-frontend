@@ -3,6 +3,7 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { onMount } from 'svelte';
+  import Cookies from 'js-cookie';
 
   let id = 0;
   let otherEvents = [];
@@ -11,10 +12,22 @@
    */
   let profiles = [];
   let stats = [37, 5];
+  const token = Cookies.get('cubySession');
 
+  
   onMount(async () => {
     try {
-      const response = await fetch('http://localhost:3011/profiles');
+      console.log('token', token);
+      const response = await fetch('http://localhost:3011/profiles', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cubySession: token,
+          method: 'GET',
+        }),
+      });
 
       if (!response.ok) {
         console.error(
@@ -36,7 +49,16 @@
 
   onMount(async () => {
     try {
-      const response = await fetch('http://localhost:3011/events');
+      const response = await fetch('http://localhost:3011/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cubySession: token,
+          method: 'GET',
+        }),
+      });
       if (!response.ok) {
         throw new Error(`Failed to fetch events data: ${response.statusText}`);
       }
@@ -66,7 +88,16 @@
 
   onMount(async () => {
     try {
-      const response = await fetch('http://localhost:3011/calendar');
+      const response = await fetch('http://localhost:3011/calendar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cubySession: token,
+          method: 'GET',
+        }),
+      });
       if (!response.ok) {
         throw new Error(`Failed to fetch events data: ${response.statusText}`);
       }

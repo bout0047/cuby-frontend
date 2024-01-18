@@ -5,20 +5,30 @@
   export let data;
 
   const { event } = data;
-
+  const eventId = event.id;
+  const datetime = event.datetime;
   let joined = false;
 
+  const changeAttendance = async () => {
+    const button = document.getElementById('joinLeave');
 
-  function changeButton() {
-    let button = document.getElementById('joinLeave');
+    if (joined) {
+      try {
+        const response = await fetch(`http://localhost:3011/calendar/`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            eventId
+          }),
+        });
+        if (response.ok) {
+          button.innerHTML = 'Join Event';
+          joined = false;
+          
+        } else {
 
-    if (button?.innerHTML === 'Join Event') {
-      button.innerHTML = 'Leave Event';
-      joined = true;
-    } else {
-      button.innerHTML = 'Join Event';
-      joined = false;
-    }
   }
 
   function limitDescription(description, maxSentences = 5) {
@@ -52,6 +62,9 @@
     <p>Loading...</p>
   {/if}
 </main>
+
+<button id="joinLeave" on:click={changeAttendance} class="bg-darkestBlue text-white w-full m-3 rounded-md p-2 text-xl font-bold">Join Event</button
+
 <NavBar />
 
 

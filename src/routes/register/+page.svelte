@@ -2,13 +2,7 @@
   import '/src/app.css';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (loggedIn) {
-      goto('/home');
-    }
-  });
+  import Cookies from 'js-cookie';
 
   let username = '';
   let password = '';
@@ -38,7 +32,7 @@
 
     if (!usernameError && !passwordError && !passwordMismatchError) {
       try {
-        const response = await fetch('http://localhost:3011/register', {
+        const response = await fetch('http://localhost:3011/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -53,8 +47,9 @@
 
         if (response.ok) {
           // User registration successful, redirect to home page
-          localStorage.setItem('userToken', data.token);
-          localStorage.setItem('loggedIn', 'true');
+          console.log('User registration successful');
+          const token = data.token;
+          Cookies.set('cubySession', token);
           goto('/register/profile');
         } else {
           if (response.status === 400 && data.error === 'Username is already taken') {

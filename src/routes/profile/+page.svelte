@@ -5,11 +5,23 @@
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
    let id = 0;
- 
+   import Cookies from "js-cookie";
+
 
    onMount(async () => {
       try {
-         const response = await fetch("http://localhost:3011/profiles");
+         const cubySession = Cookies.get("cubySession");
+         const response = await fetch("http://localhost:3011/profiles", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               cubySession,
+               method: "GET",
+            }),
+         
+         });
 
          if (!response.ok) {
             console.error(

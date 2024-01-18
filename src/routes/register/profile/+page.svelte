@@ -4,6 +4,8 @@
    import "@fortawesome/fontawesome-free/js/all.js";
    import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
+   import Cookies from "js-cookie";
+
    let newName = "";
    let newEmail = "";
    let newGoals = [];
@@ -29,26 +31,6 @@
       goals: newGoals,
       interests: newInterests,
    };
-
-   onMount(async () => {
-      try {
-         const response = await fetch("http://localhost:3011/users");
-
-         if (!response.ok) {
-            console.error(
-               "Error fetching profiles:1",
-               response.status,
-               response.statusText
-            );
-            throw new Error("Failed to fetch profiles");
-         }
-
-         jsonData = await response.json();
-         jsonData = jsonData[jsonData.length - 1];
-      } catch (error) {
-         console.error("Error fetching profiles:2", error.message);
-      }
-   });
 
    function updateValues() {
       jsonData = {
@@ -80,6 +62,7 @@
 
    async function createProfile() {
       try {
+         const cubySession = Cookies.get("cubySession");
          const response = await fetch(
             `http://localhost:3011/profiles/`,
             {
@@ -87,7 +70,10 @@
                headers: {
                   "Content-Type": "application/json",
                },
-               body: JSON.stringify(jsonData),
+               body: JSON.stringify(
+                  jsonData,
+                  cubySession
+               ),
             }
          );
 

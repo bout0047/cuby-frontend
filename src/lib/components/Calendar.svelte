@@ -1,8 +1,45 @@
 <script>
-  import { each } from "svelte/internal";
+  import { onMount } from "svelte";
   import TopNav from "./TopNav.svelte";
   import NavBar from "./NavBar.svelte";
   import Scheduler from "./Scheduler.svelte";
+  import Cookies from 'js-cookie';
+  
+  const getDateFromTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString();
+  };
+  let entries = [];
+  let markedDates = [];
+  onMount(async () => {
+    try {
+      const cubySession = Cookies.get('cubySession');
+      const response = await fetch('http://localhost:3011/calendar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cubySession,
+          method: 'GET',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch calendar data: ${response.statusText}`);
+      }
+
+      const calendarData = await response.json();
+      entries = calendarData;
+      console.log(entries);
+      entries.forEach((entry) => {
+        markedDates.push(getDateFromTimestamp(entry.datetime));
+      });
+      console.log(markedDates);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  });
   
   const date = new Date();
   export let dateID;
