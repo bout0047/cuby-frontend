@@ -283,7 +283,7 @@ create Profile register
          <h2 class="text-2xl font-semibold mb-4">Create your Profile:</h2>
       </section>
       <section class="text-center border-t pt-5">
-         <!-- svelte-ignore a11y-img-redundant-alt -->
+         svelte-ignore a11y-img-redundant-alt
          <img
             src={profilepicture}
             alt="Profile Picture"
