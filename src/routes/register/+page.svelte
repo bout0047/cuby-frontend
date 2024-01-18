@@ -50,7 +50,7 @@
           console.log('User registration successful');
           const token = data.token;
           Cookies.set('cubySession', token);
-          goto('/home');
+          goto('/register/profile');
         } else {
           if (response.status === 400 && data.error === 'Username is already taken') {
             usernameTakenError = true;

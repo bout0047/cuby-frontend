@@ -14,11 +14,15 @@
   let stats = [37, 5];
   const token = Cookies.get('cubySession');
 
+  
   onMount(async () => {
     try {
       console.log('token', token);
       const response = await fetch('http://localhost:3011/profiles', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           cubySession: token,
           method: 'GET',
@@ -47,6 +51,9 @@
     try {
       const response = await fetch('http://localhost:3011/events', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           cubySession: token,
           method: 'GET',
@@ -83,6 +90,9 @@
     try {
       const response = await fetch('http://localhost:3011/calendar', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           cubySession: token,
           method: 'GET',

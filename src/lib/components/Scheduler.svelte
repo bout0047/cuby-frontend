@@ -3,9 +3,7 @@
   import Calendar from './Calendar.svelte';
   export let dateID;
   export let dateHeading;
-  import cookies from 'js-cookie';
-
-  const token = cookies.get('cubySession');
+  import Cookies from 'js-cookie';
 
   document.querySelectorAll('.am-pm-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
@@ -27,7 +25,8 @@ const createCustomEvent = async () => {
       const hour = amPmValue === 'PM' ? parseInt(hourValue, 10) + 12 : parseInt(hourValue, 10);
       const datetime = `${hour}:${minuteValue}`;
 
-      console.log(token);
+      const cubySession = Cookies.get('cubySession');
+      console.log(cubySession);
       const response = await fetch(`http://localhost:3011/calendar/`, {
         method: 'POST',
         headers: {
@@ -36,7 +35,7 @@ const createCustomEvent = async () => {
         body: JSON.stringify({
           name: eventName,
           datetime,
-          token,
+          cubySession,
         }),
       });
       console.log(response);
