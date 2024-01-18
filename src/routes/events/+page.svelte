@@ -37,6 +37,12 @@
     ? events.filter(event => 
         event.name.toLowerCase().includes(searchQuery.toLowerCase()))
     : events;
+
+    function formatDate(dateTimeString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateTimeString);
+    return date.toLocaleDateString(undefined, options);
+  }
 </script>
 
 <TopNav />
@@ -57,7 +63,7 @@
               <div
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-tr-lg bg-aquamarine text-white p-2 w-1/4"
               >
-                {event.date}
+              <p class="event-date">{formatDate(event.datetime)}</p>  
             </div>
             </div>
             <div class="flex">
