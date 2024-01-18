@@ -2,7 +2,6 @@
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { goto } from '$app/navigation';
-  import axios from 'axios';
   import Cookies from 'js-cookie';
 </script>
  
