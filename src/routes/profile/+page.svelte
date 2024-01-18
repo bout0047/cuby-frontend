@@ -36,13 +36,13 @@
             on:click={() => {
                window.location.href = "/profile/goals";
             }}
-            class="corner-button absolute bg-slate top-0 text-nowrap text-sm right-72 left-0 p-2 px-4 hover:text-cream rounded-full"
-            >Edit Goals</button>
+            class="corner-button absolute bg-aquamarine top-0 text-nowrap text-sm right-72 left-0 p-2 px-4 hover:text-cream rounded-full"
+            >Goals</button>
          <button
             on:click={() => {
                window.location.href = "/profile/edit";
             }}
-            class="corner-button absolute bg-slate top-0 text-nowrap text-sm right-0 text-right pl-1 py-2 px-3 hover:text-cream rounded-full"
+            class="corner-button absolute bg-aquamarine top-0 text-nowrap text-sm right-0 text-right pl-1 py-2 px-3 hover:text-cream rounded-full"
             >Edit Profile</button>
          <!-- svelte-ignore a11y-img-redundant-alt -->
          <img
