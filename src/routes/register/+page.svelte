@@ -2,6 +2,7 @@
   import '/src/app.css';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
+  import Cookies from 'js-cookie';
 
   onMount(async () => {
     const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
@@ -38,7 +39,7 @@
 
     if (!usernameError && !passwordError && !passwordMismatchError) {
       try {
-        const response = await fetch('http://localhost:3011/register', {
+        const response = await fetch('http://localhost:3011/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

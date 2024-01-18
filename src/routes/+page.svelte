@@ -2,14 +2,8 @@
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
-
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (loggedIn) {
-      goto('/home');
-    }
-  });
+  import axios from 'axios';
+  import Cookies from 'js-cookie';
 </script>
  
 <main>
