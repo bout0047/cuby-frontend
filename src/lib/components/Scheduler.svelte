@@ -3,6 +3,9 @@
   import Calendar from './Calendar.svelte';
   export let dateID;
   export let dateHeading;
+  import cookies from 'js-cookie';
+
+  const token = cookies.get('cubySession');
 
   document.querySelectorAll('.am-pm-toggle').forEach(function(toggle) {
     toggle.addEventListener('click', function() {
@@ -12,53 +15,6 @@
       toggle.classList.add('active');
     });
   });
-
-  const changeAttendance = async () => {
-  const button = document.getElementById('joinLeave');
-
-  if (joined) {
-    try {
-      const response = await fetch(`http://localhost:3011/calendar/`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          eventId
-        }),
-      });
-      if (response.ok) {
-        button.innerHTML = 'Join Event';
-        joined = false;
-        
-      } else {
-
-      }
-    } catch (error) {
-      console.error('Error removing calendar entry');
-    }
-  } else {
-    try {
-      const response = await fetch(`http://localhost:3011/calendar`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          eventId,
-          datetime
-        }),
-      });
-      if (response.ok) {
-        button.innerHTML = 'Leave Event';
-        joined = true;  
-      } else {
-      }
-    } catch (error) {
-      console.error('Error adding calendar entry');
-    }
-  }
-}
 
 const createCustomEvent = async () => {
     try {
@@ -71,6 +27,7 @@ const createCustomEvent = async () => {
       const hour = amPmValue === 'PM' ? parseInt(hourValue, 10) + 12 : parseInt(hourValue, 10);
       const datetime = `${hour}:${minuteValue}`;
 
+      console.log(token);
       const response = await fetch(`http://localhost:3011/calendar/`, {
         method: 'POST',
         headers: {
@@ -79,6 +36,7 @@ const createCustomEvent = async () => {
         body: JSON.stringify({
           name: eventName,
           datetime,
+          token,
         }),
       });
       console.log(response);

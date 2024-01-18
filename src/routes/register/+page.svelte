@@ -4,13 +4,6 @@
   import { onMount } from 'svelte';
   import Cookies from 'js-cookie';
 
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (loggedIn) {
-      goto('/home');
-    }
-  });
-
   let username = '';
   let password = '';
   let confirmPassword = '';
@@ -54,9 +47,10 @@
 
         if (response.ok) {
           // User registration successful, redirect to home page
-          localStorage.setItem('userToken', data.token);
-          localStorage.setItem('loggedIn', 'true');
-          goto('/register/profile');
+          console.log('User registration successful');
+          const token = data.token;
+          Cookies.set('cubySession', token);
+          goto('/home');
         } else {
           if (response.status === 400 && data.error === 'Username is already taken') {
             usernameTakenError = true;

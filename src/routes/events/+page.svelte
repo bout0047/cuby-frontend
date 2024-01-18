@@ -2,55 +2,30 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
-  import Cookies from 'js-cookie';
-
-  let events;
-
-  onMount(async () => {
-    events = fetchEvents();
-  });
-  const fetchEvents = async() => {
-    try {
-      const token = Cookies.get('cubySession');
-      const response = await fetch('http://localhost:3011/events', {
-        method: 'GET',
-        body: JSON.stringify({
-          cubySession: token,
-        }),
-      });
-      if (!response.ok) {
-          throw new Error(`Failed to fetch events data: ${response.statusText}`);
-      }
-
-      const eventsData = await response.json();
-      return eventsData;
-    } catch (error) {
-      console.log('Error fetching events', error.message);
-    }
-  }
-
+  export let data;
+ 
+  const { events } = data;
   let searchQuery = '';
-
-
+ 
+ 
   $: filteredEvents = searchQuery
-    ? events.filter(event => 
+    ? events.filter(event =>
         event.name.toLowerCase().includes(searchQuery.toLowerCase()))
     : events;
-
+ 
     function formatDate(dateTimeString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
   }
 </script>
-
+ 
 <TopNav />
 <main>
   <h1 class="text-3xl font-bold m-6 mt-0 fixed">Upcoming Events</h1>
   
   <input type="text" bind:value={searchQuery} placeholder="Search events..." class="w-full mt-12 mx-5 rounded p-2" />
-
+ 
   <div class="h-5/6 max-h-full overflow-y-auto scroll-m-10 absolute p-1">
     {#if filteredEvents.length > 0}
       <ul class="">
@@ -64,6 +39,7 @@
                 class="ml-12 w-30 top-0 right-0 font-bold rounded-tr-lg bg-aquamarine text-white p-2 w-1/4"
               >
               <p class="event-date">{formatDate(event.datetime)}</p>  
+ 
             </div>
             </div>
             <div class="flex">
@@ -83,4 +59,3 @@
     <NavBar />
   </footer>
 </main>
-

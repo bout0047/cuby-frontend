@@ -2,10 +2,10 @@
   import "../../app.css";
   import { goto } from "$app/navigation";
   import "@fortawesome/fontawesome-free/js/all.js";
+  import Cookies from "js-cookie";
 
   const logout = async () => {
-    localStorage.setItem("userToken", "");
-    localStorage.setItem("loggedIn", "false");
+    Cookies.remove("cubySession");
     goto("/");
   };
 </script>
