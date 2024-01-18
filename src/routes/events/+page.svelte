@@ -2,9 +2,34 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { goto } from '$app/navigation';
-  export let data;
+  import { onMount } from 'svelte';
+  import Cookies from 'js-cookie';
 
-  const { events } = data;
+  let events;
+
+  onMount(async () => {
+    events = fetchEvents();
+  });
+  const fetchEvents = async() => {
+    try {
+      const token = Cookies.get('cubySession');
+      const response = await fetch('http://localhost:3011/events', {
+        method: 'GET',
+        body: JSON.stringify({
+          cubySession: token,
+        }),
+      });
+      if (!response.ok) {
+          throw new Error(`Failed to fetch events data: ${response.statusText}`);
+      }
+
+      const eventsData = await response.json();
+      return eventsData;
+    } catch (error) {
+      console.log('Error fetching events', error.message);
+    }
+  }
+
   let searchQuery = '';
 
 
