@@ -2,14 +2,7 @@
   import '../app.css';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { goto } from '$app/navigation';
-  import { onMount } from 'svelte';
-
-  onMount(async () => {
-    const loggedIn = window.localStorage.getItem('loggedIn') == 'true';
-    if (loggedIn) {
-      goto('/home');
-    }
-  });
+  import Cookies from 'js-cookie';
 </script>
  
 <main>
@@ -19,7 +12,7 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="cursor-pointer bg-royalBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-2/3 text-center justify-center m-auto mt-20 p-3 rounded"
-          on:click={ () => goto('./login')}
+          on:click={ () => goto('/login')}
         >
           Login
         </div>
@@ -27,7 +20,7 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
           class="cursor-pointer bg-royalRed hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-2/3 text-center justify-center m-auto mt-16 p-3 rounded"
-          on:click={ () => goto('./register')}
+          on:click={ () => goto('/register')}
         >
           Register
         </div>

@@ -5,11 +5,28 @@
    import "@fortawesome/fontawesome-free/js/all.js";
    export let profiles = [];
    import { goto } from "$app/navigation";
-   let id = 1;
+   let id = 0;
    let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
-   let newGoals = [];
+   let newGoals = [
+      [
+         "joining a new event",
+         "connecting with more people",
+         "participate in more events",
+      ],
+      [
+         "making more eye contact",
+         "talking with a person for longer",
+         "speak publicly like a presentation",
+      ],
+      [
+         "meditate for a few minutes",
+         "do yoga until im relaxed",
+         "deeply breath in and out 10 times",
+         "take a walk",
+      ],
+   ];
    let newInterests = [];
    let jsonData = {
       id: id,
@@ -18,6 +35,10 @@
       goals: newGoals,
       interests: newInterests,
    };
+
+   let focus = "";
+   let method = "";
+   let stress = "";
 
    onMount(async () => {
       try {
@@ -33,6 +54,7 @@
          }
 
          profiles = await response.json();
+         id = profiles.length - 1;
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
@@ -43,11 +65,15 @@
          id: id,
          name: document.getElementById("newName").value,
          email: document.getElementById("newEmail").value,
-         goals: profiles[id].goals,
+         goals: [focus, method, stress],
          interests: profiles[id].interests.map((interest) => interest),
       };
       console.log(jsonData);
       sendToDataBase();
+   }
+
+   function handleSelection(subject) {
+      subject = event.target.value;
    }
 
    function toggleInterest(numberOfInterest) {
@@ -129,6 +155,44 @@
          />
       </section>
 
+      <section class="text-center pt-5">
+         <p class="text-2xl font-semibold">I want to focus on:</p>
+         <div>
+            <select
+               id="focus"
+               class="bg-somePaleGreen"
+               bind:value={focus}
+               on:change={handleSelection(focus)}
+            >
+               {#each newGoals[0] as option (option)}
+                  <option class="bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+
+            <p class="text-2xl font-semibold pt-5">I will do this by:</p>
+            <select
+               id="method"
+               class="bg-somePaleGreen"
+               bind:value={method}
+               on:change={handleSelection(method)}
+            >
+               {#each newGoals[1] as option (option)}
+                  <option class="bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+            <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
+            <select
+               id="stress"
+               class="bg-somePaleGreen"
+               bind:value={stress}
+               on:change={handleSelection(stress)}>
+               {#each newGoals[2] as option (option)}
+                  <option class="border-red bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+         </div>
+      </section>
+
       <p class="text-2xl font-semibold">Interests:</p>
       <div class="grid grid-cols-4">
          {#each profiles[id].interests as interest (interest)}
@@ -141,7 +205,7 @@
             </button>
          {/each}
       </div>
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 mb-20">
          <button
          class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate mr-5 hover:bg-Navbarblue"
          on:click={() => goto("/profile")}>Back to Profile</button>
@@ -152,7 +216,7 @@
          >Save Changes</button>
       </div>
    {:else}
-      <p>No profiles available.</p>
+      <p>loading</p>
    {/if}
 </main>
 
