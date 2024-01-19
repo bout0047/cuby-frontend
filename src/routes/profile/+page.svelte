@@ -5,11 +5,23 @@
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
    let id = 0;
- 
+   import Cookies from "js-cookie";
+
 
    onMount(async () => {
       try {
-         const response = await fetch("http://localhost:3011/profiles");
+         const cubySession = Cookies.get("cubySession");
+         const response = await fetch("http://localhost:3011/profiles", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               cubySession,
+               method: "GET",
+            }),
+         
+         });
 
          if (!response.ok) {
             console.error(
@@ -21,7 +33,10 @@
          }
 
          profiles = await response.json();
+         console.log(profiles[0].intrests)
+         console.log(profiles);
          id = profiles.length - 1;
+       console.log(id);
       } catch (error) {
          console.error("Error fetching profiles:2", error.message);
       }
@@ -32,12 +47,6 @@
 <main class="container mx-auto p-4 bg-090C9B relative">
    {#if profiles.length > 0}
       <section class="text-center relative">
-         <button
-            on:click={() => {
-               window.location.href = "/profile/goals";
-            }}
-            class="corner-button absolute bg-slate top-0 text-nowrap text-sm right-72 left-0 p-2 px-4 hover:text-cream rounded-full"
-            >Edit Goals</button>
          <button
             on:click={() => {
                window.location.href = "/profile/edit";
