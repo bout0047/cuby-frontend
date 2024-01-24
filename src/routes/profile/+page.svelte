@@ -3,6 +3,8 @@
    import NavBar from "$lib/components/NavBar.svelte";
    import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
+   import Loading from '$lib/components/Loading.svelte'
+   let loading = true;
    export let profiles = [];
    let id = 0;
    import Cookies from "js-cookie";
@@ -40,11 +42,12 @@
          console.error("Error fetching profiles:2", error.message);
       }
    });
-
 </script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
-   {#if profiles.length > 0}
+   {#if loading}
+   <Loading/>
+   {:else if profiles.length > 0}
       <section class="text-center relative">
          <button
             on:click={() => {
@@ -89,11 +92,10 @@
             </button>
          {/each}
       </div>
-
-      <footer>
-         <NavBar />
-      </footer>
    {:else}
+   <footer>
+      <NavBar />
+   </footer>
       <p>loading...</p>
    {/if}
 </main>
