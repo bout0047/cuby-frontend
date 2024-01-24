@@ -22,6 +22,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Build SvelteKit
+        run: |
+          npm run build
+
       - name: Test
         run: npm run test
 
