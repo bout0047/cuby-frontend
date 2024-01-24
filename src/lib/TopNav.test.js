@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import TopNav from './components/TopNav.svelte';
 import { navigate } from 'svelte-routing';
 
-test('when the logout button is pressed the user is redirected to the first page', async () => {
+test('when the logout button is pressed the user is redirected to the landing page', async () => {
   render(TopNav);
 
   const logoutButton = screen.getByTestId('logout-button');
