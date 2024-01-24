@@ -46,7 +46,7 @@ The self-help page is meant to give you exercises you can do to decrease your an
 ## Overview
 Cuby is a comprehensive platform aiming to enhance personal growth and event participation through various microservices. This README outlines the project's progress and future steps as captured in our development roadmap.
 
-## Roadmap
+# Roadmap
 Our roadmap is structured into sprints, each with its own set of goals and activities. The ultimate milestone is to deliver a fully integrated Cuby application with a robust microservice infrastructure.
 
 ### Sprint 0: Inception
