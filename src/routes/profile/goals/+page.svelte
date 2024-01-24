@@ -6,7 +6,6 @@
    export let profiles = [];
    import { goto } from "$app/navigation";
    let id = 0;
-   let profilepicture = "../src/img/stokstraart.png";
    let newName = "";
    let newEmail = "";
    let newGoals = [
@@ -35,10 +34,13 @@
       goals: newGoals,
       interests: newInterests,
    };
-
    let focus = "";
    let method = "";
    let stress = "";
+
+   function handleSelection(subject) {
+      subject = event.target.value;
+   }
 
    onMount(async () => {
       try {
@@ -63,27 +65,13 @@
    function updateValues() {
       jsonData = {
          id: id,
-         name: document.getElementById("newName").value,
-         email: document.getElementById("newEmail").value,
+         name: profiles[id].name,
+         email: profiles[id].email,
          goals: [focus, method, stress],
-         interests: profiles[id].interests.map((interest) => interest),
+         interests: profiles[id].interests,
       };
       console.log(jsonData);
       sendToDataBase();
-   }
-
-   function handleSelection(subject) {
-      subject = event.target.value;
-   }
-
-   function toggleInterest(numberOfInterest) {
-      if (profiles[id].interests[numberOfInterest][2] === "true") {
-         profiles[id].interests[numberOfInterest][2] = "false";
-      } else {
-         profiles[id].interests[numberOfInterest][2] = "true";
-      }
-
-      newInterests = profiles[id].interests.map((interest) => interest[2]);
    }
 
    function saveChanges() {
@@ -119,48 +107,20 @@
          console.error("Error updating profile:", error);
       }
    }
-   
 </script>
 
 <main class="container mx-auto px-4 bg-090C9B relative">
    {#if profiles.length > 0}
- 
       <section class="mt-6">
-         <h2 class="text-2xl font-semibold mb-4">Edit your Profile:</h2>
+         <h2 class="text-2xl font-semibold">Edit your Goals:</h2>
+         <div class="relative inline-block text-left" />
       </section>
       <section class="text-center border-t pt-5">
-         <!-- svelte-ignore a11y-img-redundant-alt -->
-         <img
-            src={profilepicture}
-            alt="Profile Picture"
-            class="rounded-full shadow-md mx-auto mb-4 w-60 h-60"
-         />
-         <button
-            class="absolute right-20 top-64 bg-white rounded-full text-lg px-2"
-            ><i class="fa-solid fa-plus" /></button
-         >
-         <input
-            type="text"
-            id="newName"
-            class="caret-Navbarblue font-bold"
-            value={profiles[id].name}
-         />
-
-         <br />
-         <input
-            type="text"
-            id="newEmail"
-            class="caret-Navbarblue text-black"
-            value={profiles[id].email}
-         />
-      </section>
-
-      <section class="text-center pt-5">
          <p class="text-2xl font-semibold">I want to focus on:</p>
          <div>
             <select
                id="focus"
-               class="bg-somePaleGreen"
+               class="bg-aquamarine"
                bind:value={focus}
                on:change={handleSelection(focus)}
             >
@@ -172,7 +132,7 @@
             <p class="text-2xl font-semibold pt-5">I will do this by:</p>
             <select
                id="method"
-               class="bg-somePaleGreen"
+               class="bg-aquamarine"
                bind:value={method}
                on:change={handleSelection(method)}
             >
@@ -183,7 +143,7 @@
             <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
             <select
                id="stress"
-               class="bg-somePaleGreen"
+               class="bg-aquamarine"
                bind:value={stress}
                on:change={handleSelection(stress)}>
                {#each newGoals[2] as option (option)}
@@ -192,31 +152,17 @@
             </select>
          </div>
       </section>
-
-      <p class="text-2xl font-semibold">Interests:</p>
-      <div class="grid grid-cols-4">
-         {#each profiles[id].interests as interest (interest)}
-            <button
-               on:click={() => toggleInterest(interest[0])}
-               class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${
-                  interest[2] === "true" ? "bg-aquamarine" : ""
-               }`}
-            >{interest[1]}
-            </button>
-         {/each}
-      </div>
-      <div class="grid grid-cols-2 mb-20">
+      <div class="grid grid-cols-2"> 
          <button
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate mr-5 hover:bg-Navbarblue"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
          on:click={() => goto("/profile")}>Back to Profile</button>
-      
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-slate hover:bg-Navbarblue"
+         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue ml-5 hover:bg-platinum"
          >Save Changes</button>
       </div>
    {:else}
-      <p>loading</p>
+      <p>loading...</p>
    {/if}
 </main>
 

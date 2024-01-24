@@ -1,8 +1,10 @@
 // @ts-nocheck
 import { render, screen } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
-import NavBar from '../lib/components/NavBar.svelte';
+import NavBar from './components/NavBar.svelte';
 import { navigate } from 'svelte-routing';
+import { test } from '@testing-library/svelte';
+import { expect } from '@testing-library/jest-dom';
 
 test('when events icon is pressed it should take the user to events page', async () => {
   render(NavBar);

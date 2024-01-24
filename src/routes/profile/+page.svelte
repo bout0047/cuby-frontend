@@ -91,13 +91,12 @@
          {/each}
       </div>
 
-      
+      <footer>
+         <NavBar />
+      </footer>
    {:else}
       <p>loading...</p>
    {/if}
-   <footer>
-      <NavBar />
-   </footer>
 </main>
 
 <style>
