@@ -200,6 +200,7 @@
       <button
          on:click={saveChanges}
          class="mt-10 mb-5 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         data-testid="createProfile" 
          >Create Profile</button>
    {:else}
       <p>No profiles available.</p>
