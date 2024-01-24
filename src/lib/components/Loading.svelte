@@ -8,7 +8,6 @@
     <div class="side" />
   </div>
 </body>
-
 <style>
   body {
     display: flex;
