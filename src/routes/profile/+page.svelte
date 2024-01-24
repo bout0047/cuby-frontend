@@ -10,7 +10,6 @@
    let loading = true;
    import Cookies from "js-cookie";
 
-
    onMount(async () => {
       try {
          const cubySession = Cookies.get("cubySession");
