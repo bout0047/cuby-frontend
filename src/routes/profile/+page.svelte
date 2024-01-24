@@ -7,7 +7,6 @@
    let id = 0;
    import Cookies from "js-cookie";
 
-
    onMount(async () => {
       try {
          const cubySession = Cookies.get("cubySession");
