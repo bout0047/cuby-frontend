@@ -80,19 +80,10 @@ Our roadmap is structured into sprints, each with its own set of goals and activ
   - Debugged application to ensure stability.
 - **Next Steps**: Preparing for the final presentation and working towards the stretch goals.
 
-### Final Stretch: Additional Goals
-- **Stretch Goals**:
-  1. Social integration to enhance user connectivity.
-  2. User interactions to foster community engagement.
-  3. Exploring additional features for Cuby hardware integration.
 
 ### Project Conclusion
 - **Final Product**: A fully integrated Cuby application with a focus on user engagement and event participation.
-- **Final Activities**:
-  - Presentation of the completed project.
-  - Evaluation of project outcomes against initial goals.
-  - Documentation of lessons learned and potential future enhancements.
-
+  
 - A special thank you to all contributors and stakeholders who have made this project possible.
 
 
