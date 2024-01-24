@@ -1,3 +1,4 @@
+  <script>
   import { goto } from '$app/navigation';
   import TopNav from '$lib/components/TopNav.svelte';
   import NavBar from '$lib/components/NavBar.svelte';
@@ -28,7 +29,9 @@
           joined = false;
           
         } else {
-
+        }
+      }
+    }
   }
 
   function limitDescription(description, maxSentences = 5) {
