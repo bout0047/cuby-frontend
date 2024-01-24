@@ -26,6 +26,9 @@ jobs:
         uses: actions/configure-pages@v3
         with:
           static_site_generator: sveltekit
+      
+      - name: Run Tests
+        run: npm run test
 
       - name: Build
         run: npm run build
