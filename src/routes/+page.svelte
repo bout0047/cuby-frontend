@@ -13,6 +13,7 @@
         <div
           class="cursor-pointer bg-royalBlue hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-2/3 text-center justify-center m-auto mt-20 p-3 rounded"
           on:click={ () => goto('/login')}
+          data-testid="login"
         >
           Login
         </div>
@@ -21,6 +22,7 @@
         <div
           class="cursor-pointer bg-royalRed hover:bg-somePaleGreen text-somePaleGreen hover:text-black font-semibold w-2/3 text-center justify-center m-auto mt-16 p-3 rounded"
           on:click={ () => goto('/register')}
+          data-testid="register"
         >
           Register
         </div>

@@ -23,7 +23,7 @@
     <div><i class="absolute fa-solid fa-cube text-4xl top-8 right-40 text-Navbarblue"></i></div>
 
     <div class="absolute top-0 right-0 text-2xl p-3 mr-4 mt-5">
-      <button on:click={logout}>
+      <button on:click={logout} data-testid="logout-button">
         <i class="fa-solid fa-arrow-right-from-bracket" />
       </button>
     </div>
