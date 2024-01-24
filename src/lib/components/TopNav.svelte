@@ -11,8 +11,8 @@
 </script>
 
 <main>
-  <section class="pt-5">
-    <a href="/profile" class="disply: inline-block">
+  <section class="pt-5 flex items-center justify-between">
+    <a href="/profile" class="inline-block">
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
         src="../src/img/stokstraart.png"

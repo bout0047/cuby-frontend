@@ -2,6 +2,8 @@
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
   import { goto } from '$app/navigation';
+  import Loading from '$lib/components/Loading.svelte'; // Import your Loading component
+  let loading = true; // Add a loading variable
   import { onMount } from 'svelte';
   import Cookies from 'js-cookie';
   let events = [];
@@ -42,8 +44,17 @@
     const date = new Date(dateTimeString);
     return date.toLocaleDateString(undefined, options);
   }
+
+  // Simulate a minimum loading time of 3 seconds
+  setTimeout(() => {
+    loading = false;
+  }, 3000);
+
 </script>
 
+{#if loading}
+    <Loading />
+  {/if}
 <TopNav />
 <main>
   <h1 class="text-3xl font-bold m-6 mt-0 fixed">Upcoming Events</h1>
