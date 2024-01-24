@@ -22,9 +22,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build SvelteKit
-        run: |
-          npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+        with:
+          static_site_generator: sveltekit
 
       - name: Test
         run: npm run test
