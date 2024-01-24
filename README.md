@@ -27,12 +27,6 @@ You can preview the production build with `npm run preview`.
 Sprint 1 Goals
 MVP Foundations
 
-# Cuby Project README - Sprint 1: MVP Foundations
-
-## Introduction
-
-Welcome to the Sprint 1 phase of the Cuby project! This README provides insights into our achievements, goals, and the planned roadmap for the initial development stage of the Cuby application. Our focus in this sprint was to lay the foundational elements for the Minimum Viable Product (MVP).
-
 ## Sprint 1
 
 ### MVP Foundations
