@@ -24,53 +24,52 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-Sprint 1 Goals
-MVP Foundations
 
-## Sprint 2
 
-### Enhancing the MVP
-Our main goals for this sprint were:
+# Sprint 3
 
-1. **Event Services Development:** Building services for better event management and participation.
-2. **Profile Services Creation:** Making personalized user profile services.
-3. **Home Page Improvement:** Adding dynamic, user-specific content to the home page.
-4. **Calendar Enhancement:** Upgrading the calendar for better event handling.
-5. **Basic Security Implementation:** Introducing security measures for user data protection.
+### Completing the MVP
+Our main objectives for this sprint were:
+
+1. **Complete Calendar Integration:** Fully integrating a functional calendar into the app.
+2. **Finish Self-Help Service:** Providing users with tools and resources for anxiety relief.
+3. **Connect Cuby Hardware and App:** Ensuring smooth interaction between the Cuby device and the app.
 
 ## Planned Activities
 
-What we focused on in Sprint 2:
+Activities for Sprint 3 included:
 
-1. **Cuby Hardware Improvement:** Enhancing the Cuby device for better software integration.
-2. **Microservices Integration:** Incorporating new services into the main application.
-3. **Goal Reassessment:** Regularly checking our goals to align with user feedback and project direction.
+1. **Enhancing App Design:** Improving the user interface for a better look and feel.
+2. **Integrating All Components:** Combining all developed parts of the app into a cohesive whole.
+3. **Debugging:** Identifying and fixing any issues in the application.
 
-## Achievements in Sprint 2
+## Achievements in Sprint 3
 
 ### Current Product Status
 
-- **Enhanced MVP:** We've added new features, making our MVP closer to the final product.
-- **Project Plan Update:** Updated our progress and added new tasks based on the sprint's development.
+- **Near-Complete MVP:** Developed an MVP that closely resembles the final envisioned product.
+- **Updated Project Portfolio:** Documented the latest developments, including integration and UI enhancements.
 
 ### Completed Activities
 
-- **App Structure Refinement:** Improved the structure and integration of the app components.
-- **Home Page Extension:** Enhanced the home page to be more engaging and informative.
-- **Advanced Calendar Development:** Created a more functional calendar feature.
-- **Security Strengthening:** Enhanced the app's security protocols.
-- **Hardware Prototyping Continuation:** Made significant progress in Cuby hardware and software integration.
+- **Design Enhancement:** Applied final touches to the UI for a professional appearance.
+- **Service Integration:** Successfully integrated the calendar and self-help services into the app.
+- **Hardware-Software Connection:** Established a seamless link between the Cuby hardware and the software.
 
 ### Outcome
 
-- **Feature-Rich MVP:** Delivered an MVP with more functionalities, especially in events and profiles.
-- **UI and Styling Enhancements:** Improved the app's appearance and user experience.
-- **Integration Testing:** Ensured new features integrate well with existing ones.
-- **Application Debugging:** Addressed and resolved key issues for better stability.
+- **Functional MVP Release:** Delivered an MVP with complete user experience and all planned features.
+- **Extensive Debugging:** Conducted thorough debugging for stability and performance.
+- **Final Presentation Preparation:** Readied the application for its final showcase, demonstrating the project's achievements and potential.
 
+## Conclusion
 
+With the completion of Sprint 3, we are poised to present the fully functional Cuby app, evaluate our achievements against our initial goals, and consider future enhancements based on user feedback and test results.
 
-*Keep an eye out for our next README updates for more information on our progress.*
+---
+
+*Keep an eye out for our final presentation and further updates on the Cuby project.*
+
 
 
 
