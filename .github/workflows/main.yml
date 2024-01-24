@@ -29,7 +29,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Deploy to GitHub Pages
-        run: |
-          gh pages --dist=./build --branch=gh-pages
