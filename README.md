@@ -24,79 +24,71 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Sprint 1 Goals
+MVP Foundations
 
-Sprint 1 Overview - Cuby Application
-Goals for Sprint 1: MVP Foundations
+# Cuby Project README - Sprint 1: MVP Foundations
 
-In the first sprint of the Cuby project, our primary focus was on establishing the foundations for the Minimum Viable Product (MVP). The goals set for this phase were crucial in laying the groundwork for the application’s development. Key goals included:
+## Introduction
 
-    Development of a Roadmap for the MVP: Crafting a clear, strategic plan that outlines the phases and key features for the MVP.
+Welcome to the Sprint 1 phase of the Cuby project! This README provides insights into our achievements, goals, and the planned roadmap for the initial development stage of the Cuby application. Our focus in this sprint was to lay the foundational elements for the Minimum Viable Product (MVP).
 
-    Creation of a CI/CD Pipeline: Setting up a continuous integration and continuous deployment pipeline to streamline development and deployment processes.
+## Sprint 1
 
-    Compilation of a Product Backlog: Assembling a backlog with prioritized features and tasks, ensuring a structured approach to tackling the project requirements.
+### MVP Foundations
+Our goals for Sprint 1 were centered around establishing a solid base for the MVP:
 
-    Setup of the Basic Structure for the Application: Establishing the fundamental architecture and framework for the application using SvelteKit and Tailwind CSS.
+1. **MVP Roadmap Development:** Creating a strategic roadmap for the MVP.
+2. **CI/CD Pipeline Creation:** Setting up a CI/CD pipeline for efficient development and deployment.
+3. **Product Backlog Compilation:** Assembling a prioritized list of features and tasks.
+4. **Basic Application Structure Setup:** Establishing the application's fundamental structure using SvelteKit and Tailwind CSS.
+5. **Styling Guidelines Establishment:** Developing consistent UI design principles.
 
-    Establishment of Styling Guidelines: Developing a consistent set of UI design principles to ensure a cohesive visual experience across the application.
+## Planned Activities
 
-Planned Activities
+Our activities for this sprint focused on:
 
-The sprint involved several key activities aimed at achieving these goals:
+1. **Development Environment Structuring:** Setting up necessary tools and frameworks.
+2. **Task Definition and Allocation:** Outlining and allocating sprint tasks among team members.
+3. **Core Feature Development:** Developing core features such as:
+   - Events-related microservices
+   - Profile-related microservices
+   - Basic home page functionality
+   - Basic calendar view
+   - Basic security measures
 
-    Structuring the Development Environment: Setting up all necessary tools and frameworks to facilitate efficient development.
+## Achievements in Sprint 1
 
-    Defining Tasks and Allocating Responsibilities: Clearly outlining tasks for the sprint and allocating them to appropriate team members.
+### Current Product Status
 
-    Outlining Core Features for Development: Focusing on the development of:
-        Events-related microservices.
-        Profile-related microservices.
-        Basic home page functionality.
-        Basic calendar view.
-        Basic security measures.
+- **Prototype Development:** Developed a prototype showcasing key features.
+- **Project Portfolio Assembly:** Compiled a portfolio including the prototype, user stories, and preliminary designs.
 
-Expected Deliverables
+### Completed Activities
 
-The deliverables expected by the end of Sprint 1 included:
+- **MVP Roadmap Execution:** Conducted planning sessions for a clear MVP roadmap.
+- **Development Environment Setup:** Tailored the environment for SvelteKit and Tailwind CSS.
+- **User Stories Writing and Refinement:** Aligned development with user needs through detailed user stories.
+- **Application Structure Establishment:** Laid the foundational structure for future development.
+- **Styling Guidelines Design and Application:** Implemented consistent styling guidelines.
 
-    Functional Prototype: A basic version of the application showcasing essential navigation and features.
+### Outcome
 
-    Initial Version of the Portfolio: A portfolio presenting the project’s direction, including the prototype, user stories, and preliminary designs.
+- **Microservices Integration:** Integrated initial microservices for events and profiles.
+- **Basic Home Page Launch:** Launched a basic home page with navigation.
+- **Basic Calendar View Implementation:** Introduced a basic calendar view for event scheduling.
+- **Basic Security Features Implementation:** Ensured foundational security for user data and application integrity.
+- **Hardware Prototyping:** Began integrating Cuby's physical component with the software.
+- **Project Trajectory Reassessment:** Adjusted the approach based on MVP feedback.
 
-    Documented User Stories: Detailed user stories to guide and inform the development process.
+## Conclusion
 
-Achievements in Sprint 1
-Current Product Status
+This sprint has established a strong foundation for our journey towards a fully functional MVP for the Cuby application. The dedication and hard work of our team have been key in achieving these milestones, and we are excited to continue this momentum in the next phases of development.
 
-    Prototype Development: Successfully developed a prototype that showcases the key features planned for the sprint.
+---
 
-    Project Portfolio Assembly: Compiled a portfolio that includes the prototype, user stories, and preliminary design.
+*Stay tuned for more updates in our upcoming READMEs.*
 
-Completed Activities
-
-    MVP Roadmap Execution: Conducted project planning sessions that resulted in a clear and actionable MVP roadmap.
-
-    Development Environment Setup: Tailored the development environment specifically for SvelteKit and Tailwind CSS.
-
-    User Stories Writing and Refinement: Focused on writing and refining user stories to ensure alignment with user needs.
-
-    Initial Application Structure Establishment: Laid the foundational structure of the application, setting the stage for future development.
-
-    Styling Guidelines Design and Application: Created and applied consistent styling guidelines across the application.
-
-Outcome
-
-    Microservices Integration: Successfully integrated initial microservices for events and profiles into the prototype.
-
-    Basic Home Page Launch: Launched a basic home page with functional navigation to different application sections.
-
-    Basic Calendar View Implementation: Introduced a basic calendar view, providing an overview of event scheduling.
-
-    Basic Security Features Implementation: Integrated foundational security features to protect user data and ensure application integrity.
-
-    Hardware Prototyping: Initiated the process of integrating Cuby’s physical component with the software.
-
-    Project Trajectory Reassessment: Adjusted the project direction based on feedback and learnings from the MVP development.
 
 ### Things we have used for this project are:
 Svelte: https://svelte.dev/
