@@ -27,59 +27,62 @@ You can preview the production build with `npm run preview`.
 Sprint 1 Goals
 MVP Foundations
 
-## Sprint 1
+# Sprint 1
 
-### MVP Foundations
-Our goals for Sprint 1 were centered around establishing a solid base for the MVP:
+### Building the Base
+We had some main goals for starting our project:
 
-1. **MVP Roadmap Development:** Creating a strategic roadmap for the MVP.
-2. **CI/CD Pipeline Creation:** Setting up a CI/CD pipeline for efficient development and deployment.
-3. **Product Backlog Compilation:** Assembling a prioritized list of features and tasks.
-4. **Basic Application Structure Setup:** Establishing the application's fundamental structure using SvelteKit and Tailwind CSS.
-5. **Styling Guidelines Establishment:** Developing consistent UI design principles.
-
-## Planned Activities
-
-Our activities for this sprint focused on:
-
-1. **Development Environment Structuring:** Setting up necessary tools and frameworks.
-2. **Task Definition and Allocation:** Outlining and allocating sprint tasks among team members.
-3. **Core Feature Development:** Developing core features such as:
-   - Events-related microservices
-   - Profile-related microservices
-   - Basic home page functionality
-   - Basic calendar view
-   - Basic security measures
+1. **Making a Plan for the MVP:** We made a detailed plan for our basic app version.
+2. **Setting Up a CI/CD Pipeline:** We prepared a system for coding and sharing our work smoothly.
+3. **Listing Our Tasks:** We made a list of important tasks and features to work on first.
+4. **Starting the App Structure:** We began building the basic setup of our app using SvelteKit and Tailwind CSS.
+5. **Deciding on Design Rules:** We made rules for how our app should look to keep it looking neat and similar everywhere.
 
 ## Achievements in Sprint 1
 
+Here's what we focused on doing:
+
+1. **Getting Ready to Code:** We set up all the tools we needed to start coding.
+2. **Planning Who Does What:** We decided who in the team would do each task.
+3. **Choosing Main Features to Make:** We worked on:
+   - Services for events
+   - Services for user profiles
+   - A simple starting page
+   - A basic calendar
+   - Basic safety features for our app
+
+## Our Achievements in Sprint 1
+
 ### Current Product Status
 
-- **Prototype Development:** Developed a prototype showcasing key features.
-- **Project Portfolio Assembly:** Compiled a portfolio including the prototype, user stories, and preliminary designs.
+- **A First Look at Our App:** We made a first version that shows some basic parts of our app.
+- **Showing Our Project Plan:** We put together a presentation of our app idea, including our first version, our plans, and some early designs.
 
-### Completed Activities
+### Work We Finished
 
-- **MVP Roadmap Execution:** Conducted planning sessions for a clear MVP roadmap.
-- **Development Environment Setup:** Tailored the environment for SvelteKit and Tailwind CSS.
-- **User Stories Writing and Refinement:** Aligned development with user needs through detailed user stories.
-- **Application Structure Establishment:** Laid the foundational structure for future development.
-- **Styling Guidelines Design and Application:** Implemented consistent styling guidelines.
+- **Making Our MVP Plan:** We had meetings to make a clear plan for our basic app.
+- **Setting Up for Coding:** We got our coding space ready, especially for SvelteKit and Tailwind CSS.
+- **Writing Our User Stories:** We wrote down stories to help us understand what our users need.
+- **Building the App's Foundation:** We started the basic structure of our app.
+- **Designing How Our App Looks:** We made sure our app has a consistent and nice look.
 
-### Outcome
+### Results
 
-- **Microservices Integration:** Integrated initial microservices for events and profiles.
-- **Basic Home Page Launch:** Launched a basic home page with navigation.
-- **Basic Calendar View Implementation:** Introduced a basic calendar view for event scheduling.
-- **Basic Security Features Implementation:** Ensured foundational security for user data and application integrity.
-- **Hardware Prototyping:** Began integrating Cuby's physical component with the software.
-- **Project Trajectory Reassessment:** Adjusted the approach based on MVP feedback.
+- **Putting Parts Together:** We added the first services for events and profiles to our app.
+- **Starting Page Ready:** We made a simple starting page where you can go to different parts of the app.
+- **Basic Calendar:** We made a simple calendar to show events.
+- **Safety First:** We added some basic safety features to protect our users and our app.
+- **Starting on Cuby's Physical Part:** We began working on how the Cuby device will work with our app.
+- **Thinking Over Our Plan:** We looked at what we did and thought about how to improve.
 
-## Conclusion
+## Ending Notes
 
-This sprint has established a strong foundation for our journey towards a fully functional MVP for the Cuby application. The dedication and hard work of our team have been key in achieving these milestones, and we are excited to continue this momentum in the next phases of development.
+We've made a good start in building our Cuby app. Everyone worked hard and did a great job. We're excited to keep working and make more progress in the next parts of our project.
 
 ---
+
+*Keep an eye out for more updates in our next READMEs.*
+
 
 *Stay tuned for more updates in our upcoming READMEs.*
 
