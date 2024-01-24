@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
-import TopNav from '../lib/components/TopNav.svelte';
+import TopNav from './components/TopNav.svelte';
 import { navigate } from 'svelte-routing';
 
 test('when the logout button is pressed the user is redirected to the first page', async () => {

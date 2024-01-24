@@ -1,6 +1,4 @@
 <script>
-// @ts-nocheck
-
 
   import NavBar from '$lib/components/NavBar.svelte';
   import TopNav from '$lib/components/TopNav.svelte';
@@ -9,6 +7,9 @@
 
   let id = 0;
   let otherEvents = [];
+  /**
+   * @type {string | any[]}
+   */
   let profiles = [];
   let stats = [37, 5];
   const token = Cookies.get('cubySession');
@@ -38,7 +39,6 @@
       }
 
       profiles = await response.json();
-      console.log('profiles', profiles);
       id = profiles.length - 1;
       console.log(profiles[id]);
     } catch (error) {
