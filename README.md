@@ -1,4 +1,4 @@
-# Sveltekit tailwind boilerplate
+# Cuby Project README
 
 We use this Sveltekit and tailwind boilerplate throughout the whole course.
 
@@ -42,6 +42,59 @@ The statistics page shows you some specific statistics that are meant purely for
 
 ### Self-Help
 The self-help page is meant to give you exercises you can do to decrease your anxiety. These exercises can vary from meditation to yoga to breathing. If you click on one of these exercises it will link you to a youtube video, or something in that direction. From that point you can do the exercise to help reduce anxiety.
+
+## Overview
+Cuby is a comprehensive platform aiming to enhance personal growth and event participation through various microservices. This README outlines the project's progress and future steps as captured in our development roadmap.
+
+## Roadmap
+Our roadmap is structured into sprints, each with its own set of goals and activities. The ultimate milestone is to deliver a fully integrated Cuby application with a robust microservice infrastructure.
+
+### Sprint 0: Inception
+- **Current Product**: Initial Prototype, Portfolio creation.
+- **Completed Activities**:
+  - Project planning and environment setup.
+  - Writing user stories and documentation.
+- **Next Steps**: Finalizing the MVP roadmap, setting up the pipeline, and defining styling guidelines.
+
+### Sprint 1: MVP Foundations
+- **Current Product**: MVP with basic event and profile microservices, home page, and security features.
+- **Completed Activities**:
+  - Established project structure and integrated initial microservices.
+  - Conducted hardware prototyping for Cuby.
+  - Reassessed goals based on MVP feedback.
+- **Next Steps**: Development of the integrated calendar and self-help microservice. Connecting Cuby hardware with the application.
+
+### Sprint 2: MVP Enhancement
+- **Current Product**: Enhanced MVP with events, profiles, and basic calendar functionalities.
+- **Completed Activities**:
+  - Refined existing microservices.
+  - Initiated styling and UI polishing.
+  - Began integration of microservices with Cuby hardware.
+- **Next Steps**: Final integration of all components, extensive debugging, and styling enhancements.
+
+### Sprint 3: MVP Finalization
+- **Current Product**: MVP with integrated calendar, self-help microservices, and Cuby connectivity.
+- **Completed Activities**:
+  - Polished application styling for consistency.
+  - Conducted final integration tests.
+  - Debugged application to ensure stability.
+- **Next Steps**: Preparing for the final presentation and working towards the stretch goals.
+
+### Final Stretch: Additional Goals
+- **Stretch Goals**:
+  1. Social integration to enhance user connectivity.
+  2. User interactions to foster community engagement.
+  3. Exploring additional features for Cuby hardware integration.
+
+### Project Conclusion
+- **Final Product**: A fully integrated Cuby application with a focus on user engagement and event participation.
+- **Final Activities**:
+  - Presentation of the completed project.
+  - Evaluation of project outcomes against initial goals.
+  - Documentation of lessons learned and potential future enhancements.
+
+- A special thank you to all contributors and stakeholders who have made this project possible.
+
 
 ### Things we have used for this project are:
 Svelte: https://svelte.dev/
