@@ -2,11 +2,29 @@
    // @ts-nocheck
    import "../../../app.css";
    import "@fortawesome/fontawesome-free/js/all.js";
-   import { onMount } from "svelte";
    let profilepicture = "../src/img/stokstraart.png";
+   import Cookies from "js-cookie";
+
    let newName = "";
    let newEmail = "";
-   let newGoals = [];
+   let newGoals = [
+      [
+         "joining a new event",
+         "connecting with more people",
+         "participate in more events",
+      ],
+      [
+         "making more eye contact",
+         "talking with a person for longer",
+         "speak publicly like a presentation",
+      ],
+      [
+         "meditate for a few minutes",
+         "do yoga until im relaxed",
+         "deeply breath in and out 10 times",
+         "take a walk",
+      ],
+   ];
    let newInterests = [
       ["0", "Football", "false"],
       ["1", "Basketball", "false"],
@@ -21,8 +39,10 @@
       ["10", "Music", "false"],
       ["11", "Puzzle", "false"],
     ];
+   let focus = "";
+   let method = "";
+   let stress = "";
     
-   let jsonData = [];
    let profileData = {
       name: newName,
       email: newEmail,
@@ -30,36 +50,21 @@
       interests: newInterests,
    };
 
-   onMount(async () => {
-      try {
-         const response = await fetch("http://localhost:3011/users");
-
-         if (!response.ok) {
-            console.error(
-               "Error fetching profiles:1",
-               response.status,
-               response.statusText
-            );
-            throw new Error("Failed to fetch profiles");
-         }
-
-         jsonData = await response.json();
-         jsonData = jsonData[jsonData.length - 1];
-      } catch (error) {
-         console.error("Error fetching profiles:2", error.message);
-      }
-   });
-
    function updateValues() {
-      jsonData = {
-         name: jsonData.username,
+      profileData = {
+         name: document.getElementById("newName").value,
          email: document.getElementById("newEmail").value,
-         goals: newGoals,
+         goals: [focus, method, stress],
          interests: profileData.interests.map((interest) => interest),
       };
-      console.log(jsonData);
+      console.log(profileData);
       createProfile();
    }
+
+   function handleSelection(subject) {
+      subject = event.target.value;
+   }
+
 
    function toggleInterest(numberOfInterest) {
       if (profileData.interests[numberOfInterest][2] === "true") {
@@ -80,6 +85,7 @@
 
    async function createProfile() {
       try {
+         const cubySession = Cookies.get("cubySession");
          const response = await fetch(
             `http://localhost:3011/profiles/`,
             {
@@ -87,7 +93,10 @@
                headers: {
                   "Content-Type": "application/json",
                },
-               body: JSON.stringify(jsonData),
+               body: JSON.stringify(
+                  profileData,
+                  cubySession
+               ),
             }
          );
 
@@ -110,7 +119,7 @@
 </script>
 
 <main class="container mx-auto px-4 bg-090C9B relative">
-   {#if jsonData}
+   {#if profileData}
       <section class="mt-6">
          <h2 class="text-2xl font-semibold mb-4">Create your Profile:</h2>
       </section>
@@ -121,15 +130,11 @@
             alt="Profile Picture"
             class="rounded-full shadow-md mx-auto mb-4 w-60 h-60"
          />
-         <button
-            class="absolute right-20 top-64 bg-white rounded-full text-lg px-2"
-            ><i class="fa-solid fa-plus" /></button
-         >
          <input
             type="text"
             id="newName"
             class="caret-Navbarblue font-bold"
-            value={jsonData.username}
+            value=""
             placeholder= "Your Name"
          />
 
@@ -142,6 +147,43 @@
             placeholder= "Your Email"
          />
       </section>
+      <section class="text-center pt-5">
+         <p class="text-2xl font-semibold">I want to focus on:</p>
+         <div>
+            <select
+               id="focus"
+               class="bg-somePaleGreen"
+               bind:value={focus}
+               on:change={handleSelection(focus)}
+            >
+               {#each newGoals[0] as option (option)}
+                  <option class="bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+
+            <p class="text-2xl font-semibold pt-5">I will do this by:</p>
+            <select
+               id="method"
+               class="bg-somePaleGreen"
+               bind:value={method}
+               on:change={handleSelection(method)}
+            >
+               {#each newGoals[1] as option (option)}
+                  <option class="bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+            <p class="text-2xl font-semibold pt-5">If I stress to much I will:</p>
+            <select
+               id="stress"
+               class="bg-somePaleGreen"
+               bind:value={stress}
+               on:change={handleSelection(stress)}>
+               {#each newGoals[2] as option (option)}
+                  <option class="border-red bg-platinum" value={option}>{option}</option>
+               {/each}
+            </select>
+         </div>
+      </section>
 
       <p class="text-2xl font-semibold">Interests:</p>
       <div class="grid grid-cols-4">
@@ -149,7 +191,7 @@
             <button
                on:click={() => toggleInterest(interest[0])}
                class={`rounded-lg text-center mt-2 mr-1 border-2  px-1 ${
-                  interest[2] === "true" ? "bg-salmonLikeColor" : ""
+                  interest[2] === "true" ? "bg-aquamarine" : ""
                }`}
             >{interest[1]}
             </button>
@@ -157,7 +199,7 @@
       </div>      
       <button
          on:click={saveChanges}
-         class="mt-10 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
+         class="mt-10 mb-5 text-lg font-bold rounded-lg px-2 bg-Navbarblue hover:bg-platinum"
          >Create Profile</button>
    {:else}
       <p>No profiles available.</p>

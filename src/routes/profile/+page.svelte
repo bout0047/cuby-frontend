@@ -8,30 +8,41 @@
    export let profiles = [];
    let id = 0;
    let loading = true;
- 
+   import Cookies from "js-cookie";
+
+
    onMount(async () => {
-     try {
-       const response = await fetch("http://localhost:3011/profiles");
- 
-       if (!response.ok) {
-         console.error(
-           "Error fetching profiles:1",
-           response.status,
-           response.statusText
-         );
-         throw new Error("Failed to fetch profiles");
-       }
- 
-       profiles = await response.json();
-       id = profiles.length - 1;
-     } catch (error) {
-       console.error("Error fetching profiles:2", error.message);
-     } finally {
-       // Simulate a minimum loading time of 3 seconds
-       setTimeout(() => {
-         loading = false;
-       }, 3000);
-     }
+      try {
+         const cubySession = Cookies.get("cubySession");
+         const response = await fetch("http://localhost:3011/profiles", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               cubySession,
+               method: "GET",
+            }),
+         
+         });
+
+         if (!response.ok) {
+            console.error(
+               "Error fetching profiles:1",
+               response.status,
+               response.statusText
+            );
+            throw new Error("Failed to fetch profiles");
+         }
+
+         profiles = await response.json();
+         console.log(profiles[0].intrests)
+         console.log(profiles);
+         id = profiles.length - 1;
+       console.log(id);
+      } catch (error) {
+         console.error("Error fetching profiles:2", error.message);
+      }
    });
  </script>
 
@@ -42,15 +53,9 @@
       <section class="text-center relative">
          <button
             on:click={() => {
-               window.location.href = "/profile/goals";
-            }}
-            class="corner-button absolute bg-aquamarine top-0 text-nowrap text-sm right-72 left-0 p-2 px-4 hover:text-cream rounded-full"
-            >Goals</button>
-         <button
-            on:click={() => {
                window.location.href = "/profile/edit";
             }}
-            class="corner-button absolute bg-aquamarine top-0 text-nowrap text-sm right-0 text-right pl-1 py-2 px-3 hover:text-cream rounded-full"
+            class="corner-button absolute bg-slate top-0 text-nowrap text-sm right-0 text-right pl-1 py-2 px-3 hover:text-cream rounded-full"
             >Edit Profile</button>
          <!-- svelte-ignore a11y-img-redundant-alt -->
          <img
@@ -90,12 +95,13 @@
          {/each}
       </div>
 
-      <footer>
-         <NavBar />
-      </footer>
+      
    {:else}
       <p>loading...</p>
    {/if}
+   <footer>
+      <NavBar />
+   </footer>
 </main>
 
 <style>
