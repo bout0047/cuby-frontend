@@ -1,13 +1,10 @@
 <script>
    // @ts-nocheck
-   import Loading from '$lib/components/Loading.svelte';
    import NavBar from "$lib/components/NavBar.svelte";
    import { onMount } from "svelte";
- 
    let profilepicture = "../src/img/stokstraart.png";
    export let profiles = [];
    let id = 0;
-   let loading = true;
    import Cookies from "js-cookie";
 
 
@@ -44,12 +41,11 @@
          console.error("Error fetching profiles:2", error.message);
       }
    });
- </script>
+
+</script>
 
 <main class="container mx-auto p-4 bg-090C9B relative">
-   {#if loading}
-      <Loading />
-   {:else if profiles.length > 0}
+   {#if profiles.length > 0}
       <section class="text-center relative">
          <button
             on:click={() => {
